@@ -18,21 +18,26 @@ export class signInOrUp extends Component {
                     <Text
                         style={styles.txtIntro}
                     >Match and chat with people you like from your area</Text>
+                    <TouchableOpacity
+                        style={styles.btnLogin}
+                    >
+                        <Text style={styles.txtLogin}>Log In</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.btnSignUp}
+                    >
+                        <Text style={styles.txtSignUp}>Sign Up</Text>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity
-                    style={styles.btnLogin}
-                >
-                    <Text style={styles.txtLogin}>Log In</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.btnSignUp}
-                >
-                    <Text style={styles.txtLogin}>Sign Up</Text>
-                </TouchableOpacity>
+
             </View>
         )
     }
 }
+
+const PADDING_VERTICAL = 10;
+const BORDER_RADIUS = 30;
+const PINK = '#EB5A6D';
 
 const styles = StyleSheet.create({
     imgLogo: {
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
         marginBottom: 30
     },
     txtTitle: {
-        color: 'red',
+        color: PINK,
         fontSize: 30
     },
     txtIntro: {
@@ -61,24 +66,32 @@ const styles = StyleSheet.create({
     },
     btnLogin: {
         alignSelf: 'center',
-        backgroundColor: 'red',
-        paddingHorizontal: 110,
-        paddingVertical: 10
+        backgroundColor: PINK,
+        width: '100%',
+        marginTop: 30,
+        borderRadius: BORDER_RADIUS
     },
     txtLogin: {
         fontWeight: 'bold',
-        fontSize: 15
+        fontSize: 15,
+        alignSelf: 'center',
+        color: 'white',
+        paddingVertical: PADDING_VERTICAL
     },
     btnSignUp: {
-        marginTop: 10,
         alignSelf: 'center',
-        backgroundColor: 'red',
-        paddingHorizontal: 110,
-        paddingVertical: 10
+        width: '100%',
+        marginTop: 20,
+        borderRadius: BORDER_RADIUS,
+        borderColor: PINK,
+        borderWidth: 1
     },
     txtSignUp: {
         fontWeight: 'bold',
-        fontSize: 15
+        fontSize: 15,
+        alignSelf: 'center',
+        paddingVertical: PADDING_VERTICAL,
+        color: PINK
     }
 })
 export default signInOrUp
