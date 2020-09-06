@@ -31,7 +31,6 @@ export const Title = {
     color: Colors.PINK,
     fontWeight: 'bold',
     fontSize: Const.FONT_SIZE_V1,
-    marginTop: 20,
     marginLeft: 20
 }
 
