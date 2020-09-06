@@ -16,7 +16,7 @@
     "native-base": "^2.13.14",
     "react": "16.13.1",
     "react-native": "0.63.2",
-    "react-native-phone-input": "^0.2.4",
+    "react-native-phone-input": "git+https://github.com/tqlong1609/react-native-phone-input.git",
     "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^7.0.0"
   },
