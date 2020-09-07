@@ -10,5 +10,6 @@ import { name as appName } from './app.json';
 // import SignUpEmail from '/src/components/SignUpEmail/signUpEmail.js'
 import SignUpPhone from '/src/components/SignUpPhone/signUpPhone.js'
 // import SingInOrUp from '/src/components/SingInOrUp/signInOrUp'
+// import CodePhone from '/src/components/CodePhone/codePhone'
 
 AppRegistry.registerComponent(appName, () => SignUpPhone);

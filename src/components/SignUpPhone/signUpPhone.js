@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Image 
 import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons';
 import AvatarCircle from 'src/components/UI/avatarCircle.js'
-
+import TextInputPhone from '/src/components/UI/textInputPhone'
 //TODO: click show flags
 //TODO: pick image of avatar
 export default function signUpPhone() {
@@ -16,11 +16,7 @@ export default function signUpPhone() {
             <AvatarCircle style={styles.avatar} />
             <TextInput style={styles.inpEnter} placeholder={'First Name'} />
             <TextInput style={styles.inpEnter} placeholder={'Last Name'} />
-            <View style={styles.inpEnterPhone}  >
-                <Image style={styles.imgFlags} source={require('/src/assets/images/united-states-of-america-flag-medium.png')}
-                />
-                <TextInput placeholder={'Phone Number'} keyboardType={'phone-pad'} style={styles.inpPhone} />
-            </View>
+            <TextInputPhone />
             <TouchableOpacity style={styles.btnSendCode}>
                 <Text style={styles.txtSendCode}>Send code</Text>
             </TouchableOpacity>
@@ -68,25 +64,7 @@ const styles = StyleSheet.create({
     txtSignUpEmail: {
         ...Themes.Styles.TextButtonBottom,
     },
-    imgFlags: {
-        width: 30,
-        height: Themes.Const.HEIGHT - 10,
-        marginLeft: 5,
-        borderTopLeftRadius: Themes.Const.BORDER_RADIUS,
-        borderBottomLeftRadius: Themes.Const.BORDER_RADIUS,
-        flex: 1,
-        alignSelf: 'center'
-    },
-    inpEnterPhone: {
-        ...Themes.Styles.TextInput,
-        marginTop: Themes.Const.MARGIN_TOP,
-        paddingLeft: 0,
-        flexDirection: 'row'
-    },
-    inpPhone: {
-        flex: 7,
-        borderTopRightRadius: Themes.Const.BORDER_RADIUS,
-        borderBottomRightRadius: Themes.Const.BORDER_RADIUS,
-    }
+
+
 
 })
