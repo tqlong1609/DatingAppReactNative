@@ -4,10 +4,12 @@ import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons';
 import AvatarCircle from 'src/components/UI/avatarCircle.js'
 import TextInputPhone from '/src/components/UI/textInputPhone'
+
 //TODO: click show flags
 //TODO: pick image of avatar
 export default function signUpPhone() {
     return (
+
         <ScrollView>
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
