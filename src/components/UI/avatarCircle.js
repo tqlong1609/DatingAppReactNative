@@ -1,56 +1,38 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, } from 'react-native'
 import PropTypes from 'prop-types'
 import Icons from 'react-native-vector-icons/FontAwesome'
 import ImagePicker from 'react-native-image-crop-picker';
-import Modal from 'react-native-modal';
-
-
-
+import BottomHalfModel from '/src/components/Model/bottomHalfModel'
 export default function avatarCircle(props) {
     const { url, style } = props;
     const [isVisible, setIsVisible] = useState(false);
-    function test() {
-        console.log('object')
-    }
-    function WrapperComponent() {
-        return (
-            <View >
-                {/* <Modal isVisible={isVisible}
-                    onBackdropPress={() => setModalVisible(false)}>
-                    <View style={{ flex: 1 }}>
-                        <Text>I am the modal content!</Text>
-                    </View>
-                </Modal> */}
-                <Modal
-                    isVisible={isVisible}
-                    onSwipeComplete={() => setVisibleModel(false)}
-                    swipeDirection="left">
-                    <View style={{ flex: 1, backgroundColor: 'red' }}>
-                        <Text>I am the modal content!</Text>
-                    </View>
-                </Modal>
-            </View>
-        )
-    }
     function setVisibleModel(isVisible) {
         setIsVisible(isVisible);
     }
+    console.log('setVisibleModel')
+
     return (
-        <TouchableOpacity style={{ ...styles.container, ...style }} onPress={() => setVisibleModel(true)}>
-            <Image style={styles.imgAvatar}
-                source={url ? url : require('/src/assets/images/my_avatar.jpg')}
-            />
-            <View style={styles.containerIcon}>
-                <Icons name="camera" color={'white'} size={13} style={styles.icon} />
-            </View>
-            <WrapperComponent />
-        </TouchableOpacity>
+        <View>
+            <TouchableOpacity style={{ ...styles.container, ...style }} onPress={() => setVisibleModel(true)}>
+                <Image style={styles.imgAvatar}
+                    source={url}
+                />
+                <View style={styles.containerIcon}>
+                    <Icons name="camera" color={'white'} size={13} style={styles.icon} />
+                </View>
+            </TouchableOpacity>
+            <BottomHalfModel isVisible={isVisible} setVisibleModel={setVisibleModel} />
+        </View>
     )
 }
 
 avatarCircle.prototype = {
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
+}
+
+avatarCircle.defaultProps = {
+    url: require('/src/assets/images/my_avatar.jpg')
 }
 
 const styles = StyleSheet.create({
