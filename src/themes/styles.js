@@ -5,7 +5,7 @@ export const TextInput = {
     borderWidth: 1,
     marginHorizontal: Const.MARGIN_HORIZONTAL,
     height: Const.HEIGHT,
-    paddingLeft: 17,
+    paddingLeft: Const.PADDING_TEXT_INPUT,
     borderRadius: Const.BORDER_RADIUS,
 }
 

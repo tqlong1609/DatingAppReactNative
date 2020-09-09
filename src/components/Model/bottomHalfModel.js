@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, Dimensions, Platform, TouchableOpacity } from 'react-native'
 import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Modal from 'react-native-modal';
+import Themes from '/src/themes'
 
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Platform.OS === "ios"
@@ -18,7 +19,6 @@ export default function bottomHalfModel(props) {
                 isVisible={isVisible}
                 onSwipeComplete={() => setVisibleModel(false)}
                 swipeDirection="down"
-            // customBackdrop={<View style={{ flex: 1 }} />}
             >
                 <View style={styles.container}>
                     <View style={styles.containerContent}>
@@ -44,6 +44,16 @@ export default function bottomHalfModel(props) {
         </View>
     )
 }
+const HEIGHT_MODAL = 200;
+const COLOR_MODAL = 'white';
+const COLOR_CANCEL = '#F96A61';
+const COLOR_BORDER_BUTTON = 'black';
+const COLOR_HEADER_MODAL = '#9C9A99';
+const COLOR_CONTENT_MODAL = '#3493FB';
+const BORDER_WIDTH_BUTTON = 0.5;
+const BORDER_BUTTON = 10;
+const NUMBER_BUTTON = 3;
+const FONT_SIZE_BOTTOM = 20;
 
 const styles = StyleSheet.create({
     container: {
@@ -52,51 +62,53 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containerContent: {
-        height: 200
+        height: HEIGHT_MODAL
     },
     containerHeader: {
-        height: 200 / 3, backgroundColor: 'white',
-        borderTopLeftRadius: 10, borderTopRightRadius: 10,
+        height: HEIGHT_MODAL / NUMBER_BUTTON,
+        backgroundColor: COLOR_MODAL,
+        borderTopLeftRadius: BORDER_BUTTON,
+        borderTopRightRadius: BORDER_BUTTON,
         justifyContent: 'center'
     },
     txtHeader: {
         alignSelf: 'center',
-        color: '#9C9A99',
-        fontSize: 15
+        color: COLOR_HEADER_MODAL,
+        fontSize: Themes.Const.FONT_SIZE
     },
     txtContentButton: {
         alignSelf: 'center',
-        color: '#3493FB',
+        color: COLOR_CONTENT_MODAL,
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: FONT_SIZE_BOTTOM
     },
     btnBetweenContent: {
-        height: 200 / 3,
-        backgroundColor: 'white',
-        borderTopWidth: 0.5,
-        borderTopColor: 'black',
-        borderBottomWidth: 0.5,
-        borderBottomColor: 'black',
+        height: HEIGHT_MODAL / NUMBER_BUTTON,
+        backgroundColor: COLOR_MODAL,
+        borderTopWidth: BORDER_WIDTH_BUTTON,
+        borderTopColor: COLOR_BORDER_BUTTON,
+        borderBottomWidth: BORDER_WIDTH_BUTTON,
+        borderBottomColor: COLOR_BORDER_BUTTON,
         justifyContent: 'center'
     },
     btnBottomContent: {
-        height: 200 / 3,
-        backgroundColor: 'white',
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
+        height: HEIGHT_MODAL / NUMBER_BUTTON,
+        backgroundColor: COLOR_MODAL,
+        borderBottomLeftRadius: BORDER_BUTTON,
+        borderBottomRightRadius: BORDER_BUTTON,
         justifyContent: 'center'
     },
     btnCancel: {
-        backgroundColor: 'white',
-        height: 200 / 3,
+        backgroundColor: COLOR_MODAL,
+        height: HEIGHT_MODAL / NUMBER_BUTTON,
         marginTop: 5,
-        borderRadius: 10,
+        borderRadius: BORDER_BUTTON,
         justifyContent: 'center'
     },
     txtCancel: {
         alignSelf: 'center',
-        color: '#F96A61',
+        color: COLOR_CANCEL,
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: FONT_SIZE_BOTTOM
     }
 })

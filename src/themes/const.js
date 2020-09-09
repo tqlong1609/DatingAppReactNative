@@ -12,5 +12,9 @@ export const MARGIN_HORIZONTAL = 50;
 //font size
 export const FONT_SIZE = 15;
 export const FONT_SIZE_V1 = 25;
+export const FONT_SIZE_V2 = 17;
 
 export const SIZE_ICON = 30;
+
+export const PADDING_TEXT_INPUT = 17;
+export const PADDING_TEXT_INPUT_SMALL = 10;
