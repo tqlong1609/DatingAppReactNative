@@ -3,12 +3,13 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Image 
 import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons';
 import AvatarCircle from 'src/components/UI/avatarCircle.js'
-import DropDownPhone from '../UI/dropDownPhone'
+import TextInputPhone from '/src/components/UI/textInputPhone'
 
 //TODO: click show flags
 //TODO: pick image of avatar
 export default function signUpPhone() {
     return (
+
         <ScrollView>
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
@@ -17,12 +18,7 @@ export default function signUpPhone() {
             <AvatarCircle style={styles.avatar} />
             <TextInput style={styles.inpEnter} placeholder={'First Name'} />
             <TextInput style={styles.inpEnter} placeholder={'Last Name'} />
-            <View style={styles.inpEnterPhone}  >
-                {/* <Image style={styles.imgFlags} source={require('/src/assets/images/united-states-of-america-flag-medium.png')}
-                /> */}
-                <DropDownPhone style={styles.imgFlags} />
-                <TextInput placeholder={'Phone Number'} keyboardType={'phone-pad'} style={styles.inpPhone} />
-            </View>
+            <TextInputPhone />
             <TouchableOpacity style={styles.btnSendCode}>
                 <Text style={styles.txtSendCode}>Send code</Text>
             </TouchableOpacity>
@@ -70,21 +66,7 @@ const styles = StyleSheet.create({
     txtSignUpEmail: {
         ...Themes.Styles.TextButtonBottom,
     },
-    imgFlags: {
-        marginLeft: 20,
-        flex: 1,
-        alignSelf: 'center'
-    },
-    inpEnterPhone: {
-        ...Themes.Styles.TextInput,
-        marginTop: Themes.Const.MARGIN_TOP,
-        paddingLeft: 0,
-        flexDirection: 'row'
-    },
-    inpPhone: {
-        flex: 7,
-        borderTopRightRadius: Themes.Const.BORDER_RADIUS,
-        borderBottomRightRadius: Themes.Const.BORDER_RADIUS,
-    }
+
+
 
 })

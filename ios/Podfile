@@ -12,6 +12,8 @@ target 'DatingAppRN' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'Interactable', :path => '../node_modules/react-native-interactable'
+
   target 'DatingAppRNTests' do
     inherit! :complete
     # Pods for testing

@@ -1,25 +1,38 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity, } from 'react-native'
 import PropTypes from 'prop-types'
 import Icons from 'react-native-vector-icons/FontAwesome'
-
-
+import ImagePicker from 'react-native-image-crop-picker';
+import BottomHalfModel from '/src/components/Model/bottomHalfModel'
 export default function avatarCircle(props) {
     const { url, style } = props;
+    const [isVisible, setIsVisible] = useState(false);
+    function setVisibleModel(isVisible) {
+        setIsVisible(isVisible);
+    }
+    console.log('setVisibleModel')
+
     return (
-        <View style={{ ...styles.container, ...style }}>
-            <Image style={styles.imgAvatar}
-                source={url ? url : require('/src/assets/images/my_avatar.jpg')}
-            />
-            <View style={styles.containerIcon}>
-                <Icons name="camera" color={'white'} size={13} style={styles.icon} />
-            </View>
+        <View>
+            <TouchableOpacity style={{ ...styles.container, ...style }} onPress={() => setVisibleModel(true)}>
+                <Image style={styles.imgAvatar}
+                    source={url}
+                />
+                <View style={styles.containerIcon}>
+                    <Icons name="camera" color={'white'} size={13} style={styles.icon} />
+                </View>
+            </TouchableOpacity>
+            <BottomHalfModel isVisible={isVisible} setVisibleModel={setVisibleModel} />
         </View>
     )
 }
 
 avatarCircle.prototype = {
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
+}
+
+avatarCircle.defaultProps = {
+    url: require('/src/assets/images/my_avatar.jpg')
 }
 
 const styles = StyleSheet.create({

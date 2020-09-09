@@ -132,6 +132,7 @@ android {
         applicationId "com.datingapprn"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
     }
@@ -186,6 +187,8 @@ dependencies {
     implementation project(':lottie-react-native')
 
     implementation project(':react-native-svg')
+
+    implementation project(path: ":react-native-interactable")
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
