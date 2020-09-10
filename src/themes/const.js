@@ -5,7 +5,10 @@ export const BORDER_RADIUS = 30;
 export const HEIGHT = 40;
 
 //margin
+// export const MARGIN_TOP = 25;
 export const MARGIN_TOP = 25;
+export const MARGIN_TOP_V1 = 50;
+
 export const MARGIN_V1 = 40;
 export const MARGIN_HORIZONTAL = 50;
 

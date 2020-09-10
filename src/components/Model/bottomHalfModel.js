@@ -3,19 +3,15 @@ import { StyleSheet, Text, View, Dimensions, Platform, TouchableOpacity } from '
 import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Modal from 'react-native-modal';
 import Themes from '/src/themes'
-
-const deviceWidth = Dimensions.get("window").width;
-const deviceHeight = Platform.OS === "ios"
-    ? Dimensions.get("window").height
-    : ExtraDimensions.get("REAL_WINDOW_HEIGHT");
+import Const from '/src/const'
 
 export default function bottomHalfModel(props) {
     const { isVisible, setVisibleModel } = props;
     return (
         <View >
             <Modal
-                deviceWidth={deviceWidth}
-                deviceHeight={deviceHeight}
+                deviceWidth={Const.Common.deviceWidth}
+                deviceHeight={Const.Common.deviceHeight}
                 isVisible={isVisible}
                 onSwipeComplete={() => setVisibleModel(false)}
                 swipeDirection="down"

@@ -10,11 +10,11 @@ export default function avatarCircle(props) {
     function setVisibleModel(isVisible) {
         setIsVisible(isVisible);
     }
-    console.log('setVisibleModel')
 
     return (
         <View>
-            <TouchableOpacity style={{ ...styles.container, ...style }} onPress={() => setVisibleModel(true)}>
+            <TouchableOpacity style={{ ...styles.container, ...style }}
+                onPress={() => setVisibleModel(true)}>
                 <Image style={styles.imgAvatar}
                     source={url}
                 />
@@ -34,21 +34,23 @@ avatarCircle.prototype = {
 avatarCircle.defaultProps = {
     url: require('/src/assets/images/my_avatar.jpg')
 }
+const sizeImage = 130;
+const sizeIcon = 30;
 
 const styles = StyleSheet.create({
     container: {
-        width: 100,
-        height: 100,
+        width: sizeImage,
+        height: sizeImage,
     },
     imgAvatar: {
-        width: 100,
-        height: 100,
-        borderRadius: 50
+        width: sizeImage,
+        height: sizeImage,
+        borderRadius: sizeImage / 2
     },
     containerIcon: {
-        width: 25,
-        height: 25,
-        borderRadius: 14.5,
+        width: sizeIcon,
+        height: sizeIcon,
+        borderRadius: sizeIcon / 2,
         backgroundColor: '#C6CACB',
         justifyContent: 'center',
         position: 'absolute',
@@ -56,6 +58,7 @@ const styles = StyleSheet.create({
         right: 0
     },
     icon: {
-        alignSelf: 'center'
+        alignSelf: 'center',
+        fontSize: 18
     }
 })

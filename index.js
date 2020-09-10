@@ -8,9 +8,9 @@ import { name as appName } from './app.json';
 
 // import Login from './src/components/Login/login'
 // import SignUpEmail from '/src/components/SignUpEmail/signUpEmail.js'
-// import SignUpPhone from '/src/components/SignUpPhone/signUpPhone.js'
+import SignUpPhone from '/src/components/SignUpPhone/signUpPhone.js'
 // import SingInOrUp from '/src/components/SingInOrUp/signInOrUp'
 // import CodePhone from '/src/components/CodePhone/codePhone'
-import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
+// import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
 
-AppRegistry.registerComponent(appName, () => ConfirmCodePhone);
+AppRegistry.registerComponent(appName, () => SignUpPhone);

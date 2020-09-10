@@ -1,15 +1,25 @@
-import React from 'react'
-import { StyleSheet, Image, View, TextInput } from 'react-native'
+import React, { useState, useCallback } from 'react'
+import { StyleSheet, Image, View, TextInput, TouchableOpacity } from 'react-native'
 import Themes from '/src/themes'
 import PropTypes from 'prop-types';
-
+import FlagsModel from '/src/components/Model/flagsModel'
 export default function textInputPhone(props) {
     const { style } = props;
+    const [isVisible, setIsVisible] = useState(false);
+    function setVisibleModel(isVisible) {
+        setIsVisible(isVisible);
+    }
+    // const callbackTest = useCallback((isVisible) => { setIsVisible(isVisible) }, [isVisible]);
     return (
         <View style={{ ...styles.inpEnterPhone, ...style }}  >
-            <Image style={styles.imgFlags} source={require('/src/assets/images/united-states-of-america-flag-medium.png')}
-            />
-            <TextInput placeholder={'Phone Number'} keyboardType={'phone-pad'} style={styles.inpPhone} />
+            <TouchableOpacity onPress={() => setVisibleModel(true)}>
+                <Image style={styles.imgFlags} source={require('/src/assets/images/united-states-of-america-flag-medium.png')}
+                />
+            </TouchableOpacity>
+            <TextInput placeholder={'Phone Number'}
+                keyboardType={'phone-pad'}
+                style={styles.inpPhone} />
+            <FlagsModel isVisible={isVisible} setVisibleModel={setVisibleModel} />
         </View>
     )
 }
@@ -34,14 +44,18 @@ const styles = StyleSheet.create({
         paddingLeft: 0,
         flexDirection: 'row'
     },
+    btnFlags: {
+        // paddingVertical: 5,
+        // backgroundColor: 'red'
+    },
     imgFlags: {
         width: 30,
         height: Themes.Const.HEIGHT - 10,
-        marginLeft: 5,
+        margin: 3,
         borderTopLeftRadius: Themes.Const.BORDER_RADIUS,
         borderBottomLeftRadius: Themes.Const.BORDER_RADIUS,
         flex: 1,
-        alignSelf: 'center'
+        // alignSelf: 'center'
     },
 
 })

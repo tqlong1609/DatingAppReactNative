@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         textAlign: 'center',
         fontSize: Themes.Const.FONT_SIZE_V2,
+        borderColor: 'gray',
         flex: 1,
         fontWeight: 'bold'
     },
@@ -147,6 +148,7 @@ const styles = StyleSheet.create({
         borderLeftWidth: 0,
         alignContent: 'center',
         textAlign: 'center',
+        borderColor: 'gray',
         fontSize: Themes.Const.FONT_SIZE_V2,
         fontWeight: 'bold'
 
@@ -159,6 +161,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: Themes.Const.BORDER_RADIUS,
         alignContent: 'center',
         textAlign: 'center',
+        borderColor: 'gray',
         borderLeftWidth: 0,
         fontSize: Themes.Const.FONT_SIZE_V2,
         fontWeight: 'bold'

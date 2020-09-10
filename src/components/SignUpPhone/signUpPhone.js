@@ -5,8 +5,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import AvatarCircle from 'src/components/UI/avatarCircle.js'
 import TextInputPhone from '/src/components/UI/textInputPhone'
 
-//TODO: click show flags
-//TODO: pick image of avatar
 export default function signUpPhone() {
     return (
 
@@ -16,8 +14,8 @@ export default function signUpPhone() {
             </TouchableOpacity>
             <Text style={styles.txtTitle}> Create new account </Text>
             <AvatarCircle style={styles.avatar} />
-            <TextInput style={styles.inpEnter} placeholder={'First Name'} />
-            <TextInput style={styles.inpEnter} placeholder={'Last Name'} />
+            <TextInput style={styles.inpEnter} placeholder={'First Name'} autoCompleteType={'username'} />
+            <TextInput style={styles.inpEnter} placeholder={'Last Name'} autoCompleteType={'username'} />
             <TextInputPhone />
             <TouchableOpacity style={styles.btnSendCode}>
                 <Text style={styles.txtSendCode}>Send code</Text>
@@ -39,7 +37,8 @@ const styles = StyleSheet.create({
     },
     avatar: {
         alignSelf: 'center',
-        marginTop: Themes.Const.MARGIN_TOP,
+        marginTop: 50,
+        marginBottom: 50
     },
     inpEnter: {
         ...Themes.Styles.TextInput,
