@@ -42,12 +42,12 @@ const styles = StyleSheet.create({
     },
     inpEmail: {
         ...Themes.Styles.TextInput,
-        marginTop: Themes.Const.MARGIN_V1
+        marginTop: 80
     },
     inpPassword: {
         ...Themes.Styles.TextInput,
         marginTop: Themes.Const.MARGIN_TOP,
-        marginBottom: Themes.Const.MARGIN_V1
+        marginBottom: 80
     },
     btnSignInEmail: {
         ...Themes.Styles.Button,

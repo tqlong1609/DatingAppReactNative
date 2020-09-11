@@ -27,7 +27,7 @@ export default function confirmCodePhone() {
 const styles = StyleSheet.create({
     inpPhone: {
         // ...Themes.Styles.TextInput,
-        marginTop: Themes.Const.MARGIN_V1 + 60,
+        marginTop: Themes.Const.MARGIN_TOP_V2,
     },
     btnIcon: {
         ...Themes.Styles.IconBack

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { StyleSheet, Image, View, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import Themes from '/src/themes'
 import PropTypes from 'prop-types';
 import FlagsModel from '/src/components/Model/flagsModel'
@@ -13,8 +13,11 @@ export default function textInputPhone(props) {
     return (
         <View style={{ ...styles.inpEnterPhone, ...style }}  >
             <TouchableOpacity onPress={() => setVisibleModel(true)}>
-                <Image style={styles.imgFlags} source={require('/src/assets/images/united-states-of-america-flag-medium.png')}
-                />
+                {/* <Image style={styles.imgFlags} source={require('/src/assets/images/united-states-of-america-flag-medium.png')}
+                /> */}
+                <View style={styles.imgFlags}>
+                    <Text style={styles.txtPhoneArea}>+84</Text>
+                </View>
             </TouchableOpacity>
             <TextInput placeholder={'Phone Number'}
                 keyboardType={'phone-pad'}
@@ -33,8 +36,13 @@ textInputPhone.defaultProps = {
 }
 
 const styles = StyleSheet.create({
+    txtPhoneArea: {
+        alignSelf: 'center',
+        fontSize: Themes.Const.FONT_SIZE,
+    },
     inpPhone: {
         flex: 7,
+        fontSize: Themes.Const.FONT_SIZE,
         borderTopRightRadius: Themes.Const.BORDER_RADIUS,
         borderBottomRightRadius: Themes.Const.BORDER_RADIUS,
     },
@@ -55,6 +63,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: Themes.Const.BORDER_RADIUS,
         borderBottomLeftRadius: Themes.Const.BORDER_RADIUS,
         flex: 1,
+        justifyContent: 'center'
         // alignSelf: 'center'
     },
 

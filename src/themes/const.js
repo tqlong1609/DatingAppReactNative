@@ -2,12 +2,13 @@
 export const BORDER_RADIUS = 30;
 
 //height - width
-export const HEIGHT = 40;
+export const HEIGHT = 50;
 
 //margin
 // export const MARGIN_TOP = 25;
-export const MARGIN_TOP = 25;
+export const MARGIN_TOP = 30;
 export const MARGIN_TOP_V1 = 50;
+export const MARGIN_TOP_V2 = 140;
 
 export const MARGIN_V1 = 40;
 export const MARGIN_HORIZONTAL = 50;
