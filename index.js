@@ -13,6 +13,7 @@ import { name as appName } from './app.json';
 // import CodePhone from '/src/components/CodePhone/codePhone'
 // import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
 // import Splash from '/src/components/Splash/splash'
-import Introduction from '/src/components/Introduction/introduction'
+// import Introduction from '/src/components/Introduction/introduction'
+import EmailAddress from '/src/components/EmailAddress/emailAddress'
 
-AppRegistry.registerComponent(appName, () => Introduction);
+AppRegistry.registerComponent(appName, () => EmailAddress);

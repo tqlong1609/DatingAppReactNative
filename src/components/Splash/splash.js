@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-
-import LottieView from 'lottie-react-native'
-
-export class splash extends Component {
-    render() {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#F1919D' }}>
-                <LottieView
-                    style={{ width: 200, height: 200, alignSelf: 'center' }}
-                    source={require('../../assets/lotties/16555-firery-passion.json')}
-                    autoPlay
-                    loop
-                />
-            </View>
-        )
-    }
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import AnimLottieView from '/src/components/UI/animLottieView'
+import Themes from '/src/themes'
+export default function splash() {
+    return (
+        <View style={styles.container}>
+            <AnimLottieView source={require('../../assets/lotties/16555-firery-passion.json')} />
+        </View>
+    )
 }
 
-export default splash
+const styles = StyleSheet.create({
+    container: {
+        flex: 1, justifyContent: 'center', backgroundColor: Themes.Colors.PINK_DARK
+    }
+})
