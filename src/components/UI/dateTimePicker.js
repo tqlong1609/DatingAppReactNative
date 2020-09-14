@@ -1,19 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
+import moment from "moment";
+
+const DATE = 'DD/MM/YYYY';
+const TIME = 'h:mm a';
 export default function dateTimePicker(props) {
     const { modeShow, style, styleText } = props;
     const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
+
+
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'ios');
         setDate(currentDate);
     };
+
+    const formatDate = (date) => {
+        return moment(date).format(DATE);
+    }
+
+    const formatTime = (date) => {
+        return moment(date).format(TIME);
+    }
 
     const showMode = (currentMode) => {
         setShow(true);
@@ -33,7 +47,12 @@ export default function dateTimePicker(props) {
                 style={{ ...styles.btnDateTime, ...style }}
                 onPress={modeShow === 'date' ? showDatepicker : showTimePicker}
             >
-                <Text style={styleText}>12/10/2020</Text>
+                <Text style={styleText}>{
+                    modeShow === 'date' ?
+                        formatDate(date)
+                        :
+                        formatTime(date)}
+                </Text>
                 {
                     modeShow === 'date' ?
                         <Icon style={styles.icoShow} name="calendar-outline" />
