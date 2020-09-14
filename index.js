@@ -14,6 +14,7 @@ import { name as appName } from './app.json';
 // import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
 // import Splash from '/src/components/Splash/splash'
 // import Introduction from '/src/components/Introduction/introduction'
-import EmailAddress from '/src/components/EmailAddress/emailAddress'
+// import EmailAddress from '/src/components/EmailAddress/emailAddress'
+import Birthday from '/src/components/Birthday/birthday'
 
-AppRegistry.registerComponent(appName, () => EmailAddress);
+AppRegistry.registerComponent(appName, () => Birthday);

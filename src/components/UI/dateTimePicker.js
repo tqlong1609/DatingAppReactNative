@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 export default function dateTimePicker(props) {
-    const { modeShow } = props;
-    const [date, setDate] = useState(new Date(1598051730000));
+    const { modeShow, style, styleText } = props;
+    const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('date');
     const [show, setShow] = useState(false);
     const onChange = (event, selectedDate) => {
@@ -30,19 +30,20 @@ export default function dateTimePicker(props) {
     return (
         <View>
             <TouchableOpacity
-                style={styles.btnDateTime}
+                style={{ ...styles.btnDateTime, ...style }}
                 onPress={modeShow === 'date' ? showDatepicker : showTimePicker}
             >
-                <Text>12/10/2020</Text>
+                <Text style={styleText}>12/10/2020</Text>
                 {
                     modeShow === 'date' ?
-                        <Icon name="calendar-outline" />
+                        <Icon style={styles.icoShow} name="calendar-outline" />
                         :
-                        <Icon name="time-outline" />
+                        <Icon style={styles.icoShow} name="time-outline" />
                 }
             </TouchableOpacity>
             {show && (
                 <DateTimePicker
+                    style={{ backgroundColor: 'red' }}
                     testID="dateTimePicker"
                     value={date}
                     mode={mode}
@@ -56,12 +57,21 @@ export default function dateTimePicker(props) {
 }
 dateTimePicker.propTypes = {
     modeShow: PropTypes.oneOf(['time', 'date']).isRequired,
+    style: PropTypes.object,
+    styleText: PropTypes.object,
 }
+
+dateTimePicker.defaultProps = {
+    style: null
+}
+
 const styles = StyleSheet.create({
+    icoShow: {
+        fontSize: 20,
+        color: Themes.Colors.GRAY_BRIGHT_I
+    },
     btnDateTime: {
         flexDirection: 'row',
-        marginHorizontal: 20,
-        backgroundColor: 'red',
-        paddingVertical: 17
+        justifyContent: 'space-between'
     }
 })

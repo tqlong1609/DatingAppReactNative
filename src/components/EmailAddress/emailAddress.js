@@ -27,8 +27,7 @@ export default function emailAddress() {
 }
 const styles = StyleSheet.create({
     txtDetail: {
-        fontSize: Themes.Const.FONT_SIZE,
-        marginTop: 15
+        ...Themes.Styles.txtDetail
     },
     containerContent: {
         marginHorizontal: Themes.Const.MARGIN_HORIZONTAL_INPUT,

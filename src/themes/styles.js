@@ -37,6 +37,12 @@ export const txtTitle2 = {
     marginBottom: Const.MARGIN_TOP_V1
 }
 
+export const txtDetail = {
+    fontSize: Const.FONT_SIZE,
+    marginTop: 15,
+    color: Colors.GRAY_BRIGHT_I
+}
+
 const BUTTON_NEXT = 45;
 export const ButtonBottomNext = {
     backgroundColor: Colors.GRAY_BRIGHT_I,
