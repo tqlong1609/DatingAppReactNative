@@ -12,6 +12,7 @@ export const MARGIN_TOP_V2 = 140;
 
 export const MARGIN_V1 = 40;
 export const MARGIN_HORIZONTAL = 50;
+export const MARGIN_HORIZONTAL_INPUT = 20;
 
 //font size
 export const FONT_SIZE = 15;

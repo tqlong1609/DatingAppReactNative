@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.wix.interactable.Interactable;
 import com.airbnb.android.react.lottie.LottiePackage;
+import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 // import com.horcrux.svg.SvgPackage;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           packages.add(new LottiePackage());
           packages.add(new Interactable()); 
+          // packages.add(new RNDateTimePickerPackage());
           // packages.add(new ExtraDimensionsPackage()); 
           // packages.add(new SvgPackage());
           return packages;

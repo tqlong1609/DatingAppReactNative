@@ -23,6 +23,32 @@ export const ButtonBottom = {
     marginBottom: 25,
 }
 
+export const txtTitle = {
+    fontSize: Const.FONT_SIZE_V1,
+    fontWeight: 'bold',
+    color: Colors.GRAY_BRIGHT,
+    marginTop: Const.MARGIN_TOP_V1
+}
+
+export const txtTitle2 = {
+    fontSize: Const.FONT_SIZE_V1,
+    fontWeight: 'bold',
+    color: Colors.PINK_DARK,
+    marginBottom: Const.MARGIN_TOP_V1
+}
+
+const BUTTON_NEXT = 45;
+export const ButtonBottomNext = {
+    backgroundColor: Colors.GRAY_BRIGHT_I,
+    width: BUTTON_NEXT,
+    height: BUTTON_NEXT,
+    borderRadius: BUTTON_NEXT / 2,
+    justifyContent: 'center',
+    position: 'absolute',
+    right: 20,
+    bottom: 20
+}
+
 export const IconBack = {
     width: 30,
     margin: 5
