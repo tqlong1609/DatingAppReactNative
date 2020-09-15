@@ -186,6 +186,7 @@ dependencies {
 
     implementation project(':@react-native-community_datetimepicker')
 
+    implementation project(':react-native-linear-gradient')
     //lottie
     implementation project(':lottie-react-native')
 

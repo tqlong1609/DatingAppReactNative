@@ -16,6 +16,7 @@ import { name as appName } from './app.json';
 // import Introduction from '/src/components/Introduction/introduction'
 // import EmailAddress from '/src/components/EmailAddress/emailAddress'
 // import Birthday from '/src/components/Birthday/birthday'
-import Gender from '/src/components/Gender/gender'
+import Picture from '/src/components/Picture/picture'
+// import Gender from '/src/components/Gender/gender'
 
-AppRegistry.registerComponent(appName, () => Gender);
+AppRegistry.registerComponent(appName, () => Picture);

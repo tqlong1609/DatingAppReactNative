@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, TouchableOpacity, ScrollView, Text, View, TextInput } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons'
+import ButtonNext from '/src/components/UI/buttonNext'
 export default function birthDay() {
     const [check, setCheck] = useState(true);
     const onCheck = (isMale) => {
@@ -23,19 +23,20 @@ export default function birthDay() {
                 <TouchableOpacity style={styles.btnGender}
                     onPress={() => onCheck(true)}
                 >
-                    <Text style={styles.txtGender} >Male</Text>
+                    <Text style={[styles.txtGender, check ? { color: 'black' } : { color: 'gray' }]} >Male</Text>
                     {check && <Icon name="checkmark-outline" style={styles.icoCheck} />}
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnGender}
                     onPress={() => onCheck(false)}
                 >
-                    <Text style={styles.txtGender}>Female</Text>
+                    <Text style={[styles.txtGender, !check ? { color: 'black' } : { color: 'gray' }]} >Female</Text>
                     {!check && <Icon name="checkmark-outline" style={styles.icoCheck} />}
                 </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.btnArrowRight}>
-                <SimpleLineIcons name="arrow-right" size={25} color={'white'} style={styles.iconNext} />
-            </TouchableOpacity>
+            <ButtonNext isGradient={true} />
+
+
+
         </View>
     )
 }
@@ -53,18 +54,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    txtDetail: {
-        ...Themes.Styles.txtDetail
-    },
     containerContent: {
         marginHorizontal: Themes.Const.MARGIN_HORIZONTAL_INPUT,
-    },
-    inpDateTime: {
-        borderBottomWidth: 0.5
-    },
-    txtDateTime: {
-        fontSize: Themes.Const.FONT_SIZE_V1 - 5,
-        color: Themes.Colors.GRAY_BRIGHT_I
     },
     txtTitle: {
         ...Themes.Styles.txtTitle
@@ -75,11 +66,6 @@ const styles = StyleSheet.create({
     btnIcon: {
         ...Themes.Styles.IconBack
     },
-    btnArrowRight: {
-        ...Themes.Styles.ButtonBottomNext
-    },
-    iconNext: {
-        alignSelf: 'center',
-        marginLeft: 5
-    }
+
+
 })

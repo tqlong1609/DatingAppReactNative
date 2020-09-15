@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, ScrollView, Text, View, TextInput } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
+import ButtonNext from '/src/components/UI/buttonNext'
 import Themes from '/src/themes'
 import DateTimePicker from '/src/components/UI/dateTimePicker'
 export default function birthDay() {
@@ -19,9 +19,8 @@ export default function birthDay() {
                     modeShow={'date'} />
                 <Text style={styles.txtDetail}>Your age will be public</Text>
             </View>
-            <TouchableOpacity style={styles.btnArrowRight}>
-                <SimpleLineIcons name="arrow-right" size={25} color={'white'} style={styles.iconNext} />
-            </TouchableOpacity>
+            <ButtonNext isGradient={false} />
+
         </View>
     )
 }
@@ -48,11 +47,4 @@ const styles = StyleSheet.create({
     btnIcon: {
         ...Themes.Styles.IconBack
     },
-    btnArrowRight: {
-        ...Themes.Styles.ButtonBottomNext
-    },
-    iconNext: {
-        alignSelf: 'center',
-        marginLeft: 5
-    }
 })

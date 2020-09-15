@@ -1,9 +1,8 @@
 import React from 'react'
 import { StyleSheet, TouchableOpacity, ScrollView, Text, View, TextInput } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import Themes from '/src/themes'
-
+import ButtonNext from '/src/components/UI/buttonNext'
 export default function emailAddress() {
     return (
         <View style={{ flex: 1 }}>
@@ -19,9 +18,7 @@ export default function emailAddress() {
                 />
                 <Text style={styles.txtDetail}>Please enter your email in order to recover your account later</Text>
             </View>
-            <TouchableOpacity style={styles.btnArrowRight}>
-                <SimpleLineIcons name="arrow-right" size={25} color={'white'} style={styles.iconNext} />
-            </TouchableOpacity>
+            <ButtonNext isGradient={false} />
         </View>
     )
 }
@@ -45,11 +42,5 @@ const styles = StyleSheet.create({
     btnIcon: {
         ...Themes.Styles.IconBack
     },
-    btnArrowRight: {
-        ...Themes.Styles.ButtonBottomNext
-    },
-    iconNext: {
-        alignSelf: 'center',
-        marginLeft: 5
-    }
+
 })
