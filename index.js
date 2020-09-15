@@ -15,6 +15,7 @@ import { name as appName } from './app.json';
 // import Splash from '/src/components/Splash/splash'
 // import Introduction from '/src/components/Introduction/introduction'
 // import EmailAddress from '/src/components/EmailAddress/emailAddress'
-import Birthday from '/src/components/Birthday/birthday'
+// import Birthday from '/src/components/Birthday/birthday'
+import Gender from '/src/components/Gender/gender'
 
-AppRegistry.registerComponent(appName, () => Birthday);
+AppRegistry.registerComponent(appName, () => Gender);
