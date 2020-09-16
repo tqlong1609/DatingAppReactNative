@@ -38,7 +38,6 @@ export default function FlagsModel(props) {
             <View style={styles.container}>
 
                 <FlatList
-                    // style={styles.container}
                     data={Const.PhoneAreas.PHONE_AREAS}
                     renderItem={renderItem}
                     scrollEnabled={true}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Dimensions, Platform, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Modal from 'react-native-modal';
 import Themes from '/src/themes'
@@ -7,6 +7,9 @@ import Const from '/src/const'
 
 export default function bottomHalfModel(props) {
     const { isVisible, setVisibleModel } = props;
+    const onUploadPhoto = () => {
+        console.log('object')
+    }
     return (
         <View >
             <Modal
@@ -21,7 +24,7 @@ export default function bottomHalfModel(props) {
                         <View style={styles.containerHeader}>
                             <Text style={styles.txtHeader}>Confirm action</Text>
                         </View>
-                        <TouchableOpacity style={styles.btnBetweenContent}>
+                        <TouchableOpacity style={styles.btnBetweenContent} onPress={() => onUploadPhoto()}>
                             <Text style={styles.txtContentButton}>Upload photo from gallery</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.btnBottomContent}>
@@ -55,10 +58,12 @@ const styles = StyleSheet.create({
     container: {
         justifyContent: 'flex-end',
         marginLeft: 0,
-        flex: 1
+        flex: 1,
     },
     containerContent: {
-        height: HEIGHT_MODAL
+        height: HEIGHT_MODAL,
+        backgroundColor: 'white',
+        borderRadius: BORDER_BUTTON,
     },
     containerHeader: {
         height: HEIGHT_MODAL / NUMBER_BUTTON,

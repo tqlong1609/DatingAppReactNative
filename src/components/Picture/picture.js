@@ -1,114 +1,62 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, TouchableOpacity, Image, Text, View, TextInput } from 'react-native'
+import { StyleSheet, TouchableOpacity, Image, Text, View } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
-import Icon from 'react-native-vector-icons/Ionicons'
 import ButtonNext from '/src/components/UI/buttonNext'
-import Const from '/src/const'
+import ImagePicker from '/src/components/UI/imagePicker'
+import BottomHalfModel from '/src/components/Model/bottomHalfModel'
 export default function birthDay() {
+    const [urlImage, setUrlImage] = useState(null);
+    const [isVisible, setIsVisible] = useState(false)
+    const onChangeImage = () => {
+        setVisibleModel()
+    }
+
+    const setVisibleModel = () => {
+        setIsVisible(!isVisible)
+    }
+
     const onPressAdd = () => {
-        console.log('object')
+        setVisibleModel();
     }
-    function onPressBtn() {
-        console.log('object')
-    }
+
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.btnIcon}>
-                <Ionicons name="arrow-back-outline" color={Themes.Colors.PINK_DARK} size={Themes.Const.SIZE_ICON}></Ionicons>
+                <Ionicons
+                    name="arrow-back-outline"
+                    color={Themes.Colors.PINK_DARK}
+                    size={Themes.Const.SIZE_ICON} />
             </TouchableOpacity>
-
             <View style={styles.containerContent}>
                 <Text style={styles.txtTitle}>My best</Text>
                 <Text style={styles.txtTitle2}>Picture</Text>
-
-                <View style={styles.containerViewImage}>
-                    <View style={styles.containerRotate} />
-                    <View style={styles.containerImage} />
-                    <View style={styles.containerPicker}>
-                        <TouchableOpacity style={styles.containerIcon} onPress={() => onPressAdd()}>
-                            <Icon name="add-outline" size={50} style={styles.icoAdd} />
-                        </TouchableOpacity>
-                        <Text style={styles.txtAddPhoto}>Add your photo</Text>
-                    </View>
-                </View>
-
+                <ImagePicker onPressAdd={onPressAdd} />
             </View>
+            <TouchableOpacity
+                onPress={() => onChangeImage()}
+                style={styles.btnChange}
+            >
+                <Text style={styles.txtChange}>Change</Text>
+            </TouchableOpacity>
             <ButtonNext isGradient={true} />
+            <BottomHalfModel isVisible={isVisible} setVisibleModel={setVisibleModel} />
         </View>
     )
 }
 const styles = StyleSheet.create({
-    icoAdd: {
-        color: '#BDB6BB',
-        alignSelf: 'center'
+    btnChange: {
+        marginTop: 35,
+        marginLeft: Themes.Const.MARGIN_HORIZONTAL_INPUT,
+        width: 90
     },
-    txtAddPhoto: {
-        color: '#BDB6BB',
+    txtChange: {
         fontSize: 25,
-        alignSelf: 'center'
+        color: '#323033',
     },
-    containerIcon: {
-        justifyContent: 'center',
-        borderWidth: 2.5,
-        borderColor: '#BDB6BB',
-        width: 90,
-        height: 90,
-        borderRadius: 100 / 2,
-        alignSelf: 'center'
-    },
-    containerPicker: {
-        width: 200,
-        height: 150,
-        alignSelf: 'center',
-        justifyContent: 'space-between',
-        elevation: 7,
-        position: 'absolute', zIndex: 1,
-        marginTop: 160,
-    },
-    image: {
-        backgroundColor: 'red', width: '100%', height: '100%', alignSelf: 'center',
-        borderRadius: 10,
-    },
-    containerViewImage: {
-        marginHorizontal: Themes.Const.MARGIN_HORIZONTAL_INPUT,
-        height: '67%',
-    },
-    containerImage: {
-        justifyContent: 'center',
-        position: 'absolute',
-        zIndex: -1,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'white',
-        top: 0,
-        left: 0,
-        borderRadius: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-        elevation: 6,
-        alignSelf: 'center',
-    },
-    containerRotate: {
-        width: '100%',
-        height: '100%',
-        alignSelf: 'center',
-        borderRadius: 10,
-        justifyContent: 'center',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-        elevation: 3,
-        transform: [{ rotate: "-7deg" }],
+    containerBottom: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     containerContent: {
         marginHorizontal: Themes.Const.MARGIN_HORIZONTAL_INPUT,
