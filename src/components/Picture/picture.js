@@ -9,6 +9,9 @@ export default function birthDay() {
     const onPressAdd = () => {
         console.log('object')
     }
+    function onPressBtn() {
+        console.log('object')
+    }
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.btnIcon}>
@@ -25,17 +28,26 @@ export default function birthDay() {
                             <Icon name="add-outline" size={50} style={styles.icoAdd} />
                         </TouchableOpacity>
                         <Text style={styles.txtAddPhoto}>Add your photo</Text>
-                    </View> */}
+                    </View>
+                    <View style={{ backgroundColor: 'pink', width: 100, height: 100, position: 'absolute', zIndex: 999 }}></View>
                     <View style={styles.containerImage}>
-                        {/* <View style={styles.containerPicker}> */}
+                        <View style={styles.containerPicker}>
                         <TouchableOpacity style={styles.containerIcon} onPress={() => onPressAdd()}>
                             <Icon name="add-outline" size={50} style={styles.icoAdd} />
                         </TouchableOpacity>
-                        {/* <Text style={styles.txtAddPhoto}>Add your photo</Text> */}
-                        {/* </View> */}
-                        {/* <Image style={styles.image} /> */}
-                    </View>
+                        <Text style={styles.txtAddPhoto}>Add your photo</Text>
+                        </View>
+                        <Image style={styles.image} />
+                    </View> 
+                    */}
                     <View style={styles.containerRotate} />
+                    <View style={styles.containerImage} />
+                    <View style={styles.containerPicker}>
+                        <TouchableOpacity style={styles.containerIcon} onPress={() => onPressAdd()}>
+                            <Icon name="add-outline" size={50} style={styles.icoAdd} />
+                        </TouchableOpacity>
+                        <Text style={styles.txtAddPhoto}>Add your photo</Text>
+                    </View>
                 </View>
 
             </View>
@@ -55,8 +67,6 @@ const styles = StyleSheet.create({
     },
     containerIcon: {
         justifyContent: 'center',
-        // position: 'absolute',
-        // zIndex: 1,
         borderWidth: 2.5,
         borderColor: '#BDB6BB',
         width: 90,
@@ -69,6 +79,9 @@ const styles = StyleSheet.create({
         height: 150,
         alignSelf: 'center',
         justifyContent: 'space-between',
+        elevation: 7,
+        position: 'absolute', zIndex: 1,
+        marginTop: 160,
     },
     image: {
         backgroundColor: 'red', width: '100%', height: '100%', alignSelf: 'center',
@@ -81,7 +94,7 @@ const styles = StyleSheet.create({
     containerImage: {
         justifyContent: 'center',
         position: 'absolute',
-        // zIndex: -1,
+        zIndex: -1,
         width: '100%',
         height: '100%',
         backgroundColor: 'white',
@@ -96,6 +109,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.27,
         shadowRadius: 4.65,
         elevation: 6,
+        alignSelf: 'center',
     },
     containerRotate: {
         width: '100%',
