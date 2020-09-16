@@ -23,23 +23,6 @@ export default function birthDay() {
                 <Text style={styles.txtTitle2}>Picture</Text>
 
                 <View style={styles.containerViewImage}>
-                    {/* <View style={styles.containerPicker}>
-                        <TouchableOpacity style={styles.containerIcon} onPress={() => onPressAdd()}>
-                            <Icon name="add-outline" size={50} style={styles.icoAdd} />
-                        </TouchableOpacity>
-                        <Text style={styles.txtAddPhoto}>Add your photo</Text>
-                    </View>
-                    <View style={{ backgroundColor: 'pink', width: 100, height: 100, position: 'absolute', zIndex: 999 }}></View>
-                    <View style={styles.containerImage}>
-                        <View style={styles.containerPicker}>
-                        <TouchableOpacity style={styles.containerIcon} onPress={() => onPressAdd()}>
-                            <Icon name="add-outline" size={50} style={styles.icoAdd} />
-                        </TouchableOpacity>
-                        <Text style={styles.txtAddPhoto}>Add your photo</Text>
-                        </View>
-                        <Image style={styles.image} />
-                    </View> 
-                    */}
                     <View style={styles.containerRotate} />
                     <View style={styles.containerImage} />
                     <View style={styles.containerPicker}>
@@ -51,7 +34,7 @@ export default function birthDay() {
                 </View>
 
             </View>
-            <ButtonNext isGradient={false} />
+            <ButtonNext isGradient={true} />
         </View>
     )
 }

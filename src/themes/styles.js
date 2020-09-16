@@ -43,12 +43,11 @@ export const txtDetail = {
     color: Colors.GRAY_BRIGHT_I
 }
 
-const BUTTON_NEXT = 45;
 export const ButtonBottomNext = {
     backgroundColor: Colors.GRAY_BRIGHT_I,
-    width: BUTTON_NEXT,
-    height: BUTTON_NEXT,
-    borderRadius: BUTTON_NEXT / 2,
+    width: Const.BUTTON_NEXT,
+    height: Const.BUTTON_NEXT,
+    borderRadius: Const.BUTTON_NEXT / 2,
     justifyContent: 'center',
     position: 'absolute',
     right: 20,

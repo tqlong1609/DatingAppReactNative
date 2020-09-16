@@ -14,15 +14,15 @@ export default function buttonNext(props) {
             <LinearGradient
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
-                colors={[Themes.Colors.PINK_DARK, '#B33811']}
+                colors={[Themes.Colors.PINK_DARK, Themes.Colors.RED_DARK]}
                 style={styles.btnArrowRight}>
                 <TouchableOpacity style={styles.btnNext} onPress={() => onClickNext()}>
-                    <SimpleLineIcons name="arrow-right" size={25} color={'white'} style={styles.iconNext} />
+                    <SimpleLineIcons name="arrow-right" size={Themes.Const.SIZE_ICON_I} color={'white'} style={styles.iconNext} />
                 </TouchableOpacity>
             </LinearGradient>
             :
             <TouchableOpacity style={styles.btnArrowRight} onPress={() => onClickNext()}>
-                <SimpleLineIcons name="arrow-right" size={25} color={'white'} style={styles.iconNext} />
+                <SimpleLineIcons name="arrow-right" size={Themes.Const.SIZE_ICON_I} color={'white'} style={styles.iconNext} />
             </TouchableOpacity>
     )
 }
@@ -35,13 +35,12 @@ buttonNext.defaultProps = {
     isGradient: false
 }
 
-const BUTTON_NEXT = 45;
 
 const styles = StyleSheet.create({
     btnNext: {
-        width: BUTTON_NEXT,
-        height: BUTTON_NEXT,
-        borderRadius: BUTTON_NEXT / 2,
+        width: Themes.Const.BUTTON_NEXT,
+        height: Themes.Const.BUTTON_NEXT,
+        borderRadius: Themes.Const.BUTTON_NEXT / 2,
         justifyContent: 'center',
     },
     btnArrowRight: {
