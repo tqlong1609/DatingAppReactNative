@@ -59,6 +59,12 @@ export const IconBack = {
     margin: 5
 }
 
+export const IconSkip = {
+    position: 'absolute',
+    right: 10,
+    top: 10
+}
+
 export const Title = {
     color: Colors.PINK,
     fontWeight: 'bold',

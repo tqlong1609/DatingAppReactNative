@@ -21,6 +21,7 @@ export const FONT_SIZE_V2 = 17;
 export const SIZE_ICON = 40;
 export const SIZE_ICON_I = 40;
 
+export const SIZE_CONTENT_INSIDE = 390;
 
 export const PADDING_TEXT_INPUT = 17;
 export const PADDING_TEXT_INPUT_SMALL = 10;

@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     },
     containerViewImage: {
         marginHorizontal: Themes.Const.MARGIN_HORIZONTAL_INPUT,
-        height: 390,
+        height: Themes.Const.SIZE_CONTENT_INSIDE,
     },
     containerRotate: {
         width: '100%',
