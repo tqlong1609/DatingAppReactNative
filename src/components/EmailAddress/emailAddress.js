@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
         marginHorizontal: Themes.Const.MARGIN_HORIZONTAL_INPUT,
     },
     inpEmail: {
-        fontSize: Themes.Const.FONT_SIZE_V1 - 5,
-        borderBottomWidth: 0.5
+        fontSize: Themes.Const.FONT_SIZE_V3,
+        borderBottomWidth: Themes.Const.BORDER_TEXT_INPUT
     },
     txtTitle: {
         ...Themes.Styles.txtTitle

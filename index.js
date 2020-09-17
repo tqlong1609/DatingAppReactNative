@@ -18,7 +18,11 @@ import { name as appName } from './app.json';
 // import Birthday from '/src/components/Birthday/birthday'
 // import Picture from '/src/components/Picture/picture'
 // import Gender from '/src/components/Gender/gender'
-import Religious from '/src/components/Religious/religious'
+// import Religious from '/src/components/Religious/religious'
 // import App from './App'
 
-AppRegistry.registerComponent(appName, () => Religious);
+import Work from '/src/components/Work/work'
+// import Job from '/src/components/Job/job'
+// import Education from '/src/components/Education/education'
+
+AppRegistry.registerComponent(appName, () => Work);

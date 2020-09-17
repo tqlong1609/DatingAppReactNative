@@ -17,6 +17,9 @@ export const MARGIN_HORIZONTAL_INPUT = 20;
 export const FONT_SIZE = 15;
 export const FONT_SIZE_V1 = 30;
 export const FONT_SIZE_V2 = 17;
+export const FONT_SIZE_V3 = 25;
+
+export const BORDER_TEXT_INPUT = 0.5;
 
 export const SIZE_ICON = 40;
 export const SIZE_ICON_I = 40;

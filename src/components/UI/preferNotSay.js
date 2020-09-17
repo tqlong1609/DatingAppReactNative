@@ -4,7 +4,7 @@ import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import PropTypes from 'prop-types'
 export default function preferNotSay(props) {
-    const { onCheckPrefer, isReset } = props;
+    const { onCheckPrefer, isReset, isDisable } = props;
     const [isCheck, setIsCheck] = useState(false)
     const onCheck = () => {
         setIsCheck(!isCheck)
@@ -17,7 +17,11 @@ export default function preferNotSay(props) {
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.btnIco} onPress={() => onCheck()}>
+            <TouchableOpacity
+                style={styles.btnIco}
+                onPress={() => onCheck()}
+                disabled={isDisable}
+            >
                 {
                     !isCheck ?
                         <Ionicons name="ellipse-outline" style={styles.icoCheck} />
@@ -40,11 +44,13 @@ export default function preferNotSay(props) {
 preferNotSay.propTypes = {
     onCheckPrefer: PropTypes.func,
     setReset: PropTypes.bool,
+    isDisable: PropTypes.bool,
 }
 
 preferNotSay.defaultProps = {
     preferNotSay: null,
-    isReset: false
+    isReset: false,
+    isDisable: false
 }
 
 const SIZE_ICON = 25;
