@@ -18,11 +18,17 @@ import { name as appName } from './app.json';
 // import Birthday from '/src/components/Birthday/birthday'
 // import Picture from '/src/components/Picture/picture'
 // import Gender from '/src/components/Gender/gender'
-// import Religious from '/src/components/Religious/religious'
 // import App from './App'
 
-import Work from '/src/components/Work/work'
+// import Work from '/src/components/Work/work'
 // import Job from '/src/components/Job/job'
 // import Education from '/src/components/Education/education'
 
-AppRegistry.registerComponent(appName, () => Work);
+import Religious from '/src/components/Religious/religious'
+// import Politics from '/src/components/Politics/politics'
+// import HightestLevelAttended from '/src/components/HightestLevelAttended/hightestLevelAttended'
+// import Ethnicity from '/src/components/Ethnicity/ethnicity'
+// import Kids from '/src/components/Kids/kids'
+// import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
+
+AppRegistry.registerComponent(appName, () => Religious);

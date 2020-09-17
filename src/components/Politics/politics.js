@@ -5,68 +5,61 @@ import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Const from '/src/const'
 import PreferNotSay from '/src/components/UI/preferNotSay'
-import ItemList from '/src/components/UI/itemList'
-//TODO: optimise click render flatlist
-//TODO: separate logic
 
-// class ItemsReligious extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             item: null
-//         }
-//     }
+//TODO: error double click on the flatlist
+//TODO: separate the change login to not duplicate code
+//TODO: double click not change status buttonNext
+const ItemsReligious = (props) => {
+    const { item, onPressItem } = props;
+    const { id, name, isClick } = item;
+    console.log("id", id)
+    return (
+        <TouchableOpacity style={styles.containerReligious} onPress={() => onPressItem(item)}>
+            <Text style={[
+                styles.txtReligious,
+                isClick ? { color: Themes.Colors.PINK_DARK } : { color: 'gray' }
+            ]}>
+                {name}
+            </Text>
+            {isClick && <Ionicons name="checkmark-outline" style={styles.icoCheck} />}
+        </TouchableOpacity>
+    )
+};
 
-//     shouldComponentUpdate(nextProps, nextState) {
-//         // console.log("ItemsReligious -> shouldComponentUpdate -> nextState", nextState)
-//         // console.log("ItemsReligious -> shouldComponentUpdate -> nextProps", nextProps)
-//         // if(nextProps.item.isClick !== nextState.ite)
-//         if (nextProps.item !== this.state.item) {
-//             console.log("ItemsReligious -> shouldComponentUpdate -> this.state.item", this.state.item)
-//             console.log("ItemsReligious -> shouldComponentUpdate -> nextProps.item", nextProps.item)
-//             return true;
-//         }
-//         else {
-//             return false;
-//         }
-//     }
-
-//     static getDerivedStateFromProps(nextProps, prevState) {
-//         if (nextProps.item !== prevState.item) {
-//             // console.log("ItemsReligious -> getDerivedStateFromProps -> prevState.item", prevState.item.isClick)
-//             // console.log("ItemsReligious -> getDerivedStateFromProps -> nextProps.item", nextProps.item.isClick)
-//             return { item: nextProps.item };
-//         }
-//         else return null;
-//     }
-
-//     render() {
-//         const { item, onPressItem } = this.props;
-//         const { id, name, isClick } = item;
-//         console.log("ItemsReligious -> render -> id", id)
-//         return (
-//             <TouchableOpacity style={[styles.containerReligious, isClick ? { backgroundColor: 'red' } : null]} onPress={() => onPressItem(item)}>
-//                 <Text style={styles.txtReligious}>{name}</Text>
-//             </TouchableOpacity>
-//         )
-//     }
-// }
+const dataPolitics = [
+    {
+        id: 0,
+        name: "Liberal"
+    },
+    {
+        id: 1,
+        name: "Moderate"
+    },
+    {
+        id: 2,
+        name: "Conservative"
+    },
+    {
+        id: 3,
+        name: "Other"
+    },
+]
 
 let idPrevious = null;
+let isChoose = false;
 export default function religious() {
 
     const renderItem = useCallback(({ item }) =>
-        <ItemList
+        <ItemsReligious
             item={item}
             onPressItem={onPressItem}
         />, [])
 
     const keyExtractor = useCallback((item) => item.id.toString(), [])
 
-    const [isChoose, setIsChoose] = useState(false)
     const [data, setData] = useState(() => {
         let arrTemp = [];
-        const dataTemp = Const.Religious.dataReligious;
+        const dataTemp = dataPolitics;
         dataTemp.forEach(element => {
             const dt = { ...element, isClick: false };
             arrTemp.push(dt)
@@ -85,8 +78,8 @@ export default function religious() {
         }
         idPrevious = objIndex;
         setData(dataTemp);
-        setIsReset(true) // reset click onCheckPrefer
-        setIsChoose(true) // true: buttonNext active
+        setIsReset(true)
+        isChoose = true;
     }
 
     const onCheckPrefer = (isCheck) => {
@@ -95,11 +88,8 @@ export default function religious() {
                 const dataTemp = [...data];
                 dataTemp[idPrevious].isClick = false;
                 setData(dataTemp);
-                setIsChoose(true)
+                isChoose = true
             }
-        }
-        else {
-            setIsChoose(false)
         }
     }
 
@@ -120,7 +110,7 @@ export default function religious() {
             </TouchableOpacity>
             <View style={styles.containerContent}>
                 <Text style={styles.txtTitle}>My Virtues</Text>
-                <Text style={styles.txtTitle2}>Religious Beliefs</Text>
+                <Text style={styles.txtTitle2}>Politics</Text>
                 <FlatList
                     style={styles.listReligious}
                     data={data}
@@ -135,19 +125,19 @@ export default function religious() {
 }
 
 const styles = StyleSheet.create({
-    // icoCheck: {
-    //     color: Themes.Colors.PINK_DARK,
-    //     fontSize: 30
-    // },
-    // containerReligious: {
-    //     paddingVertical: 10,
-    //     flexDirection: 'row',
-    //     justifyContent: 'space-between'
-    // },
-    // txtReligious: {
-    //     fontSize: 20,
+    icoCheck: {
+        color: Themes.Colors.PINK_DARK,
+        fontSize: 30
+    },
+    containerReligious: {
+        paddingVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    txtReligious: {
+        fontSize: 20,
 
-    // },
+    },
     listReligious: {
         height: Themes.Const.SIZE_CONTENT_INSIDE
     },
