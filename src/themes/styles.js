@@ -50,8 +50,8 @@ export const ButtonBottomNext = {
     borderRadius: Const.BUTTON_NEXT / 2,
     justifyContent: 'center',
     position: 'absolute',
-    right: 20,
-    bottom: 20
+    right: Const.ABSOLUTE_BOTTOM,
+    bottom: Const.ABSOLUTE_BOTTOM
 }
 
 export const IconBack = {

@@ -4,52 +4,81 @@ import ButtonNext from '/src/components/UI/buttonNext'
 import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Const from '/src/const'
+import PreferNotSay from '/src/components/UI/preferNotSay'
 
-// const ItemsReligious = React.memo((props) => {
-//     const { item, onPressItem } = props;
-//     const { id, name, isClick } = item;
-//     console.log("id", id)
-//     return (
-//         <TouchableOpacity style={[styles.containerReligious, isClick ? { backgroundColor: 'red' } : null]} onPress={() => onPressItem(item)}>
-//             <Text style={styles.txtReligious}>{name}</Text>
-//         </TouchableOpacity>
-//     )
-// });
+//TODO: lổi click chọn 2 lần trên flatlist
+const ItemsReligious = (props) => {
+    const { item, onPressItem } = props;
+    const { id, name, isClick } = item;
+    console.log("id", id)
+    return (
+        <TouchableOpacity style={styles.containerReligious} onPress={() => onPressItem(item)}>
+            <Text style={[
+                styles.txtReligious,
+                isClick ? { color: Themes.Colors.PINK_DARK } : { color: 'gray' }
+            ]}>
+                {name}
+            </Text>
+            {isClick && <Ionicons name="checkmark-outline" style={styles.icoCheck} />}
+        </TouchableOpacity>
+    )
+};
 
-class ItemsReligious extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            item: null
-        }
-    }
+// class ItemsReligious extends Component {
+//     constructor(props) {
+//         super(props)
+//         this.state = {
+//             item: null
+//         }
+//     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("ItemsReligious -> shouldComponentUpdate -> nextState", nextState)
-        // console.log("ItemsReligious -> shouldComponentUpdate -> nextProps", nextProps)
-        // if(nextProps.item.isClick !== nextState.ite)
+//     shouldComponentUpdate(nextProps, nextState) {
+//         // console.log("ItemsReligious -> shouldComponentUpdate -> nextState", nextState)
+//         // console.log("ItemsReligious -> shouldComponentUpdate -> nextProps", nextProps)
+//         // if(nextProps.item.isClick !== nextState.ite)
+//         if (nextProps.item !== this.state.item) {
+//             console.log("ItemsReligious -> shouldComponentUpdate -> this.state.item", this.state.item)
+//             console.log("ItemsReligious -> shouldComponentUpdate -> nextProps.item", nextProps.item)
+//             return true;
+//         }
+//         else {
+//             return false;
+//         }
+//     }
 
-        return true;
-    }
+//     static getDerivedStateFromProps(nextProps, prevState) {
+//         if (nextProps.item !== prevState.item) {
+//             // console.log("ItemsReligious -> getDerivedStateFromProps -> prevState.item", prevState.item.isClick)
+//             // console.log("ItemsReligious -> getDerivedStateFromProps -> nextProps.item", nextProps.item.isClick)
+//             return { item: nextProps.item };
+//         }
+//         else return null;
+//     }
 
-    render() {
-        const { item, onPressItem } = this.props;
-        const { id, name, isClick } = item;
-        return (
-            <TouchableOpacity style={[styles.containerReligious, isClick ? { backgroundColor: 'red' } : null]} onPress={() => onPressItem(item)}>
-                <Text style={styles.txtReligious}>{name}</Text>
-            </TouchableOpacity>
-        )
-    }
-}
+//     render() {
+//         const { item, onPressItem } = this.props;
+//         const { id, name, isClick } = item;
+//         console.log("ItemsReligious -> render -> id", id)
+//         return (
+//             <TouchableOpacity style={[styles.containerReligious, isClick ? { backgroundColor: 'red' } : null]} onPress={() => onPressItem(item)}>
+//                 <Text style={styles.txtReligious}>{name}</Text>
+//             </TouchableOpacity>
+//         )
+//     }
+// }
 
+let idPrevious = null;
+let isChoose = false;
 export default function religious() {
+
     const renderItem = useCallback(({ item }) =>
         <ItemsReligious
             item={item}
             onPressItem={onPressItem}
         />, [])
+
     const keyExtractor = useCallback((item) => item.id.toString(), [])
+
     const [data, setData] = useState(() => {
         let arrTemp = [];
         const dataTemp = Const.Religious.dataReligious;
@@ -59,7 +88,9 @@ export default function religious() {
         });
         return arrTemp;
     })
-    let idPrevious = null;
+
+    const [isReset, setIsReset] = useState(false)
+
     const onPressItem = (item) => {
         const dataTemp = [...data];
         const objIndex = dataTemp.findIndex(({ id }) => id === item.id)
@@ -69,7 +100,28 @@ export default function religious() {
         }
         idPrevious = objIndex;
         setData(dataTemp);
+        setIsReset(true)
+        isChoose = true;
     }
+
+    const onCheckPrefer = (isCheck) => {
+        if (isCheck) {
+            if (idPrevious !== null) {
+                const dataTemp = [...data];
+                dataTemp[idPrevious].isClick = false;
+                setData(dataTemp);
+                isChoose = true
+            }
+        }
+    }
+
+    useEffect(() => {
+        if (isReset) {
+            setIsReset(false);
+        }
+
+    }, [isReset])
+
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.btnIcon}>
@@ -88,18 +140,25 @@ export default function religious() {
                     keyExtractor={keyExtractor}
                 />
             </View>
-            <ButtonNext isGradient={false} />
+            <ButtonNext isGradient={!isChoose ? false : true} />
+            <PreferNotSay onCheckPrefer={onCheckPrefer} isReset={isReset} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    icoCheck: {
+        color: Themes.Colors.PINK_DARK,
+        fontSize: 30
+    },
     containerReligious: {
-        paddingVertical: 10
+        paddingVertical: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     txtReligious: {
         fontSize: 20,
-        color: 'gray'
+
     },
     listReligious: {
         height: Themes.Const.SIZE_CONTENT_INSIDE

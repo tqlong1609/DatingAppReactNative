@@ -27,3 +27,6 @@ export const PADDING_TEXT_INPUT = 17;
 export const PADDING_TEXT_INPUT_SMALL = 10;
 
 export const BUTTON_NEXT = 80;
+
+export const ABSOLUTE_BOTTOM = 20;
+
