@@ -1,77 +1,16 @@
 import React from 'react'
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-
-// const Tab = createMaterialBottomTabNavigator();
-
-// function MyTabs() {
-//   return (
-//     <Tab.Navigator>
-//       <Tab.Screen name="Home" component={HomeScreen} />
-//       <Tab.Screen name="Settings" component={SettingsScreen} />
-//     </Tab.Navigator>
-//   );
-// }
-class HomeScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>HomeScreen</Text>
-      </View>
-    )
-  }
-}
-
-class ProfileScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>ProfileScreen</Text>
-      </View>
-    )
-  }
-}
-
-class HistoryScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>HistoryScreen</Text>
-      </View>
-    )
-  }
-}
-
-class CartScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>CartScreen</Text>
-      </View>
-    )
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-});
-
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import Themes from '/src/themes'
+import Discover from '/src/components/Discover/discover'
+import Prospects from '/src/components/Prospects/prospects'
+import Dates from '/src/components/Dates/dates'
+import Chats from '/src/components/Chats/chats'
+import Settings from '/src/components/Settings/settings'
 
 const Tab = createMaterialBottomTabNavigator();
 const theme = {
@@ -79,8 +18,8 @@ const theme = {
   roundness: 2,
   colors: {
     ...DefaultTheme.colors,
-    primary: '#3498db',
-    accent: '#f1c40f',
+    // primary: 'yellow',
+    // accent: 'green',
   },
 }
 export default function MyTabs() {
@@ -88,37 +27,57 @@ export default function MyTabs() {
     <NavigationContainer>
       <PaperProvider theme={theme}>
         <Tab.Navigator
-          initialRouteName="HomeScreen"
-          activeColor="#e91e63"
-          style={{ backgroundColor: 'tomato' }}
+          initialRouteName="Discover"
+          activeColor={Themes.Colors.PINK_DARK}
+          barStyle={{ backgroundColor: 'white' }}
         >
           <Tab.Screen
-            name="HomeScreen"
-            component={HomeScreen}
+            name="Discover"
+            component={Discover}
             options={{
-              tabBarLabel: 'Home',
+              tabBarLabel: 'Discover',
               tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="home" color={color} size={26} />
+                <MaterialCommunityIcons name="magnify" color={color} size={26} />
               ),
             }}
           />
           <Tab.Screen
-            name="ProfileScreen"
-            component={ProfileScreen}
+            name="Prospects"
+            component={Prospects}
             options={{
-              tabBarLabel: 'Updates',
+              tabBarLabel: 'Prospects',
               tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="bell" color={color} size={26} />
+                <MaterialCommunityIcons name="heart-outline" color={color} size={26} />
               ),
             }}
           />
           <Tab.Screen
-            name="HistoryScreen"
-            component={HistoryScreen}
+            name="Dates"
+            component={Dates}
             options={{
-              tabBarLabel: 'Profile',
+              tabBarLabel: 'Dates',
               tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="account" color={color} size={26} />
+                <MaterialCommunityIcons name="human-female-female" color={color} size={26} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Chats"
+            component={Chats}
+            options={{
+              tabBarLabel: 'Chats',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="chat-processing-outline" color={color} size={26} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={Settings}
+            options={{
+              tabBarLabel: 'Settings',
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="cog-outline" color={color} size={26} />
               ),
             }}
           />
