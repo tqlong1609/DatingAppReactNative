@@ -5,26 +5,11 @@ import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Const from '/src/const'
 import PreferNotSay from '/src/components/UI/preferNotSay'
+import ItemList from '/src/components/UI/itemList'
 
 //TODO: error double click on the flatlist
 //TODO: separate the change login to not duplicate code
 //TODO: double click not change status buttonNext
-const ItemsReligious = (props) => {
-    const { item, onPressItem } = props;
-    const { id, name, isClick } = item;
-    console.log("id", id)
-    return (
-        <TouchableOpacity style={styles.containerReligious} onPress={() => onPressItem(item)}>
-            <Text style={[
-                styles.txtReligious,
-                isClick ? { color: Themes.Colors.PINK_DARK } : { color: 'gray' }
-            ]}>
-                {name}
-            </Text>
-            {isClick && <Ionicons name="checkmark-outline" style={styles.icoCheck} />}
-        </TouchableOpacity>
-    )
-};
 
 const dataPolitics = [
     {
@@ -46,7 +31,7 @@ let isChoose = false;
 export default function religious() {
 
     const renderItem = useCallback(({ item }) =>
-        <ItemsReligious
+        <ItemList
             item={item}
             onPressItem={onPressItem}
         />, [])
