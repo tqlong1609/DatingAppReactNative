@@ -24,11 +24,11 @@ import { name as appName } from './app.json';
 // import Job from '/src/components/Job/job'
 // import Education from '/src/components/Education/education'
 
-import Religious from '/src/components/Religious/religious'
+// import Religious from '/src/components/Religious/religious'
 // import Politics from '/src/components/Politics/politics'
 // import HightestLevelAttended from '/src/components/HightestLevelAttended/hightestLevelAttended'
 // import Ethnicity from '/src/components/Ethnicity/ethnicity'
 // import Kids from '/src/components/Kids/kids'
-// import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
+import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
 
-AppRegistry.registerComponent(appName, () => Religious);
+AppRegistry.registerComponent(appName, () => FamilyPlans);

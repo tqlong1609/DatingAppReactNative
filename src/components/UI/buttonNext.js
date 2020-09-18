@@ -27,7 +27,7 @@ export default function buttonNext(props) {
     )
 }
 
-buttonNext.propsTypes = {
+buttonNext.propTypes = {
     isGradient: PropTypes.bool,
 }
 
