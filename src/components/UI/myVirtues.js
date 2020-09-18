@@ -7,51 +7,6 @@ import Const from '/src/const'
 import PreferNotSay from '/src/components/UI/preferNotSay'
 import ItemList from '/src/components/UI/itemList'
 import PropTypes from 'prop-types'
-//TODO: optimise click render flatlist
-//TODO: separate logic
-
-// class ItemsReligious extends Component {
-//     constructor(props) {
-//         super(props)
-//         this.state = {
-//             item: null
-//         }
-//     }
-
-//     shouldComponentUpdate(nextProps, nextState) {
-//         // console.log("ItemsReligious -> shouldComponentUpdate -> nextState", nextState)
-//         // console.log("ItemsReligious -> shouldComponentUpdate -> nextProps", nextProps)
-//         // if(nextProps.item.isClick !== nextState.ite)
-//         if (nextProps.item !== this.state.item) {
-//             console.log("ItemsReligious -> shouldComponentUpdate -> this.state.item", this.state.item)
-//             console.log("ItemsReligious -> shouldComponentUpdate -> nextProps.item", nextProps.item)
-//             return true;
-//         }
-//         else {
-//             return false;
-//         }
-//     }
-
-//     static getDerivedStateFromProps(nextProps, prevState) {
-//         if (nextProps.item !== prevState.item) {
-//             // console.log("ItemsReligious -> getDerivedStateFromProps -> prevState.item", prevState.item.isClick)
-//             // console.log("ItemsReligious -> getDerivedStateFromProps -> nextProps.item", nextProps.item.isClick)
-//             return { item: nextProps.item };
-//         }
-//         else return null;
-//     }
-
-//     render() {
-//         const { item, onPressItem } = this.props;
-//         const { id, name, isClick } = item;
-//         console.log("ItemsReligious -> render -> id", id)
-//         return (
-//             <TouchableOpacity style={[styles.containerReligious, isClick ? { backgroundColor: 'red' } : null]} onPress={() => onPressItem(item)}>
-//                 <Text style={styles.txtReligious}>{name}</Text>
-//             </TouchableOpacity>
-//         )
-//     }
-// }
 
 let idPrevious = null;
 export default function myVirtues(props) {
@@ -147,19 +102,6 @@ myVirtues.defaultProps = {
 }
 
 const styles = StyleSheet.create({
-    // icoCheck: {
-    //     color: Themes.Colors.PINK_DARK,
-    //     fontSize: 30
-    // },
-    // containerReligious: {
-    //     paddingVertical: 10,
-    //     flexDirection: 'row',
-    //     justifyContent: 'space-between'
-    // },
-    // txtReligious: {
-    //     fontSize: 20,
-
-    // },
     listReligious: {
         height: Themes.Const.SIZE_CONTENT_INSIDE
     },
