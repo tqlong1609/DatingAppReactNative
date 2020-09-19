@@ -20,6 +20,7 @@ export const FONT_SIZE_V2 = 17;
 export const FONT_SIZE_V3 = 25;
 
 export const BORDER_TEXT_INPUT = 0.5;
+export const BORDER_IMAGE = 7;
 
 export const SIZE_ICON = 40;
 export const SIZE_ICON_I = 40;
@@ -28,6 +29,8 @@ export const SIZE_CONTENT_INSIDE = 390;
 
 export const PADDING_TEXT_INPUT = 17;
 export const PADDING_TEXT_INPUT_SMALL = 10;
+export const PADDING_IMAGE_SMALL = 7;
+
 
 export const BUTTON_NEXT = 80;
 
