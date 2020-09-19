@@ -17,12 +17,12 @@ export default function buttonNext(props) {
                 colors={[Themes.Colors.PINK_DARK, Themes.Colors.RED_DARK]}
                 style={styles.btnArrowRight}>
                 <TouchableOpacity style={styles.btnNext} onPress={() => onClickNext()}>
-                    <SimpleLineIcons name="arrow-right" size={Themes.Const.SIZE_ICON_I} color={'white'} style={styles.iconNext} />
+                    <SimpleLineIcons name="arrow-right" size={Themes.Const.SIZE_ICON} color={'white'} style={styles.iconNext} />
                 </TouchableOpacity>
             </LinearGradient>
             :
             <TouchableOpacity style={styles.btnArrowRight} onPress={() => onClickNext()}>
-                <SimpleLineIcons name="arrow-right" size={Themes.Const.SIZE_ICON_I} color={'white'} style={styles.iconNext} />
+                <SimpleLineIcons name="arrow-right" size={Themes.Const.SIZE_ICON} color={'white'} style={styles.iconNext} />
             </TouchableOpacity>
     )
 }

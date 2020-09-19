@@ -30,6 +30,6 @@ import { name as appName } from './app.json';
 // import HightestLevelAttended from '/src/components/HightestLevelAttended/hightestLevelAttended'
 // import Ethnicity from '/src/components/Ethnicity/ethnicity'
 // import Kids from '/src/components/Kids/kids'
-import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
+// import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
 
 AppRegistry.registerComponent(appName, () => App);

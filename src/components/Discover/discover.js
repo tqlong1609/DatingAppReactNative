@@ -3,13 +3,16 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import ImageSwipe from '/src/components/UI/imageSwipe'
 import Themes from '/src/themes'
 import ButtonStatus from '/src/components/UI/buttonStatus'
+import SwitchGrid from '/src/components/UI/switchGrid'
 export default function discover() {
     const onPressBack = () => {
         console.log('object')
     }
     return (
         <View style={styles.container}>
-            <View style={styles.containHeader}></View>
+            <View style={styles.containHeader}>
+                <SwitchGrid />
+            </View>
             <View style={styles.containSwipe} >
                 <ImageSwipe />
             </View>
@@ -49,7 +52,8 @@ const styles = StyleSheet.create({
         flex: 7
     },
     containHeader: {
-        flex: 1
+        flex: 1,
+        justifyContent: 'center'
     },
     containFooter: {
         flex: 1,

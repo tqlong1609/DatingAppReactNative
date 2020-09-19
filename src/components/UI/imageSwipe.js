@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-const SIZE_ICON = 30
+
 const COLOR_ICON = 'white'
 export default function ImageSwipe(props) {
     const { style } = props
@@ -29,10 +29,10 @@ export default function ImageSwipe(props) {
                 </View>
                 <View style={styles.containRight}>
                     <TouchableOpacity onPress={() => onChat()}>
-                        <Ionicons name="chatbox-ellipses" color={COLOR_ICON} size={SIZE_ICON} />
+                        <Ionicons name="chatbox-ellipses" color={COLOR_ICON} size={Themes.Const.SIZE_ICON} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => onInformation()}>
-                        <Ionicons name="information-circle" color={COLOR_ICON} size={SIZE_ICON} />
+                        <Ionicons name="information-circle" color={COLOR_ICON} size={Themes.Const.SIZE_ICON} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     },
     containRight: {
         flexDirection: 'row',
-        width: 80,
+        width: 100,
         justifyContent: 'space-between',
         alignSelf: 'center'
     }

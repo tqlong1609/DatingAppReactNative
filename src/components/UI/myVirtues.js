@@ -37,10 +37,12 @@ export default function myVirtues(props) {
         const dataTemp = [...data];
         const objIndex = dataTemp.findIndex(({ id }) => id === item.id)
         dataTemp[objIndex].isClick = true;
-        if (idPrevious !== null) {
+        console.log("onPressItem -> dataTemp[objIndex]", dataTemp[objIndex])
+        if (idPrevious !== null && idPrevious !== item.id) {
             dataTemp[idPrevious].isClick = false;
         }
         idPrevious = objIndex;
+        console.log("onPressItem -> dataTemp", dataTemp)
         setData(dataTemp);
         setIsReset(true) // reset click onCheckPrefer
         setIsChoose(true) // true: buttonNext active
@@ -49,6 +51,7 @@ export default function myVirtues(props) {
     const onCheckPrefer = (isCheck) => {
         if (isCheck) {
             if (idPrevious !== null) {
+                console.log('onCheckPrefer')
                 const dataTemp = [...data];
                 dataTemp[idPrevious].isClick = false;
                 setData(dataTemp);

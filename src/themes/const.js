@@ -23,7 +23,7 @@ export const BORDER_TEXT_INPUT = 0.5;
 export const BORDER_IMAGE = 7;
 
 export const SIZE_ICON = 40;
-export const SIZE_ICON_I = 40;
+export const SIZE_ICON_I = 50;
 
 export const SIZE_CONTENT_INSIDE = 390;
 

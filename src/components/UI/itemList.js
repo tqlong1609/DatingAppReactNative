@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 export default function ItemsReligious(props) {
     const { item, onPressItem } = props;
     const { id, name, isClick } = item;
-    console.log("id", id)
+    // console.log("ItemsReligious -> isClick", isClick)
     return (
         <TouchableOpacity
             style={styles.containerReligious}
