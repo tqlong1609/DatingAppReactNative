@@ -10,6 +10,18 @@ export const TextInput = {
     borderRadius: Const.BORDER_RADIUS,
 }
 
+export const shadowButton = {
+    backgroundColor: 'white',
+    shadowColor: "#000",
+    shadowOffset: {
+        width: 0,
+        height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
+}
+
 export const Button = {
     marginHorizontal: Const.MARGIN_HORIZONTAL,
     height: Const.HEIGHT,

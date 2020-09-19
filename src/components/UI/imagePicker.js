@@ -75,23 +75,16 @@ const styles = StyleSheet.create({
         marginTop: 160,
     },
     containerImage: {
+        ...Themes.Styles.shadowButton,
         justifyContent: 'center',
         position: 'absolute',
         zIndex: -1,
         width: '100%',
         height: '100%',
-        backgroundColor: 'white',
         top: 0,
         left: 0,
         borderRadius: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-        elevation: 6,
+
         alignSelf: 'center',
     },
     containerViewImage: {
