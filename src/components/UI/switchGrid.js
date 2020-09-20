@@ -7,7 +7,7 @@ import Animated, { Easing } from 'react-native-reanimated';
 import { duration } from 'moment';
 
 const WIDTH_SWITCH = 150
-
+//TODO: switch 
 export default function switchGrid() {
     const [valueTransRight, setValueTransRight] = useState(new Animated.Value(0))
     const [valueTransLeft, setValueTransLeft] = useState(new Animated.Value(0))
