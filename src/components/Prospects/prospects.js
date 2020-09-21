@@ -15,17 +15,10 @@ export default function prospects() {
     return (
         <Container>
             <Header hasTabs
-                style={{
-                    backgroundColor: 'white', borderBottomWidth: 1,
-                    borderBottomColor: Themes.Colors.GRAY_BRIGHT_II
-                }}
+                style={Themes.Styles.HeaderBar}
             >
                 <Body>
-                    <Title style={{
-                        alignSelf: 'center', color: 'black',
-                        fontWeight: 'bold',
-                        color: Themes.Colors.GRAY_BRIGHT
-                    }}>Prospects</Title>
+                    <Title style={Themes.Styles.TitleBar}>Prospects</Title>
                 </Body>
             </Header>
             <Tabs
@@ -81,22 +74,21 @@ export default function prospects() {
 
 const styles = StyleSheet.create({
     underlineStyle: {
-        backgroundColor: Themes.Colors.PINK_DARK,
-        height: 2
+        ...Themes.Styles.underlineScrollTab
     },
     activeTextStyle: {
-        fontWeight: 'bold', color: 'black'
+        ...Themes.Styles.ActiveTextTab
     },
     textStyle: {
-        color: '#9C989D', fontWeight: 'bold'
+        ...Themes.Styles.TextTab
     },
     activeTabStyle: {
-        backgroundColor: 'white'
+        ...Themes.Styles.ActiveTab
     },
     tabStyle: {
-        backgroundColor: 'white'
+        ...Themes.Styles.Tab
     },
     tabHeader: {
-        backgroundColor: "white"
+        ...Themes.Styles.TabHeader
     }
 })

@@ -96,3 +96,40 @@ export const TextButtonBottom = {
     fontSize: Const.FONT_SIZE,
     fontWeight: 'bold'
 }
+
+//Top bar
+export const HeaderBar = {
+    backgroundColor: 'white', borderBottomWidth: 1,
+    borderBottomColor: Colors.GRAY_BRIGHT_II
+}
+
+export const TitleBar = {
+    alignSelf: 'center', color: 'black',
+    fontWeight: 'bold',
+    color: Colors.GRAY_BRIGHT
+}
+
+export const underlineScrollTab = {
+    backgroundColor: Colors.PINK_DARK,
+    height: 2
+}
+
+export const ActiveTextTab = {
+    fontWeight: 'bold', color: 'black'
+}
+
+export const TextTab = {
+    color: '#9C989D', fontWeight: 'bold'
+}
+
+export const ActiveTab = {
+    backgroundColor: 'white'
+}
+
+export const Tab = {
+    backgroundColor: 'white'
+}
+
+export const TabHeader = {
+    backgroundColor: "white"
+}

@@ -2,12 +2,18 @@ import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import PropTypes from 'prop-types'
 export default function emptyPerform(props) {
-    const { title, description } = props
+    const { title, description, isProspects } = props
     return (
         <View style={styles.container}>
-            <Image source={require('/src/assets/images/my_heart.png')}
-                style={styles.image}
-            />
+            {
+                isProspects ?
+                    <Image source={require('/src/assets/images/my_heart.png')}
+                        style={styles.image}
+                    />
+                    :
+                    <Image source={require('/src/assets/images/broke.png')}
+                        style={styles.image}
+                    />}
             <Text style={styles.txtTitle}>{title}</Text>
             <Text
                 style={styles.txtDescription}>
@@ -20,11 +26,13 @@ export default function emptyPerform(props) {
 emptyPerform.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
+    isProspects: PropTypes.bool,
 }
 
 emptyPerform.defaultProps = {
     title: "",
-    description: ""
+    description: "",
+    isProspects: true
 }
 
 const styles = StyleSheet.create({
