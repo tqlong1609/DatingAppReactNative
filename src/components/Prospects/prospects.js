@@ -10,28 +10,16 @@ import LikesMe from './tabs/likesMe'
 import MySuperLiked from './tabs/mySuperLiked'
 import MyLikes from './tabs/myLikes'
 
+
 export default function prospects() {
     return (
-        // <View>
-        //     <Header title={"Prospects"} />
-        //     <Tab.Navigator
-        //         tabStyle={{ width: 100 }}
-        //         swipeEnabled={true}
-
-        //     >
-        //         <Tab.Screen name="Online" component={Online} />
-        //         <Tab.Screen name="SuperLikedMe" component={SuperLikedMe} />
-        //         <Tab.Screen name="LikesMe" component={LikesMe} />
-        //         <Tab.Screen name="MySuperLiked" component={MySuperLiked} />
-        //         <Tab.Screen name="MyLikes" component={MyLikes} />
-        //     </Tab.Navigator>
-        // </View>
         <Container>
-            <Header
+            <Header hasTabs
                 style={{
                     backgroundColor: 'white', borderBottomWidth: 1,
                     borderBottomColor: Themes.Colors.GRAY_BRIGHT_II
-                }}>
+                }}
+            >
                 <Body>
                     <Title style={{
                         alignSelf: 'center', color: 'black',
@@ -39,49 +27,50 @@ export default function prospects() {
                         color: Themes.Colors.GRAY_BRIGHT
                     }}>Prospects</Title>
                 </Body>
-
             </Header>
             <Tabs
                 renderTabBar={() => <ScrollableTab
-                    underlineStyle={{
-                        backgroundColor: Themes.Colors.PINK_DARK,
-                        height: 2
-                    }}
+                    underlineStyle={styles.underlineStyle}
                 />}
             >
-                <Tab heading={
-                    <TabHeading style={{ backgroundColor: "white" }}>
-                        <Text>Online</Text>
-                    </TabHeading>
-                }>
+                <Tab
+                    textStyle={styles.textStyle}
+                    tabStyle={styles.tabStyle}
+                    activeTabStyle={styles.activeTabStyle}
+                    activeTextStyle={styles.activeTextStyle}
+                    heading="Online">
                     <Online />
                 </Tab>
-                <Tab heading={
-                    <TabHeading style={{ backgroundColor: "white" }}>
-                        <Text>SuperLikedMe</Text>
-                    </TabHeading>
-                }>
+                <Tab
+                    textStyle={styles.textStyle}
+                    tabStyle={styles.tabStyle}
+                    activeTabStyle={styles.activeTabStyle}
+                    activeTextStyle={styles.activeTextStyle}
+                    heading="SuperLikedMe">
                     <SuperLikedMe />
                 </Tab>
-                <Tab heading={
-                    <TabHeading style={{ backgroundColor: "white" }}>
-                        <Text>LikesMe</Text>
-                    </TabHeading>
-                }>
+                <Tab
+                    textStyle={styles.textStyle}
+                    tabStyle={styles.tabStyle}
+                    activeTabStyle={styles.activeTabStyle}
+                    activeTextStyle={styles.activeTextStyle}
+                    heading="LikesMe">
                     <LikesMe />
                 </Tab>
-                <Tab heading={
-                    <TabHeading style={{ backgroundColor: "white" }}>
-                        <Text>MySuperLiked</Text>
-                    </TabHeading>
-                }>
+                <Tab
+                    textStyle={styles.textStyle}
+                    tabStyle={styles.tabStyle}
+                    activeTabStyle={styles.activeTabStyle}
+                    activeTextStyle={styles.activeTextStyle}
+                    heading="MySuperLiked">
                     <MySuperLiked />
                 </Tab>
-                <Tab heading={
-                    <TabHeading style={{ backgroundColor: "white" }}>
-                        <Text>MyLikes</Text>
-                    </TabHeading>
-                }>
+                <Tab
+                    textStyle={styles.textStyle}
+                    tabStyle={styles.tabStyle}
+                    activeTabStyle={styles.activeTabStyle}
+                    activeTextStyle={styles.activeTextStyle}
+                    heading="MyLikes">
                     <MyLikes />
                 </Tab>
             </Tabs>
@@ -90,4 +79,24 @@ export default function prospects() {
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    underlineStyle: {
+        backgroundColor: Themes.Colors.PINK_DARK,
+        height: 2
+    },
+    activeTextStyle: {
+        fontWeight: 'bold', color: 'black'
+    },
+    textStyle: {
+        color: '#9C989D', fontWeight: 'bold'
+    },
+    activeTabStyle: {
+        backgroundColor: 'white'
+    },
+    tabStyle: {
+        backgroundColor: 'white'
+    },
+    tabHeader: {
+        backgroundColor: "white"
+    }
+})
