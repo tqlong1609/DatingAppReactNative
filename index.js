@@ -14,7 +14,7 @@ import { name as appName } from './app.json';
 // import CodePhone from '/src/components/CodePhone/codePhone'
 // import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
 // import Splash from '/src/components/Splash/splash'
-// import Introduction from '/src/components/Introduction/introduction'
+import Introduction from '/src/components/Introduction/introduction'
 // import EmailAddress from '/src/components/EmailAddress/emailAddress'
 // import Birthday from '/src/components/Birthday/birthday'
 // import Picture from '/src/components/Picture/picture'
@@ -32,4 +32,4 @@ import { name as appName } from './app.json';
 // import Kids from '/src/components/Kids/kids'
 // import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => Introduction);

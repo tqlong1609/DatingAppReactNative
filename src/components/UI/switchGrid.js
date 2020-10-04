@@ -4,91 +4,48 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, { Easing } from 'react-native-reanimated';
-import { duration } from 'moment';
 
-const WIDTH_SWITCH = 150
-//TODO: switch 
 export default function switchGrid() {
-    const [valueTransRight, setValueTransRight] = useState(new Animated.Value(0))
     const [valueTransLeft, setValueTransLeft] = useState(new Animated.Value(0))
     const [isRight, setIsRight] = useState(false)
     const onSwitch = () => {
-        console.log('object')
-        // if (!isRight) {
-        //     setIsRight(true)
-        //     // isRight ? setIsRight(true) : setIsRight(false)
+        setIsRight(!isRight)
         Animated.timing(valueTransLeft, {
-            toValue: WIDTH_SWITCH / 2,
+            toValue: isRight ? 0 : WIDTH_SWITCH / 2,
             duration: 100,
             easing: Easing.linear
         }).start()
-        // } else {
-        //     console.log('object')
-        //     setIsRight(false)
-        //     Animated.timing(valueTransLeft, {
-        //         toValue: 0,
-        //         duration: 100,
-        //         easing: Easing.linear
-        //     }).start()
-        // }
     }
 
-    //     valueTrans.interpolate({
-    //         inputRange: [0, 1],
-    //         outputRange: [0, WIDTH_SWITCH / 2]
-    //     })
-    // } else {
-    //     console.log('object')
-    // valueTrans.interpolate({
-    //     inputRange: [0, 1],
-    //     outputRange: [WIDTH_SWITCH / 2, 0]
-    // })
-    // }
     return (
         <View
             style={
-                {
-                    flexDirection: 'row', width: WIDTH_SWITCH, height: 50,
-                    alignSelf: 'center',
-                    borderWidth: 1,
-                    borderRadius: 30,
-                    borderColor: Themes.Colors.GRAY_BRIGHT_I
-                }
+                styles.container
             }>
-            <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View style={styles.containerIcon}>
                 <Ionicons
                     onPress={() => onSwitch()}
                     name="square"
-                    color={Themes.Colors.GRAY_BRIGHT_II}
-                    size={25}
-                    style={{ alignSelf: 'center' }}
+                    color={isRight ? Themes.Colors.GRAY_BRIGHT_II : 'white'}
+                    size={SIZE_ICON}
+                    style={styles.ico}
                 />
             </View>
-            <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View style={styles.containerIcon}>
                 <Ionicons
                     onPress={() => onSwitch()}
                     name="grid"
-                    color={Themes.Colors.GRAY_BRIGHT_II}
-                    size={25}
-                    style={{ alignSelf: 'center' }}
+                    color={!isRight ? Themes.Colors.GRAY_BRIGHT_II : 'white'}
+                    size={SIZE_ICON}
+                    style={styles.ico}
                 />
             </View>
             <Animated.View
                 onStartShouldSetResponder={() => true}
                 onResponderGrant={() => onSwitch()}
-                style={{
-                    width: WIDTH_SWITCH / 2 - 2, height: 47.5
-                    , borderRadius: 30
-                    , marginLeft: valueTransLeft,
-                    position: 'absolute',
-                    zIndex: -1
-                }}>
-
+                style={[styles.btnSwitch, { marginLeft: valueTransLeft }]}>
                 <LinearGradient
-                    style={{
-                        width: '100%', height: '100%'
-                        , borderRadius: 30
-                    }}
+                    style={styles.gradient}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 0 }}
                     colors={[Themes.Colors.PINK_DARK, Themes.Colors.ORANGE_DARK]}
@@ -100,12 +57,31 @@ export default function switchGrid() {
         </View>
     )
 }
-
+const SIZE_ICON = 25;
+const WIDTH_SWITCH = 150
 const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row', width: WIDTH_SWITCH, height: 50,
+        alignSelf: 'center',
+        borderWidth: 1,
+        borderRadius: 30,
+        borderColor: Themes.Colors.GRAY_BRIGHT_I
+    },
+    containerIcon: {
+        flex: 1, justifyContent: 'center'
+    },
+    ico: {
+        alignSelf: 'center'
+    },
+    gradient: {
+        width: '100%', height: '100%'
+        , borderRadius: 30
+    },
     btnSwitch: {
-        width: 150 / 2 - 2, height: 47.5
-        , borderRadius: 30,
-        // position: 'absolute',
-        // zIndex: -1
+        width: WIDTH_SWITCH / 2 - 2, height: 48
+        , borderRadius: 30
+        ,
+        position: 'absolute',
+        zIndex: -1
     }
 })
