@@ -3,7 +3,7 @@
  */
 
 import { AppRegistry, YellowBox } from 'react-native';
-import App from './App';
+// import App from './App';
 import { name as appName } from './app.json';
 // YellowBox.ignoreWarnings(['Require cycle:']);
 
@@ -14,7 +14,7 @@ import { name as appName } from './app.json';
 // import CodePhone from '/src/components/CodePhone/codePhone'
 // import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
 // import Splash from '/src/components/Splash/splash'
-import Introduction from '/src/components/Introduction/introduction'
+// import Introduction from '/src/components/Introduction/introduction'
 // import EmailAddress from '/src/components/EmailAddress/emailAddress'
 // import Birthday from '/src/components/Birthday/birthday'
 // import Picture from '/src/components/Picture/picture'
@@ -31,5 +31,7 @@ import Introduction from '/src/components/Introduction/introduction'
 // import Ethnicity from '/src/components/Ethnicity/ethnicity'
 // import Kids from '/src/components/Kids/kids'
 // import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
+import BottomNavigation from '/src/configs/Navigation/bottomNavigation'
+import ScreensNavigation from '/src/configs/Navigation/screensNavigation'
 
-AppRegistry.registerComponent(appName, () => Introduction);
+AppRegistry.registerComponent(appName, () => ScreensNavigation);

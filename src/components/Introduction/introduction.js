@@ -3,10 +3,18 @@ import { StyleSheet, Image, View } from 'react-native'
 import Themes from '/src/themes'
 import Onboarding from 'react-native-onboarding-swiper';
 
+import { useNavigation } from '@react-navigation/native';
+
 export default function introduction() {
+    const navigation = useNavigation();
+    const onDone = () => {
+        navigation.navigate('SingInOrUp')
+    }
     return (
         <View style={styles.container}>
             <Onboarding
+                onDone={() => onDone()}
+                onSkip={() => onDone()}
                 pages={[
                     {
                         backgroundColor: Themes.Colors.PINK_DARK,

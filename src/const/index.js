@@ -6,6 +6,7 @@ import * as HightestLevelAttended from './dataHightestLevelAttended'
 import * as Ethnicity from './dataEthnicity'
 import * as Kids from './dataKids'
 import * as FamilyPlans from './dataFamilyPlans'
+import * as NameScreens from './nameScreens'
 
 
 const Const = {
@@ -16,7 +17,8 @@ const Const = {
     HightestLevelAttended,
     Ethnicity,
     Kids,
-    FamilyPlans
+    FamilyPlans,
+    NameScreens
 }
 
 export default Const;
