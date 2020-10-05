@@ -32,6 +32,6 @@ import { name as appName } from './app.json';
 // import Kids from '/src/components/Kids/kids'
 // import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
 import BottomNavigation from '/src/configs/Navigation/bottomNavigation'
-import ScreensNavigation from '/src/configs/Navigation/screensNavigation'
+// import ScreensNavigation from '/src/configs/Navigation/screensNavigation'
 
-AppRegistry.registerComponent(appName, () => ScreensNavigation);
+AppRegistry.registerComponent(appName, () => BottomNavigation);

@@ -1,3 +1,8 @@
 export const Introduction = "Introduction"
 export const SingInOrUp = "SingInOrUp"
 export const Login = "Login"
+export const Discover = "Discover"
+export const Prospects = "Prospects"
+export const Dates = "Dates"
+export const Chats = "Chats"
+export const Settings = "Settings"

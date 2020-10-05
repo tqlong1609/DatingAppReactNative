@@ -12,6 +12,8 @@ import Dates from '/src/components/Dates/dates'
 import Chats from '/src/components/Chats/chats'
 import Settings from '/src/components/Settings/settings'
 
+import Const from '/src/const'
+
 const Tab = createMaterialBottomTabNavigator();
 const theme = {
     ...DefaultTheme,
@@ -27,55 +29,55 @@ export default function MyTabs() {
         <NavigationContainer>
             <PaperProvider theme={theme}>
                 <Tab.Navigator
-                    initialRouteName="Discover"
+                    initialRouteName={Const.NameScreens.Discover}
                     activeColor={Themes.Colors.PINK_DARK}
                     barStyle={{ backgroundColor: 'white' }}
                 >
                     <Tab.Screen
-                        name="Discover"
+                        name={Const.NameScreens.Discover}
                         component={Discover}
                         options={{
-                            tabBarLabel: 'Discover',
+                            tabBarLabel: Const.NameScreens.Discover,
                             tabBarIcon: ({ color }) => (
                                 <MaterialCommunityIcons name="magnify" color={color} size={26} />
                             ),
                         }}
                     />
                     <Tab.Screen
-                        name="Prospects"
+                        name={Const.NameScreens.Prospects}
                         component={Prospects}
                         options={{
-                            tabBarLabel: 'Prospects',
+                            tabBarLabel: Const.NameScreens.Prospects,
                             tabBarIcon: ({ color }) => (
                                 <MaterialCommunityIcons name="heart-outline" color={color} size={26} />
                             ),
                         }}
                     />
                     <Tab.Screen
-                        name="Dates"
+                        name={Const.NameScreens.Dates}
                         component={Dates}
                         options={{
-                            tabBarLabel: 'Dates',
+                            tabBarLabel: Const.NameScreens.Dates,
                             tabBarIcon: ({ color }) => (
                                 <MaterialCommunityIcons name="human-female-female" color={color} size={26} />
                             ),
                         }}
                     />
                     <Tab.Screen
-                        name="Chats"
+                        name={Const.NameScreens.Chats}
                         component={Chats}
                         options={{
-                            tabBarLabel: 'Chats',
+                            tabBarLabel: Const.NameScreens.Chats,
                             tabBarIcon: ({ color }) => (
                                 <MaterialCommunityIcons name="chat-processing-outline" color={color} size={26} />
                             ),
                         }}
                     />
                     <Tab.Screen
-                        name="Settings"
+                        name={Const.NameScreens.Settings}
                         component={Settings}
                         options={{
-                            tabBarLabel: 'Settings',
+                            tabBarLabel: Const.NameScreens.Settings,
                             tabBarIcon: ({ color }) => (
                                 <MaterialCommunityIcons name="cog-outline" color={color} size={26} />
                             ),

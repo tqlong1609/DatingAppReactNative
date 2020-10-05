@@ -1,5 +1,5 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import React, { useRef } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Animated, PanResponder } from 'react-native'
 import PropTypes from 'prop-types'
 import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -15,27 +15,51 @@ export default function ImageSwipe(props) {
         console.log('on Information')
     }
 
+    const pan = useRef(new Animated.ValueXY()).current;
+    const panResponder = useRef(
+        PanResponder.create({
+            onMoveShouldSetPanResponder: () => true,
+            onPanResponderMove: Animated.event([
+                null,
+                { dx: pan.x, dy: pan.y },
+
+            ], { useNativeDriver: false }),
+            onPanResponderRelease: () => {
+                Animated.spring(pan, { toValue: { x: 0, y: 0 }, useNativeDriver: true }).start();
+            }
+        })
+
+    ).current;
+
     return (
         <View style={styles.container}>
-            <Image style={styles.imgSwipe}
-                source={require('/src/assets/images/my_avatar.jpg')}
-            />
-            <View style={
-                styles.containBottom
-            }>
-                <View>
-                    <Text style={styles.txtName}>Lisa, 21</Text>
-                    <Text style={styles.txtJob}>Microsoft</Text>
+            <Animated.View
+                style={{
+                    transform: [{ translateX: pan.x }, { translateY: pan.y }]
+                }}
+                {...panResponder.panHandlers}
+            >
+                <Image style={styles.imgSwipe}
+                    source={require('/src/assets/images/my_avatar.jpg')}
+                />
+                <View style={
+                    styles.containBottom
+                }>
+                    <View>
+                        <Text style={styles.txtName}>Lisa, 21</Text>
+                        <Text style={styles.txtJob}>Microsoft</Text>
+                    </View>
+                    <View style={styles.containRight}>
+                        <TouchableOpacity onPress={() => onChat()}>
+                            <Ionicons name="chatbox-ellipses" color={COLOR_ICON} size={Themes.Const.SIZE_ICON} />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => onInformation()}>
+                            <Ionicons name="information-circle" color={COLOR_ICON} size={Themes.Const.SIZE_ICON} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.containRight}>
-                    <TouchableOpacity onPress={() => onChat()}>
-                        <Ionicons name="chatbox-ellipses" color={COLOR_ICON} size={Themes.Const.SIZE_ICON} />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => onInformation()}>
-                        <Ionicons name="information-circle" color={COLOR_ICON} size={Themes.Const.SIZE_ICON} />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            </Animated.View>
+
         </View>
     )
 }
