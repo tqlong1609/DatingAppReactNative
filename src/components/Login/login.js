@@ -5,11 +5,13 @@ import {
 } from 'react-native'
 
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import { useNavigation } from '@react-navigation/native'
 import Themes from '/src/themes'
-
+import Const from '/src/const'
 export function login(props) {
-    console.log(Themes.Const.MARGIN_V1)
+    const navigation = useNavigation()
+    const onLogin = () => {
+    }
     return (
         <ScrollView>
             <TouchableOpacity style={styles.btnIcon}>
@@ -18,7 +20,9 @@ export function login(props) {
             <Text style={styles.txtTitle}> Sign In </Text>
             <TextInput style={styles.inpEmail} placeholder={'Email'} keyboardType={'email-address'} />
             <TextInput style={styles.inpPassword} placeholder={'Password'} secureTextEntry={true} />
-            <TouchableOpacity style={styles.btnSignInEmail}>
+            <TouchableOpacity style={styles.btnSignInEmail}
+                onPress={() => onLogin()}
+            >
                 <Text style={styles.txtLoginEmail}>Log In</Text>
             </TouchableOpacity>
             <Text style={styles.txtOr}> OR </Text>

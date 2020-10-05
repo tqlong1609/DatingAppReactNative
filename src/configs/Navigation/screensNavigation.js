@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Introduction from '/src/components/Introduction/introduction';
 import SingInOrUp from '/src/components/SingInOrUp/signInOrUp'
-
+import Login from '/src/components/Login/login'
 import Const from '/src/const'
 
 const Stack = createStackNavigator();
@@ -25,6 +25,10 @@ export default function screensNavigation() {
                 <Stack.Screen
                     name={Const.NameScreens.SingInOrUp}
                     component={SingInOrUp}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.Login}
+                    component={Login}
                 />
             </Stack.Navigator>
         </NavigationContainer>

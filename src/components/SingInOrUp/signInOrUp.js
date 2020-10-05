@@ -3,7 +3,13 @@ import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from 'rea
 
 import Themes from '/src/themes'
 
+import { useNavigation } from '@react-navigation/native'
+import Const from '/src/const'
 export function signInOrUp(props) {
+    const navigation = useNavigation()
+    const onLogin = () => {
+        navigation.navigate(Const.NameScreens.Login)
+    }
     return (
         <ScrollView>
             <Image
@@ -19,6 +25,7 @@ export function signInOrUp(props) {
                 >Match and chat with people you like from your area</Text>
                 <TouchableOpacity
                     style={styles.btnLogin}
+                    onPress={() => onLogin()}
                 >
                     <Text style={styles.txtLogin}>Log In</Text>
                 </TouchableOpacity>

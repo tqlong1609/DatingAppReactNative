@@ -5,10 +5,12 @@ import Onboarding from 'react-native-onboarding-swiper';
 
 import { useNavigation } from '@react-navigation/native';
 
+import Const from '/src/const'
+
 export default function introduction() {
     const navigation = useNavigation();
     const onDone = () => {
-        navigation.navigate('SingInOrUp')
+        navigation.navigate(Const.NameScreens.SingInOrUp)
     }
     return (
         <View style={styles.container}>
