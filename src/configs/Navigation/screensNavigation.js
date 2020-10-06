@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Introduction from '/src/components/Introduction/introduction';
 import SingInOrUp from '/src/components/SingInOrUp/signInOrUp'
 import Login from '/src/components/Login/login'
+import CodePhone from '/src/components/CodePhone/codePhone'
+
 import Const from '/src/const'
 
 const Stack = createStackNavigator();
@@ -29,6 +31,10 @@ export default function screensNavigation() {
                 <Stack.Screen
                     name={Const.NameScreens.Login}
                     component={Login}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.CodePhone}
+                    component={CodePhone}
                 />
             </Stack.Navigator>
         </NavigationContainer>

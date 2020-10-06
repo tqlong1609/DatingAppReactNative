@@ -3,18 +3,17 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import Themes from '/src/themes'
 import PropTypes from 'prop-types';
 import FlagsModel from '/src/components/Model/flagsModel'
+
+//TODO: modal phone areas
 export default function textInputPhone(props) {
     const { style } = props;
     const [isVisible, setIsVisible] = useState(false);
     function setVisibleModel(isVisible) {
         setIsVisible(isVisible);
     }
-    // const callbackTest = useCallback((isVisible) => { setIsVisible(isVisible) }, [isVisible]);
     return (
         <View style={{ ...styles.inpEnterPhone, ...style }}  >
             <TouchableOpacity onPress={() => setVisibleModel(true)}>
-                {/* <Image style={styles.imgFlags} source={require('/src/assets/images/united-states-of-america-flag-medium.png')}
-                /> */}
                 <View style={styles.imgFlags}>
                     <Text style={styles.txtPhoneArea}>+84</Text>
                 </View>

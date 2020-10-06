@@ -6,3 +6,5 @@ export const Prospects = "Prospects"
 export const Dates = "Dates"
 export const Chats = "Chats"
 export const Settings = "Settings"
+export const CodePhone = "CodePhone"
+

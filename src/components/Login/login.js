@@ -21,6 +21,10 @@ export function login(props) {
         signUpWithFacebookApi()
     }
 
+    const onLoginNumberPhone = () => {
+        navigation.navigate(Const.NameScreens.CodePhone)
+    }
+
     const signUpWithFacebookApi = () => {
         return LoginManager.logInWithPermissions(['public_profile'])
             .then((result) => {
@@ -62,7 +66,9 @@ export function login(props) {
             >
                 <Text style={styles.txtLoginFB}>Login With Facebook</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.btnSignInPhone}>
+            <TouchableOpacity style={styles.btnSignInPhone}
+                onPress={() => onLoginNumberPhone()}
+            >
                 <Text style={styles.txtPhone}>Login with phone number</Text>
             </TouchableOpacity>
         </ScrollView>
