@@ -5,6 +5,7 @@ import {
 } from 'react-native'
 
 // import firebase from 'firebase';
+import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native'
 import Themes from '/src/themes'
@@ -17,28 +18,30 @@ export function login(props) {
     }
 
     const onLoginFacebook = () => {
-
+        signUpWithFacebookApi()
     }
 
-    // signUpWithFacebookApi = () => {
-    //     return LoginManager.logInWithPermissions(['public_profile'])
-    //       .then((result) => {
-    //         if (result.isCancelled) {
-    //           return Promise.reject(new Error('The user cancelled the request'));
-    //         }
-    //         console.log(
-    //           `Login success with permission: ${result.grantedPermissions.toString()}`,
-    //         );
-    //         return AccessToken.getCurrentAccessToken();
-    //       })
-    //       .then((data) => {
-    //         const credential = firebase.auth.FacebookAuthProvider.credential(
-    //           data.accessToken,
-    //         );
-    //         return firebase.auth().signInWithCredential(credential);
-    //       })
-    //       .then((response) => response);
-    //   };
+    const signUpWithFacebookApi = () => {
+        return LoginManager.logInWithPermissions(['public_profile'])
+            .then((result) => {
+                if (result.isCancelled) {
+                    return Promise.reject(new Error('The user cancelled the request'));
+                }
+                console.log(
+                    `Login success with permission: ${result.grantedPermissions.toString()}`,
+                );
+                return AccessToken.getCurrentAccessToken();
+            })
+            .then((data) => {
+                const credential = auth.FacebookAuthProvider.credential(
+                    data.accessToken,
+                );
+                return auth().signInWithCredential(credential);
+            })
+            .then((response) =>
+                console.log("signUpWithFacebookApi -> response", response)
+            );
+    };
 
     return (
         <ScrollView>
