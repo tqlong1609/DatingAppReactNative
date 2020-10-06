@@ -31,7 +31,7 @@ import { name as appName } from './app.json';
 // import Ethnicity from '/src/components/Ethnicity/ethnicity'
 // import Kids from '/src/components/Kids/kids'
 // import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
-import BottomNavigation from '/src/configs/Navigation/bottomNavigation'
-// import ScreensNavigation from '/src/configs/Navigation/screensNavigation'
+// import BottomNavigation from '/src/configs/Navigation/bottomNavigation'
+import ScreensNavigation from '/src/configs/Navigation/screensNavigation'
 
-AppRegistry.registerComponent(appName, () => BottomNavigation);
+AppRegistry.registerComponent(appName, () => ScreensNavigation);

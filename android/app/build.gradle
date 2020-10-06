@@ -184,6 +184,8 @@ android {
 
 dependencies {
 
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+
     implementation project(':@react-native-community_datetimepicker')
 
     implementation project(':react-native-linear-gradient')

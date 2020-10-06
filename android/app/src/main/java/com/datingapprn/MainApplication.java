@@ -22,7 +22,24 @@ public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
       new ReactNativeHost(this) {
-        @Override
+      try {
+              PackageInfo info = getPackageManager().getPackageInfo(
+                      "com.appdemo",
+                      PackageManager.GET_SIGNATURES);
+              for (Signature signature : info.signatures) {
+                  MessageDigest md = MessageDigest.getInstance("SHA");
+                  md.update(signature.toByteArray());
+                  Log.d("YourKeyHash :", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+//                System.out.print('asd');
+//                System.out.println("YourKeyHash: ", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+              }
+          } catch (PackageManager.NameNotFoundException e) {
+
+          } catch (NoSuchAlgorithmException e) {
+
+          }
+
+          @Override
         public boolean getUseDeveloperSupport() {
           return BuildConfig.DEBUG;
         }

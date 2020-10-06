@@ -4,14 +4,42 @@ import {
     TouchableOpacity, StyleSheet
 } from 'react-native'
 
+// import firebase from 'firebase';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native'
 import Themes from '/src/themes'
 import Const from '/src/const'
+import { LoginManager, AccessToken } from "react-native-fbsdk";
+
 export function login(props) {
     const navigation = useNavigation()
     const onLogin = () => {
     }
+
+    const onLoginFacebook = () => {
+
+    }
+
+    // signUpWithFacebookApi = () => {
+    //     return LoginManager.logInWithPermissions(['public_profile'])
+    //       .then((result) => {
+    //         if (result.isCancelled) {
+    //           return Promise.reject(new Error('The user cancelled the request'));
+    //         }
+    //         console.log(
+    //           `Login success with permission: ${result.grantedPermissions.toString()}`,
+    //         );
+    //         return AccessToken.getCurrentAccessToken();
+    //       })
+    //       .then((data) => {
+    //         const credential = firebase.auth.FacebookAuthProvider.credential(
+    //           data.accessToken,
+    //         );
+    //         return firebase.auth().signInWithCredential(credential);
+    //       })
+    //       .then((response) => response);
+    //   };
+
     return (
         <ScrollView>
             <TouchableOpacity style={styles.btnIcon}>
@@ -26,7 +54,9 @@ export function login(props) {
                 <Text style={styles.txtLoginEmail}>Log In</Text>
             </TouchableOpacity>
             <Text style={styles.txtOr}> OR </Text>
-            <TouchableOpacity style={styles.btnSignInFB}>
+            <TouchableOpacity style={styles.btnSignInFB}
+                onPress={() => onLoginFacebook()}
+            >
                 <Text style={styles.txtLoginFB}>Login With Facebook</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnSignInPhone}>
