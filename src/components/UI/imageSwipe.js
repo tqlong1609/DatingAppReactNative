@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity, Animated, PanResponder } from 'react-native'
 import PropTypes from 'prop-types'
 import Themes from '/src/themes'
@@ -7,6 +7,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 const COLOR_ICON = 'white'
 export default function ImageSwipe(props) {
     const { style } = props
+
+    const [dXY, setDXY] = useState(null)
+
     const onChat = () => {
         console.log('on chat')
     }
@@ -15,15 +18,33 @@ export default function ImageSwipe(props) {
         console.log('on Information')
     }
 
+    const onPress = (evt) => {
+        const { locationX, locationY } = evt.nativeEvent
+        setDXY({ X: locationX, Y: locationY })
+    }
+
+    const onMove = () => {
+        console.log('onMove')
+        // const { locationX, locationY } = evt.nativeEvent
+        // console.log("onMove -> locationY", locationY)
+        // console.log("onMove -> locationX", locationX)
+    }
+
     const pan = useRef(new Animated.ValueXY()).current;
     const panResponder = useRef(
         PanResponder.create({
             onMoveShouldSetPanResponder: () => true,
+            onStartShouldSetPanResponder: () => true,
+            onPanResponderGrant: () => true,
+            onPanResponderGrant: (evt) => {
+                onPress(evt)
+            },
+            // onPanResponderMove: (evt) => onMove(evt),
             onPanResponderMove: Animated.event([
                 null,
                 { dx: pan.x, dy: pan.y },
 
-            ], { useNativeDriver: false }),
+            ], { listener: onMove(), useNativeDriver: false }),
             onPanResponderRelease: () => {
                 Animated.spring(pan, { toValue: { x: 0, y: 0 }, useNativeDriver: true }).start();
             }
