@@ -44,7 +44,7 @@ export default function ImageSwipe(props) {
                 null,
                 { dx: pan.x, dy: pan.y },
 
-            ], { listener: onMove(), useNativeDriver: false }),
+            ], { useNativeDriver: false }),
             onPanResponderRelease: () => {
                 Animated.spring(pan, { toValue: { x: 0, y: 0 }, useNativeDriver: true }).start();
             }
