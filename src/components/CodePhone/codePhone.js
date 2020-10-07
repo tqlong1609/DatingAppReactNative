@@ -14,9 +14,17 @@ export default function codePhone(props) {
     const onChangeText = (value) => {
         setPhoneNumber(value)
     }
-
+    validatePhoneNumber = () => {
+        var regexp = /^\+[0-9]?()[0-9](\s|\S)(\d[0-9]{8,16})$/
+        return regexp.test(phoneNumber)
+    }
     const onSendCode = () => {
+        // if (validatePhoneNumber()) {
         onSendCodePhone && onSendCodePhone(phoneNumber)
+        // }
+        // else {
+        //     console.log('Invalid Number')
+        // }
     }
 
     return (

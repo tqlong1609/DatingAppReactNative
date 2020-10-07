@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import CodePhone from './codePhone'
 import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
-import { Button, TextInput } from 'react-native'
 import auth from '@react-native-firebase/auth';
 
 export default function CodePhoneController() {
@@ -9,18 +8,31 @@ export default function CodePhoneController() {
     const [confirm, setConfirm] = useState(null);
     const [isSuccess, setIsSuccess] = useState(null)
 
-    async function signInWithPhoneNumber(phoneNumber) {
-        const confirmation = await auth().signInWithPhoneNumber(phoneNumber);
-        setConfirm(confirmation);
+    function signInWithPhoneNumber(phoneNumber) {
+        auth()
+            .signInWithPhoneNumber(phoneNumber)
+            .then(confirmResult => setConfirm(confirmResult))
+            .catch(error => console.log(error))
+        // setConfirm(confirmation);
     }
 
-    async function confirmCode(code) {
-        try {
-            await confirm.confirm(code);
-            setIsSuccess(true)
-        } catch (error) {
-            setIsSuccess(false)
-        }
+    function confirmCode(code) {
+        // try {
+        // if (!isSuccess && confirm !== null) {
+        console.log('confirmCode')
+        confirm.confirm(code)
+            .then(
+                user => console.log("user", user)
+            )
+            .catch(
+                error => console.log("error", error)
+            )
+        // setIsSuccess(true)
+        // }
+        // } catch (error) {
+        //     console.log("confirmCode -> error", error)
+        // setIsSuccess(false)
+        // }
     }
 
     const getCode = (code) => {
