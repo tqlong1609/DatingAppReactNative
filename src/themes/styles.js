@@ -133,3 +133,9 @@ export const Tab = {
 export const TabHeader = {
     backgroundColor: "white"
 }
+
+export const TextError = {
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: 15
+}

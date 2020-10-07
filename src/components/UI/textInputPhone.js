@@ -6,11 +6,13 @@ import FlagsModel from '/src/components/Model/flagsModel'
 
 //TODO: modal phone areas
 export default function textInputPhone(props) {
-    const { style } = props;
+    const { style, onChangeText } = props;
     const [isVisible, setIsVisible] = useState(false);
+
     function setVisibleModel(isVisible) {
         setIsVisible(isVisible);
     }
+
     return (
         <View style={{ ...styles.inpEnterPhone, ...style }}  >
             <TouchableOpacity onPress={() => setVisibleModel(true)}>
@@ -20,7 +22,9 @@ export default function textInputPhone(props) {
             </TouchableOpacity>
             <TextInput placeholder={'Phone Number'}
                 keyboardType={'phone-pad'}
-                style={styles.inpPhone} />
+                style={styles.inpPhone}
+                onChangeText={(value) => onChangeText(value)}
+            />
             <FlagsModel isVisible={isVisible} setVisibleModel={setVisibleModel} />
         </View>
     )
@@ -28,10 +32,13 @@ export default function textInputPhone(props) {
 
 textInputPhone.propTypes = {
     style: PropTypes.object,
+    // onChangeText: PropTypes.func.isRequired,
+    onChangeText: PropTypes.func,
 }
 
 textInputPhone.defaultProps = {
-    style: null
+    style: null,
+    onChangeText: null
 }
 
 const styles = StyleSheet.create({

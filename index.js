@@ -11,7 +11,7 @@ import { name as appName } from './app.json';
 // import SignUpEmail from '/src/components/SignUpEmail/signUpEmail.js'
 // import SignUpPhone from '/src/components/SignUpPhone/signUpPhone.js'
 // import SingInOrUp from '/src/components/SingInOrUp/signInOrUp'
-// import CodePhone from '/src/components/CodePhone/codePhone'
+// import CodePhone from '/src/components/CodePhone/codePhone.controller'
 // import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
 // import Splash from '/src/components/Splash/splash'
 // import Introduction from '/src/components/Introduction/introduction'
@@ -31,8 +31,8 @@ import { name as appName } from './app.json';
 // import Ethnicity from '/src/components/Ethnicity/ethnicity'
 // import Kids from '/src/components/Kids/kids'
 // import FamilyPlans from '/src/components/FamilyPlans/familyPlans'
-import BottomNavigation from '/src/configs/Navigation/bottomNavigation'
+// import BottomNavigation from '/src/configs/Navigation/bottomNavigation'
 // import SwipeTest from '/test/swipeTest'
-// import ScreensNavigation from '/src/configs/Navigation/screensNavigation'
+import ScreensNavigation from '/src/configs/Navigation/screensNavigation'
 
-AppRegistry.registerComponent(appName, () => BottomNavigation);
+AppRegistry.registerComponent(appName, () => ScreensNavigation);

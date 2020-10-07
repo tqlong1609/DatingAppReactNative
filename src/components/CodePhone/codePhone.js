@@ -1,28 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons';
 import TextInputPhone from '/src/components/UI/textInputPhone'
+import PropTypes from 'prop-types';
+
 export default function codePhone(props) {
+
+    const { onSendCodePhone } = props
+
+    const [phoneNumber, setPhoneNumber] = useState('')
+
+    const onChangeText = (value) => {
+        setPhoneNumber(value)
+    }
+
+    const onSendCode = () => {
+        onSendCodePhone && onSendCodePhone(phoneNumber)
+    }
+
     return (
         <ScrollView>
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
             <Text style={styles.txtTitle}> Sign In </Text>
-            <TextInputPhone style={styles.txtPhoneCode} />
-            <TouchableOpacity style={styles.btnSignInEmail}>
-                <Text style={styles.txtLoginEmail}>Send code</Text>
+            <TextInputPhone style={styles.txtPhoneCode} onChangeText={onChangeText} />
+            <TouchableOpacity style={styles.btnSendCode}
+                onPress={() => onSendCode()}
+            >
+                <Text style={styles.txtSendCode}>Send code</Text>
             </TouchableOpacity>
             <Text style={styles.txtOr}> OR </Text>
             <TouchableOpacity style={styles.btnSignInFB}>
                 <Text style={styles.txtLoginFB}>Login With Facebook</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.btnSignInPhone}>
-                <Text style={styles.txtPhone}>Login with E-mail</Text>
+            <TouchableOpacity style={styles.btnSignInEmail}>
+                <Text style={styles.txtSignInEmail}>Login with E-mail</Text>
             </TouchableOpacity>
         </ScrollView>
     )
+}
+
+codePhone.propTypes = {
+    onSendCodePhone: PropTypes.func,
+}
+
+codePhone.defaultProps = {
+    onSendCodePhone: null
 }
 
 const styles = StyleSheet.create({
@@ -35,13 +60,13 @@ const styles = StyleSheet.create({
     txtTitle: {
         ...Themes.Styles.Title
     },
-    btnSignInEmail: {
+    btnSendCode: {
         ...Themes.Styles.Button,
         backgroundColor: Themes.Colors.PINK,
         marginTop: Themes.Const.MARGIN_TOP,
 
     },
-    txtLoginEmail: {
+    txtSendCode: {
         ...Themes.Styles.TextButton
     },
     txtOr: {
@@ -56,11 +81,11 @@ const styles = StyleSheet.create({
     txtLoginFB: {
         ...Themes.Styles.TextButton
     },
-    btnSignInPhone: {
+    btnSignInEmail: {
         ...Themes.Styles.ButtonBottom,
         width: 200,
     },
-    txtPhone: {
+    txtSignInEmail: {
         ...Themes.Styles.TextButtonBottom
     }
 })

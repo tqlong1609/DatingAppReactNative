@@ -4,7 +4,9 @@ import Themes from '/src/themes'
 import PropTypes from 'prop-types';
 
 export default function confirmInputPhone(props) {
-    const { style } = props;
+    const { style, onChangeCode } = props;
+
+    const [code, setCode] = useState('')
     const [pin1, setPin1] = useState("");
     const [pin2, setPin2] = useState("");
     const [pin3, setPin3] = useState("");
@@ -45,7 +47,12 @@ export default function confirmInputPhone(props) {
         pin5 !== "" && refPin6.current.focus();
     }, [pin5])
 
+    if (pin1 != '' && pin2 != '' && pin3 != '' && pin4 != '' && pin5 != '' && pin6 != '') {
+        onChangeCode && onChangeCode(pin1 + pin2 + pin3 + pin4 + pin5 + pin6)
+    }
+
     function onChangText(value, type) {
+
         switch (type) {
             case 1:
                 setPin1(value);
@@ -118,10 +125,11 @@ export default function confirmInputPhone(props) {
 
 confirmInputPhone.propTypes = {
     style: PropTypes.object,
+    onChangeCode: PropTypes.func.isRequired,
 }
 
 confirmInputPhone.defaultProps = {
-    style: null
+    style: null,
 }
 
 const styles = StyleSheet.create({

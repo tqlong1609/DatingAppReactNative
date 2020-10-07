@@ -5,14 +5,54 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import Themes from '/src/themes'
 import ConfirmInputPhone from '/src/components/UI/confirmInputPhone'
-export default function confirmCodePhone() {
+
+import PropTypes from 'prop-types'
+
+confirmCodePhone.propTypes = {
+    getCode: PropTypes.func,
+    isSuccess: PropTypes.bool,
+}
+
+confirmCodePhone.defaultProps = {
+    getCode: null,
+    isSuccess: null
+}
+
+export default function confirmCodePhone(props) {
+
+    const { getCode, isSuccess } = props
+
+    const onChangeCode = (value) => {
+        getCode && getCode(value)
+    }
+
     return (
         <ScrollView>
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
             <Text style={styles.txtTitle}> Sign In </Text>
-            <ConfirmInputPhone style={styles.inpPhone} />
+            <View
+                style={styles.inpPhone}>
+                {
+
+                    isSuccess !== null && isSuccess &&
+                    <Text
+                        style={styles.txtInfo}>
+                        Success</Text>
+
+                }
+                {
+                    isSuccess !== null && !isSuccess &&
+                    <Text
+                        style={styles.txtInfo}>
+                        Error</Text>
+                }
+                <ConfirmInputPhone
+                    onChangeCode={onChangeCode}
+                />
+            </View>
+
             <Text style={styles.txtOr}> OR </Text>
             <TouchableOpacity style={styles.btnSignInFB}>
                 <Text style={styles.txtLoginFB}>Login With Facebook</Text>
@@ -53,5 +93,10 @@ const styles = StyleSheet.create({
     },
     txtPhone: {
         ...Themes.Styles.TextButtonBottom
+    },
+    txtInfo: {
+        marginBottom: 10,
+        alignSelf: 'center',
+        ...Themes.Styles.TextError
     }
 })

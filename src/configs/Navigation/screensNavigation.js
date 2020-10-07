@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Introduction from '/src/components/Introduction/introduction';
 import SingInOrUp from '/src/components/SingInOrUp/signInOrUp'
 import Login from '/src/components/Login/login'
-import CodePhone from '/src/components/CodePhone/codePhone'
+import CodePhone from '/src/components/CodePhone/codePhone.controller'
 
 import Const from '/src/const'
 
