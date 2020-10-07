@@ -212,6 +212,8 @@ dependencies {
 //    implementation 'com.google.android.gms:play-services-base:17.2.1'
 //    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
+    implementation project(':react-native-permissions')
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules

@@ -24,12 +24,13 @@ export default class CarouselMap extends Component {
     state = {
         markers: [],
         coordinates: [
-            { name: 'Burger', latitude: 37.8025259, longitude: -122.4351431, image: require('./img/burger.jpg') },
-            { name: 'Pizza', latitude: 37.7946386, longitude: -122.421646, image: require('./img/pizza.jpg') },
-            { name: 'Soup', latitude: 37.7665248, longitude: -122.4165628, image: require('./img/soup.jpg') },
-            { name: 'Sushi', latitude: 37.7834153, longitude: -122.4527787, image: require('./img/sushi.jpg') },
-            { name: 'Curry', latitude: 37.7948105, longitude: -122.4596065, image: require('./img/curry.jpg') },
-        ]
+            { name: 'Burger', latitude: 37.8025259, longitude: -122.4351431, image: "https://raw.githubusercontent.com/JulianCurrie/CwC_React_Native/react-native-maps_example/src/img/burger.jpg" },
+            { name: 'Pizza', latitude: 37.7946386, longitude: -122.421646, image: "https://raw.githubusercontent.com/JulianCurrie/CwC_React_Native/react-native-maps_example/src/img/curry.jpg" },
+            { name: 'Soup', latitude: 37.7665248, longitude: -122.4165628, image: "https://raw.githubusercontent.com/JulianCurrie/CwC_React_Native/react-native-maps_example/src/img/pizza.jpg" },
+            { name: 'Sushi', latitude: 37.7834153, longitude: -122.4527787, image: "https://raw.githubusercontent.com/JulianCurrie/CwC_React_Native/react-native-maps_example/src/img/soup.jpg" },
+            { name: 'Curry', latitude: 37.7948105, longitude: -122.4596065, image: "https://raw.githubusercontent.com/JulianCurrie/CwC_React_Native/react-native-maps_example/src/img/sushi.jpg" },
+        ],
+        initialPosition: null
     }
 
     componentDidMount() {
@@ -84,7 +85,7 @@ export default class CarouselMap extends Component {
                 this.setState({ initialPosition });
             },
             error => Alert.alert(error.message),
-            { enableHighAccuracy: true, timeout: 10000, maximumAge: 1000 }
+            { enableHighAccuracy: true, timeout: 20000 }
         )
     }
 
@@ -115,7 +116,7 @@ export default class CarouselMap extends Component {
     renderCarouselItem = ({ item }) =>
         <View style={styles.cardContainer}>
             <Text style={styles.cardTitle}>{item.name}</Text>
-            <Image style={styles.cardImage} source={item.image} />
+            <Image style={styles.cardImage} source={{ uri: item.image }} />
         </View>
 
     render() {
@@ -140,7 +141,7 @@ export default class CarouselMap extends Component {
                     <Marker
                         draggable
                         coordinate={{ latitude: 37.7825259, longitude: -122.4351431 }}
-                        image={require('./img/sushi.png')}>
+                        image={{ uri: "https://raw.githubusercontent.com/JulianCurrie/CwC_React_Native/react-native-maps_example/src/img/sushi.jpg" }}>
 
                         <Callout onPress={this.showWelcomeMessage}>
                             <Text>An Interesting city</Text>

@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import ca.jaysoo.extradimensions.ExtraDimensionsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -17,6 +18,7 @@ import com.wix.interactable.Interactable;
 import com.airbnb.android.react.lottie.LottiePackage;
 import com.reactcommunity.rndatetimepicker.RNDateTimePickerPackage;
 
+// import com.reactnativecommunity.rnpermissions.RNPermissionsPackage;
 // import com.airbnb.android.react.maps.MapsPackage;
 // import io.invertase.firebase.app.ReactNativeFirebaseAppPackage;
 // import com.horcrux.svg.SvgPackage;
@@ -39,7 +41,7 @@ public class MainApplication extends Application implements ReactApplication {
           packages.add(new LottiePackage());
           packages.add(new Interactable()); 
           packages.add(new LinearGradientPackage()); 
-
+          // packages.add(new RNPermissionsPackage());
           // packages.add(new MapsPackage()); 
           // packages.add(new ReactNativeFirebaseAppPackage()); 
           // packages.add(new RNDateTimePickerPackage());
