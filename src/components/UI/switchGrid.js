@@ -4,8 +4,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, { Easing } from 'react-native-reanimated';
+import PropTypes from 'prop-types'
 
-export default function switchGrid() {
+export default function switchGrid(props) {
+
+    const { style } = props
+    console.log("switchGrid -> style", style)
+
     const [valueTransLeft, setValueTransLeft] = useState(new Animated.Value(0))
     const [isRight, setIsRight] = useState(false)
     const onSwitch = () => {
@@ -20,7 +25,7 @@ export default function switchGrid() {
     return (
         <View
             style={
-                styles.container
+                { ...styles.container, ...style }
             }>
             <View style={styles.containerIcon}>
                 <Ionicons
@@ -57,15 +62,24 @@ export default function switchGrid() {
         </View>
     )
 }
-const SIZE_ICON = 25;
-const WIDTH_SWITCH = 150
+
+switchGrid.propTypes = {
+    style: PropTypes.object,
+}
+
+switchGrid.defaultProps = {
+    style: null
+}
+
+const SIZE_ICON = 15;
+const WIDTH_SWITCH = 100
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row', width: WIDTH_SWITCH, height: 50,
+        flexDirection: 'row', width: WIDTH_SWITCH, height: 40,
         alignSelf: 'center',
         borderWidth: 1,
         borderRadius: 30,
-        borderColor: Themes.Colors.GRAY_BRIGHT_I
+        borderColor: Themes.Colors.GRAY_BRIGHT_I,
     },
     containerIcon: {
         flex: 1, justifyContent: 'center'
@@ -78,9 +92,8 @@ const styles = StyleSheet.create({
         , borderRadius: 30
     },
     btnSwitch: {
-        width: WIDTH_SWITCH / 2 - 2, height: 48
-        , borderRadius: 30
-        ,
+        width: WIDTH_SWITCH / 2, height: 37.5,
+        borderRadius: 30,
         position: 'absolute',
         zIndex: -1
     }

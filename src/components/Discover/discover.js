@@ -11,7 +11,7 @@ export default function discover() {
     return (
         <View style={styles.container}>
             <View style={styles.containHeader}>
-                <SwitchGrid />
+                <SwitchGrid style={{ marginTop: 10 }} />
             </View>
             <View style={styles.containSwipe} >
                 <ImageSwipe />
@@ -36,10 +36,13 @@ export default function discover() {
         </View>
     )
 }
+
+const SIZE = 60
+
 const styles = StyleSheet.create({
     icoBigger: {
-        width: 70, height: 70,
-        borderRadius: 70 / 2
+        width: SIZE, height: SIZE,
+        borderRadius: SIZE / 2
     },
     imgSwipe: {
         paddingHorizontal: Themes.Const.PADDING_IMAGE_SMALL,
@@ -49,16 +52,17 @@ const styles = StyleSheet.create({
         flex: 1
     },
     containSwipe: {
-        flex: 7
+        flex: 10
     },
     containHeader: {
         flex: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     containFooter: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 10
     }
 })

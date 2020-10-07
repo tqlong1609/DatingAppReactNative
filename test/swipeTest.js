@@ -4,10 +4,6 @@ import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder } fro
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-import Themes from '/src/themes'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-const COLOR_ICON = 'white'
-
 const Users = [
     { id: "1", uri: "https://raw.githubusercontent.com/nathvarun/React-Native-Layout-Tutorial-Series/master/Project%20Files/12%20Tinder%20Swipe%20Deck/%232%20Complete%20Animation/assets/1.jpg" },
     { id: "2", uri: "https://raw.githubusercontent.com/nathvarun/React-Native-Layout-Tutorial-Series/master/Project%20Files/12%20Tinder%20Swipe%20Deck/%232%20Complete%20Animation/assets/2.jpg" },
@@ -16,7 +12,7 @@ const Users = [
     { id: "5", uri: "https://raw.githubusercontent.com/nathvarun/React-Native-Layout-Tutorial-Series/master/Project%20Files/12%20Tinder%20Swipe%20Deck/%232%20Complete%20Animation/assets/5.jpg" },
 ]
 
-export default class ImageSwipe extends React.Component {
+export default class App extends React.Component {
 
     constructor() {
         super()
@@ -117,7 +113,7 @@ export default class ImageSwipe extends React.Component {
                 return (
                     <Animated.View
                         {...this.PanResponder.panHandlers}
-                        key={item.id} style={[this.rotateAndTranslate, { height: '100%', width: '100%', padding: 10, position: 'absolute' }]}>
+                        key={item.id} style={[this.rotateAndTranslate, { height: SCREEN_HEIGHT - 120, width: SCREEN_WIDTH, padding: 10, position: 'absolute' }]}>
                         <Animated.View style={{ opacity: this.likeOpacity, transform: [{ rotate: '-30deg' }], position: 'absolute', top: 50, left: 40, zIndex: 1000 }}>
                             <Text style={{ borderWidth: 1, borderColor: 'green', color: 'green', fontSize: 32, fontWeight: '800', padding: 10 }}>LIKE</Text>
 
@@ -129,7 +125,7 @@ export default class ImageSwipe extends React.Component {
                         </Animated.View>
 
                         <Image
-                            style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
+                            style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
                             source={{ uri: item.uri }} />
 
                     </Animated.View>
@@ -142,7 +138,7 @@ export default class ImageSwipe extends React.Component {
                         key={item.id} style={[{
                             opacity: this.nextCardOpacity,
                             transform: [{ scale: this.nextCardScale }],
-                            height: '100%', width: '100%', padding: 10, position: 'absolute'
+                            height: SCREEN_HEIGHT - 120, width: SCREEN_WIDTH, padding: 10, position: 'absolute'
                         }]}>
                         <Animated.View style={{ opacity: 0, transform: [{ rotate: '-30deg' }], position: 'absolute', top: 50, left: 40, zIndex: 1000 }}>
                             <Text style={{ borderWidth: 1, borderColor: 'green', color: 'green', fontSize: 32, fontWeight: '800', padding: 10 }}>LIKE</Text>
@@ -155,7 +151,7 @@ export default class ImageSwipe extends React.Component {
                         </Animated.View>
 
                         <Image
-                            style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
+                            style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
                             source={{ uri: item.uri }} />
 
                     </Animated.View>
@@ -167,9 +163,17 @@ export default class ImageSwipe extends React.Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
+                <View style={{ height: 60 }}>
+
+                </View>
                 <View style={{ flex: 1 }}>
                     {this.renderUsers()}
                 </View>
+                <View style={{ height: 60 }}>
+
+                </View>
+
+
             </View>
 
         );
@@ -178,6 +182,7 @@ export default class ImageSwipe extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',

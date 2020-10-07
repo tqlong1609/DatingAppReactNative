@@ -38,10 +38,11 @@ buttonStatus.defaultProps = {
     onPress: null
 }
 
+const SIZE = 50
 const styles = StyleSheet.create({
     container: {
-        width: 60, height: 60,
-        borderRadius: 60 / 2,
+        width: SIZE, height: SIZE,
+        borderRadius: SIZE / 2,
         justifyContent: 'center',
         ...Themes.Styles.shadowButton,
     },
