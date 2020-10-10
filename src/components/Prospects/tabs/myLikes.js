@@ -5,6 +5,7 @@ export default function myLikes() {
     return (
         <View style={styles.container}>
             <EmptyPerform title={"My Likes"}
+                source={require('/src/assets/images/my_heart.png')}
                 description={"Oops! Seem like you have not swiped right on any profile yet. Update your preferences to get better potential matches"}
             />
         </View>

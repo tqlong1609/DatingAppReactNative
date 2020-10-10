@@ -4,7 +4,9 @@ import EmptyPerform from '/src/components/UI/emptyPerform'
 export default function online() {
     return (
         <View style={styles.container}>
-            <EmptyPerform title={"Online"}
+            <EmptyPerform
+                title={"Online"}
+                source={require('/src/assets/images/my_heart.png')}
                 description={"Sorry no potential matches are currently online"}
             />
         </View>

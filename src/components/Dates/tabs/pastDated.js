@@ -5,8 +5,8 @@ export default function pastDated() {
     return (
         <View style={styles.container}>
             <EmptyPerform
-                isProspects={false}
                 title={"You have no past dates"}
+                source={require('/src/assets/images/broke.png')}
                 description={"Please schedule a date with one of your matches"}
             />
         </View>

@@ -5,6 +5,7 @@ export default function mySuperLiked() {
     return (
         <View style={styles.container}>
             <EmptyPerform title={"My SuperLiked"}
+                source={require('/src/assets/images/my_heart.png')}
                 description={"Oops! Seem like you have not swiped top on any profile yet. Update your preferences to get better potential matches"}
             />
         </View>

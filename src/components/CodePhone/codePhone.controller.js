@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import CodePhone from './codePhone'
 import ConfirmCodePhone from '/src/components/ConfirmCodePhone/confirmCodePhone'
 import auth from '@react-native-firebase/auth';
+import Utils from '/src/utils'
+import { Alert } from 'react-native';
 
 export default function CodePhoneController() {
 
@@ -9,30 +11,29 @@ export default function CodePhoneController() {
     const [isSuccess, setIsSuccess] = useState(null)
 
     function signInWithPhoneNumber(phoneNumber) {
-        auth()
-            .signInWithPhoneNumber(phoneNumber)
-            .then(confirmResult => setConfirm(confirmResult))
-            .catch(error => console.log(error))
-        // setConfirm(confirmation);
+        const isPhone = Utils.ValidateInput.validatePhoneNumber(phoneNumber)
+        if (isPhone) {
+            auth()
+                .signInWithPhoneNumber(phoneNumber)
+                .then(confirmResult => setConfirm(confirmResult))
+                .catch(error => console.log(error))
+        }
+        else {
+            Alert.alert("Incorrect format phone number!!")
+        }
     }
 
+    //TODO: error
     function confirmCode(code) {
-        // try {
-        // if (!isSuccess && confirm !== null) {
         console.log('confirmCode')
         confirm.confirm(code)
             .then(
-                user => console.log("user", user)
+                // user => console.log("user", user)
+                console.log('success')
             )
             .catch(
                 error => console.log("error", error)
             )
-        // setIsSuccess(true)
-        // }
-        // } catch (error) {
-        //     console.log("confirmCode -> error", error)
-        // setIsSuccess(false)
-        // }
     }
 
     const getCode = (code) => {

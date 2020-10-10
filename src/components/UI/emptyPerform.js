@@ -1,20 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import PropTypes from 'prop-types'
+import Themes from '/src/themes'
+
 export default function emptyPerform(props) {
-    const { title, description, isProspects } = props
+    const { title, description, source, style, styleTitle } = props
     return (
-        <View style={styles.container}>
+        <View style={{ ...styles.container, ...style }}>
             {
-                isProspects ?
-                    <Image source={require('/src/assets/images/my_heart.png')}
-                        style={styles.image}
-                    />
-                    :
-                    <Image source={require('/src/assets/images/broke.png')}
-                        style={styles.image}
-                    />}
-            <Text style={styles.txtTitle}>{title}</Text>
+                <Image source={source}
+                    style={styles.image}
+                />
+            }
+            <Text style={{ ...styles.txtTitle, ...styleTitle }}>{title}</Text>
             <Text
                 style={styles.txtDescription}>
                 {description}
@@ -26,13 +24,15 @@ export default function emptyPerform(props) {
 emptyPerform.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
-    isProspects: PropTypes.bool,
+    source: PropTypes.number,
+    styles: PropTypes.object,
+    styleTitle: PropTypes.object,
 }
 
 emptyPerform.defaultProps = {
     title: "",
     description: "",
-    isProspects: true
+    source: null,
 }
 
 const styles = StyleSheet.create({
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
     txtTitle: {
         marginTop: 10,
-        color: '#555155',
+        color: Themes.Colors.GRAY_BRIGHT_I,
         fontSize: 20,
         fontWeight: 'bold'
     },

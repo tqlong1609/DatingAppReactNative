@@ -44,7 +44,10 @@ export function login(props) {
             })
             .then((response) =>
                 console.log("signUpWithFacebookApi -> response", response)
-            );
+            )
+            .catch(error => {
+                console.log("error", error)
+            });
     };
 
     return (

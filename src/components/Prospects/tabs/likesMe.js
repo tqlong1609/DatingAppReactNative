@@ -5,6 +5,7 @@ export default function likesMe() {
     return (
         <View style={styles.container}>
             <EmptyPerform title={"Liked Me"}
+                source={require('/src/assets/images/my_heart.png')}
                 description={"Sorry no user has liked your profile yet. Keep your profile fully updated to improve your changes to get liked"}
             />
         </View>
