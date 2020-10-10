@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder, TouchableOpacity }
+    from 'react-native';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -7,6 +8,7 @@ const SCREEN_WIDTH = Dimensions.get('window').width
 import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 const COLOR_ICON = 'white'
+let isSwipe = false
 
 const Users = [
     { id: "1", uri: "https://raw.githubusercontent.com/nathvarun/React-Native-Layout-Tutorial-Series/master/Project%20Files/12%20Tinder%20Swipe%20Deck/%232%20Complete%20Animation/assets/1.jpg" },
@@ -63,16 +65,29 @@ export default class ImageSwipe extends React.Component {
         })
 
     }
+
+    checkIsSwipe = (evt) => {
+        if (isSwipe) { isSwipe = false }
+        else {
+            const { locationX } = evt.nativeEvent
+            if (locationX < SCREEN_WIDTH / 2) {
+                console.log('left')
+            } else {
+                console.log('right')
+            }
+        }
+    }
+
     UNSAFE_componentWillMount() {
         this.PanResponder = PanResponder.create({
 
             onStartShouldSetPanResponder: (evt, gestureState) => true,
             onPanResponderMove: (evt, gestureState) => {
-
+                isSwipe = true
                 this.position.setValue({ x: gestureState.dx, y: gestureState.dy })
             },
             onPanResponderRelease: (evt, gestureState) => {
-
+                this.checkIsSwipe(evt)
                 if (gestureState.dx > 120) {
                     Animated.spring(this.position, {
                         toValue: { x: SCREEN_WIDTH + 100, y: gestureState.dy },
@@ -104,6 +119,12 @@ export default class ImageSwipe extends React.Component {
         })
     }
 
+    handlePress(evt) {
+        console.log('evt.nativeEvent.locationX', evt.nativeEvent.locationX)
+        // Alert.alert(`x coord = ${evt.nativeEvent.locationX}`);
+        // Alert.alert(`y coord = ${evt.nativeEvent.locationY}`);
+    }
+
     renderUsers = () => {
 
         return Users.map((item, i) => {
@@ -132,13 +153,13 @@ export default class ImageSwipe extends React.Component {
                             style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
                             source={{ uri: item.uri }} />
 
+
                     </Animated.View>
                 )
             }
             else {
                 return (
                     <Animated.View
-
                         key={item.id} style={[{
                             opacity: this.nextCardOpacity,
                             transform: [{ scale: this.nextCardScale }],
