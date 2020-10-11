@@ -26,66 +26,64 @@ const theme = {
 }
 export default function MyTabs() {
     return (
-        <NavigationContainer>
-            <PaperProvider theme={theme}>
-                <Tab.Navigator
-                    initialRouteName={Const.NameScreens.Discover}
-                    activeColor={Themes.Colors.PINK_DARK}
-                    barStyle={{ backgroundColor: 'white' }}
-                >
-                    <Tab.Screen
-                        name={Const.NameScreens.Discover}
-                        component={Discover}
-                        options={{
-                            tabBarLabel: Const.NameScreens.Discover,
-                            tabBarIcon: ({ color }) => (
-                                <MaterialCommunityIcons name="magnify" color={color} size={26} />
-                            ),
-                        }}
-                    />
-                    <Tab.Screen
-                        name={Const.NameScreens.Prospects}
-                        component={Prospects}
-                        options={{
-                            tabBarLabel: Const.NameScreens.Prospects,
-                            tabBarIcon: ({ color }) => (
-                                <MaterialCommunityIcons name="heart-outline" color={color} size={26} />
-                            ),
-                        }}
-                    />
-                    <Tab.Screen
-                        name={Const.NameScreens.Dates}
-                        component={Dates}
-                        options={{
-                            tabBarLabel: Const.NameScreens.Dates,
-                            tabBarIcon: ({ color }) => (
-                                <MaterialCommunityIcons name="human-female-female" color={color} size={26} />
-                            ),
-                        }}
-                    />
-                    <Tab.Screen
-                        name={Const.NameScreens.Chats}
-                        component={Chats}
-                        options={{
-                            tabBarLabel: Const.NameScreens.Chats,
-                            tabBarIcon: ({ color }) => (
-                                <MaterialCommunityIcons name="chat-processing-outline" color={color} size={26} />
-                            ),
-                        }}
-                    />
-                    <Tab.Screen
-                        name={Const.NameScreens.Settings}
-                        component={Settings}
-                        options={{
-                            tabBarLabel: Const.NameScreens.Settings,
-                            tabBarIcon: ({ color }) => (
-                                <MaterialCommunityIcons name="cog-outline" color={color} size={26} />
-                            ),
-                        }}
-                    />
-                </Tab.Navigator>
-            </PaperProvider>
-        </NavigationContainer>
+        <PaperProvider theme={theme}>
+            <Tab.Navigator
+                initialRouteName={Const.NameScreens.Discover}
+                activeColor={Themes.Colors.PINK_DARK}
+                barStyle={{ backgroundColor: 'white' }}
+            >
+                <Tab.Screen
+                    name={Const.NameScreens.Discover}
+                    component={Discover}
+                    options={{
+                        tabBarLabel: Const.NameScreens.Discover,
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons name="magnify" color={color} size={26} />
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name={Const.NameScreens.Prospects}
+                    component={Prospects}
+                    options={{
+                        tabBarLabel: Const.NameScreens.Prospects,
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons name="heart-outline" color={color} size={26} />
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name={Const.NameScreens.Dates}
+                    component={Dates}
+                    options={{
+                        tabBarLabel: Const.NameScreens.Dates,
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons name="human-female-female" color={color} size={26} />
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name={Const.NameScreens.Chats}
+                    component={Chats}
+                    options={{
+                        tabBarLabel: Const.NameScreens.Chats,
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons name="chat-processing-outline" color={color} size={26} />
+                        ),
+                    }}
+                />
+                <Tab.Screen
+                    name={Const.NameScreens.Settings}
+                    component={Settings}
+                    options={{
+                        tabBarLabel: Const.NameScreens.Settings,
+                        tabBarIcon: ({ color }) => (
+                            <MaterialCommunityIcons name="cog-outline" color={color} size={26} />
+                        ),
+                    }}
+                />
+            </Tab.Navigator>
+        </PaperProvider>
 
     );
 }

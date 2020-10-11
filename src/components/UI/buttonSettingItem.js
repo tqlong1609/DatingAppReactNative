@@ -15,9 +15,9 @@ buttonSettingItem.defaultPropTypes = {
 }
 
 export default function buttonSettingItem(props) {
-    const { title, nameIonIcons, isUnderline } = props
+    const { title, nameIonIcons, isUnderline, onPressItem } = props
     const onPress = () => {
-        console.log('object')
+        onPressItem && onPressItem()
     }
     return (
         <TouchableOpacity

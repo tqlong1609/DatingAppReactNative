@@ -2,8 +2,17 @@ import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { Container, Header, Left, Body, Right, TabHeading, Icon, Title, ScrollableTab, Tab, Tabs } from 'native-base';
 import Themes from '/src/themes'
-import ButtonSettingItem from '/home/tqlong1609/DatingAppReactNative/src/components/UI/buttonSettingItem'
+import Const from '/src/const'
+import { useNavigation } from '@react-navigation/native';
+import ButtonSettingItem from '/src/components/UI/buttonSettingItem'
+
+// import { useNavigationScreen } from '/src/configs/Navigation/screensNavigation'
+
 export default function settings() {
+    const navigation = useNavigation()
+    const onPressMyProfile = () => {
+        navigation.navigate(Const.NameScreens.MyProfile)
+    }
     return (
         <Container style={styles.container}>
             <Header hasTabs
@@ -12,7 +21,6 @@ export default function settings() {
                     ...styles.header
                 }}
             >
-
                 <View style={styles.containerInfor}>
                     <Text style={styles.txtInfo}>Trần Long, 21</Text>
                     <Text style={styles.txtGender}>Male</Text>
@@ -22,6 +30,7 @@ export default function settings() {
                     source={{ uri: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*' }} />
             </Header>
             <ButtonSettingItem
+                onPressItem={() => onPressMyProfile()}
                 isUnderline={true}
                 title={"My Profile"} nameIonIcons={"person-outline"} />
             <ButtonSettingItem

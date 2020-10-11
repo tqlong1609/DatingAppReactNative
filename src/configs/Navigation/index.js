@@ -1,55 +1,53 @@
-// import * as React from 'react';
-// import { Text, TouchableOpacity, View } from 'react-native';
-// import {
-//     NavigationHelpersContext,
-//     useNavigationBuilder,
-//     TabRouter,
-//     TabActions,
-//     createNavigatorFactory
-// } from '@react-navigation/native';
-// function TabNavigator({
-//     initialRouteName,
-//     children,
-//     screenOptions,
-//     tabBarStyle,
-//     contentStyle,
-// }) {
-//     const { state, navigation, descriptors } = useNavigationBuilder(TabRouter, {
-//         children,
-//         screenOptions,
-//         initialRouteName,
-//     });
+import 'react-native-gesture-handler';
+import React from 'react';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-//     return (
-//         <NavigationHelpersContext.Provider value={navigation}>
-//             <View style={[{ flexDirection: 'row' }, tabBarStyle]}>
-//                 {state.routes.map(route => (
-//                     <TouchableOpacity
-//                         key={route.key}
-//                         onPress={() => {
-//                             const event = navigation.emit({
-//                                 type: 'tabPress',
-//                                 target: route.key,
-//                                 canPreventDefault: true,
-//                             });
+import Introduction from '/src/components/Introduction/introduction';
+import SingInOrUp from '/src/components/SingInOrUp/signInOrUp'
+import Login from '/src/components/Login/login'
+import CodePhone from '/src/components/CodePhone/codePhone.controller'
+import MyProfile from '/src/components/MyProfile/myProfile'
+import BottomNavigation from './bottomNavigation'
 
-//                             if (!event.defaultPrevented) {
-//                                 navigation.dispatch({
-//                                     ...TabActions.jumpTo(route.name),
-//                                     target: state.key,
-//                                 });
-//                             }
-//                         }}
-//                         style={{ flex: 1 }}
-//                     >
-//                         <Text>{descriptors[route.key].options.title || route.name}</Text>
-//                     </TouchableOpacity>
-//                 ))}
-//             </View>
-//             <View style={[{ flex: 1 }, contentStyle]}>
-//                 {descriptors[state.routes[state.index].key].render()}
-//             </View>
-//         </NavigationHelpersContext.Provider>
-//     );
-// }
-// export const createMyNavigator = createNavigatorFactory(TabNavigator);
+import Const from '/src/const'
+
+const Stack = createStackNavigator();
+
+export default function screensNavigation() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator
+                screenOptions={{
+                    headerShown: false
+                }}
+            >
+                <Stack.Screen
+                    name={"BottomNavigation"}
+                    component={BottomNavigation}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.Introduction}
+                    component={Introduction}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.SingInOrUp}
+                    component={SingInOrUp}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.Login}
+                    component={Login}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.CodePhone}
+                    component={CodePhone}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.MyProfile}
+                    component={MyProfile}
+                />
+
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+}

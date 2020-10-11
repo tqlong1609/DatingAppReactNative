@@ -7,4 +7,5 @@ export const Dates = "Dates"
 export const Chats = "Chats"
 export const Settings = "Settings"
 export const CodePhone = "CodePhone"
+export const MyProfile = "MyProfile"
 
