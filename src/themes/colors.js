@@ -10,5 +10,6 @@ export const GRAY_BRIGHT_III = '#BDB6BB';
 export const GRAY_BRIGHT_IV = '#E1E2E2';
 export const RED_DARK = '#B33811';
 export const ORANGE_DARK = '#C04400';
+export const GREEN_BRIGHT = '#36B729';
 
 

@@ -72,11 +72,12 @@ const TabSwipe = (props) => {
         alignSelf: 'center',
         marginTop: 20,
         borderRadius: 10,
-        flexDirection: 'row'
+        flexDirection: 'row',
+
     }}>
         <View style={{
             backgroundColor: Themes.Colors.GRAY_BRIGHT_IV,
-            width: `${(length - currentIndexPicture) * 100 / length}%`,
+            width: `${(currentIndexPicture + 1) * 100 / length + 1}%`,
             height: '100%',
             borderRadius: 10,
         }}>
@@ -223,8 +224,6 @@ export default class ImageSwipe extends React.Component {
             console.log('Empty data')
         }
         return dataImage.map((item, index) => {
-
-
             if (index < this.state.currentIndex) {
                 return null
             }
@@ -241,7 +240,6 @@ export default class ImageSwipe extends React.Component {
 
                         <Animated.View style={{ opacity: this.dislikeOpacity, transform: [{ rotate: '30deg' }], position: 'absolute', top: 50, right: 40, zIndex: 1000 }}>
                             <Text style={{ borderWidth: 1, borderColor: 'red', color: 'red', fontSize: 32, fontWeight: '800', padding: 10 }}>NOPE</Text>
-
                         </Animated.View>
                         <TabSwipe length={length} currentIndexPicture={this.state.currentIndexPicture} />
                         <Image
@@ -270,7 +268,6 @@ export default class ImageSwipe extends React.Component {
                         <Image
                             style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
                             source={{ uri: item.arrUri[0] }} />
-
                     </Animated.View>
                 )
             }
@@ -278,6 +275,7 @@ export default class ImageSwipe extends React.Component {
     }
 
     render() {
+        console.log('render')
         return (
             <View style={{ flex: 1 }}>
                 <View style={{ flex: 1 }}>
