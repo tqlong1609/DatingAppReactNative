@@ -96,11 +96,14 @@ export const TextButtonBottom = {
     fontSize: Const.FONT_SIZE,
     fontWeight: 'bold'
 }
-
+export const UnderlineBottom = {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.GRAY_BRIGHT_II
+}
 //Top bar
 export const HeaderBar = {
-    backgroundColor: 'white', borderBottomWidth: 1,
-    borderBottomColor: Colors.GRAY_BRIGHT_II
+    backgroundColor: 'white',
+    ...UnderlineBottom
 }
 
 export const TitleBar = {
