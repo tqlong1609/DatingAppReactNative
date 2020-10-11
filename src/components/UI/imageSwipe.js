@@ -5,8 +5,6 @@ import Themes from '/src/themes'
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-let isSwipe = false
-
 const dataImage = [
     {
         id: "1",
@@ -149,14 +147,11 @@ export default class ImageSwipe extends React.Component {
     }
 
     checkIsSwipe = (evt) => {
-        if (isSwipe) { isSwipe = false }
-        else {
-            const { locationX } = evt.nativeEvent
-            if (locationX < SCREEN_WIDTH / 2) {
-                this.backPicture()
-            } else {
-                this.nextPicture()
-            }
+        const { locationX } = evt.nativeEvent
+        if (locationX < SCREEN_WIDTH / 2) {
+            this.backPicture()
+        } else {
+            this.nextPicture()
         }
     }
 
@@ -172,17 +167,20 @@ export default class ImageSwipe extends React.Component {
         }
     }
 
-
     UNSAFE_componentWillMount() {
+        let count = 0
         this.PanResponder = PanResponder.create({
 
             onStartShouldSetPanResponder: (evt, gestureState) => true,
             onPanResponderMove: (evt, gestureState) => {
-                isSwipe = true
+                count++
                 this.position.setValue({ x: gestureState.dx, y: gestureState.dy })
             },
             onPanResponderRelease: (evt, gestureState) => {
-                this.checkIsSwipe(evt)
+                if (count < 10) {
+                    this.checkIsSwipe(evt)
+                }
+                count = 0
                 if (gestureState.dx > 120) {
                     this.stateSwipe(STATUS.LIKE)
                     Animated.spring(this.position, {

@@ -48,7 +48,7 @@ export default function chats() {
 
     const renderItemAvatarActive = (item, index) => {
         return <View
-            style={[styles.containerActiveChats, index === data.length - 1 && { marginRight: MARGIN_AVATAR }]}
+            style={styles.containerActiveChats}
         >
             <View
                 style={styles.containerAvatar}
@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     //Flatlist avatar active
     containerActiveChats: {
         margin: MARGIN_AVATAR,
-        marginRight: 0
     },
     containerAvatar: {
         width: SIZE

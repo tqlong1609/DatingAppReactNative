@@ -6,8 +6,6 @@ import Const from '/src/const'
 import { useNavigation } from '@react-navigation/native';
 import ButtonSettingItem from '/src/components/UI/buttonSettingItem'
 
-// import { useNavigationScreen } from '/src/configs/Navigation/screensNavigation'
-
 export default function settings() {
     const navigation = useNavigation()
     const onPressMyProfile = () => {
@@ -35,9 +33,16 @@ export default function settings() {
                 title={"My Profile"} nameIonIcons={"person-outline"} />
             <ButtonSettingItem
                 isUnderline={true}
+                title={"My Albums"} nameIonIcons={"images-outline"} />
+            <ButtonSettingItem
+                isUnderline={true}
                 title={"My Preferences"} nameIonIcons={"people-outline"} />
             <ButtonSettingItem
+                isUnderline={true}
                 title={"Change Languages"} nameIonIcons={"swap-horizontal-outline"} />
+            <ButtonSettingItem
+                isUnderline={false}
+                title={"Logout"} nameIonIcons={"log-out-outline"} />
 
         </Container>
 

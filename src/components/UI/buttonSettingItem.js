@@ -1,7 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import Themes from '/src/themes'
+
+// https://ionicons.com/
 import Ionicons from 'react-native-vector-icons/Ionicons'
+
 import PropTypes from 'prop-types'
 
 buttonSettingItem.propTypes = {
@@ -44,6 +47,7 @@ const styles = StyleSheet.create({
     underLine: {
         borderBottomWidth: 0.5,
         borderBottomColor: Themes.Colors.GRAY_BRIGHT_I,
+        color: Themes.Colors.GRAY_BRIGHT_II
     },
     button: {
         height: 70,
