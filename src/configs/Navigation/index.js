@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -14,7 +14,35 @@ import Const from '/src/const'
 
 const Stack = createStackNavigator();
 
+// locale language
+import { setI18nConfig, translate } from '/src/translations';
+import '/src/translations/i18n';
+import * as RNLocalize from 'react-native-localize';
+const useForceUpdate = () => useState()[1];
+
 export default function screensNavigation() {
+    const forceUpdate = useForceUpdate();
+
+    useEffect(() => {
+        setI18nConfig()
+    }, [])
+
+    useEffect(() => {
+        RNLocalize.addEventListener('change', () => handleLocalizationChange());
+        return () => {
+            RNLocalize.removeEventListener(
+                'change',
+                () => handleLocalizationChange(),
+            );
+        }
+    })
+
+    const handleLocalizationChange = () => {
+        setI18nConfig();
+        forceUpdate();
+    };
+
+
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -23,6 +51,10 @@ export default function screensNavigation() {
                 }}
             >
                 <Stack.Screen
+                    name={Const.NameScreens.SingInOrUp}
+                    component={SingInOrUp}
+                />
+                <Stack.Screen
                     name={"BottomNavigation"}
                     component={BottomNavigation}
                 />
@@ -30,10 +62,10 @@ export default function screensNavigation() {
                     name={Const.NameScreens.Introduction}
                     component={Introduction}
                 />
-                <Stack.Screen
+                {/* <Stack.Screen
                     name={Const.NameScreens.SingInOrUp}
                     component={SingInOrUp}
-                />
+                /> */}
                 <Stack.Screen
                     name={Const.NameScreens.Login}
                     component={Login}

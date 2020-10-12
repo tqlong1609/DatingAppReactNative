@@ -93,7 +93,7 @@ export default function chats() {
                 <EmptyPerform
                     styleTitle={{ color: Themes.Colors.GRAY_BRIGHT_III }}
                     title={"You don't have active chats"}
-                    source={require('/home/tqlong1609/DatingAppReactNative/src/assets/images/oval-empty-outlined-speech-bubble.png')}
+                    source={require('/src/assets/images/oval-empty-outlined-speech-bubble.png')}
                 />
             </View>
         </Container>

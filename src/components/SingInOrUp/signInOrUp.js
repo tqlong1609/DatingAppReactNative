@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native'
-
+import { withTranslation } from 'react-i18next';
 import Themes from '/src/themes'
 
 import { useNavigation } from '@react-navigation/native'
 import Const from '/src/const'
-export function signInOrUp(props) {
+export function SignInOrUp(props) {
     const navigation = useNavigation()
+    const { t, tReady } = props;
+
     const onLogin = () => {
         navigation.navigate(Const.NameScreens.Login)
     }
@@ -27,7 +29,7 @@ export function signInOrUp(props) {
                     style={styles.btnLogin}
                     onPress={() => onLogin()}
                 >
-                    <Text style={styles.txtLogin}>Log In</Text>
+                    <Text style={styles.txtLogin}>{t('Log In')}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.btnSignUp}
@@ -97,4 +99,4 @@ const styles = StyleSheet.create({
         color: Themes.Colors.PINK
     }
 })
-export default signInOrUp
+export default withTranslation()(SignInOrUp)
