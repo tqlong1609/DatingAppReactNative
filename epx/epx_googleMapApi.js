@@ -71,22 +71,26 @@ export default class CarouselMap extends Component {
     }
 
     locateCurrentPosition = () => {
-        Geolocation.getCurrentPosition(
-            position => {
-                console.log(JSON.stringify(position));
+        // Geolocation.getCurrentPosition(
+        //     position => {
+        //         console.log(JSON.stringify(position));
 
-                let initialPosition = {
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
-                    latitudeDelta: 0.09,
-                    longitudeDelta: 0.035
-                }
+        let initialPosition = {
+            // latitude: position.coords.latitude,
+            // longitude: position.coords.longitude,
+            // latitudeDelta: 0.09,
+            // longitudeDelta: 0.035
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+        }
 
-                this.setState({ initialPosition });
-            },
-            error => Alert.alert(error.message),
-            { enableHighAccuracy: true, timeout: 20000 }
-        )
+        this.setState({ initialPosition });
+        //     },
+        //     error => Alert.alert(error.message),
+        //     { timeout: 20000 }
+        // )
     }
 
     onCarouselItemChange = (index) => {
@@ -123,11 +127,24 @@ export default class CarouselMap extends Component {
         return (
             <View style={styles.container}>
                 <MapView
+                    // provider={PROVIDER_GOOGLE}
+                    // ref={map => this._map = map}
+                    // showsUserLocation={true}
+                    style={styles.map}
+                    initialRegion={{
+                        latitude: 37.78825,
+                        longitude: -122.4324,
+                        latitudeDelta: 0.0922,
+                        longitudeDelta: 0.0421,
+                    }}
+                ></MapView>
+                {/* <MapView
                     provider={PROVIDER_GOOGLE}
                     ref={map => this._map = map}
                     showsUserLocation={true}
                     style={styles.map}
-                    initialRegion={this.state.initialPosition}>
+                    initialRegion={this.state.initialPosition}
+                >
 
                     <Polygon
                         coordinates={this.state.coordinates}
@@ -165,8 +182,8 @@ export default class CarouselMap extends Component {
                     }
 
 
-                </MapView>
-                <Carousel
+                </MapView> */}
+                {/* <Carousel
                     ref={(c) => { this._carousel = c; }}
                     data={this.state.coordinates}
                     containerCustomStyle={styles.carousel}
@@ -175,7 +192,7 @@ export default class CarouselMap extends Component {
                     itemWidth={300}
                     removeClippedSubviews={false}
                     onSnapToItem={(index) => this.onCarouselItemChange(index)}
-                />
+                /> */}
             </View>
         );
     }
@@ -183,6 +200,7 @@ export default class CarouselMap extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         ...StyleSheet.absoluteFillObject
     },
     map: {
@@ -214,4 +232,67 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     }
 });
+// import React, { Component } from 'react';
+// import {
+//     Text,
+//     StyleSheet
+// } from 'react-native';
+// import MapView from 'react-native-maps';
+// //import ClusteredMapView from 'react-native-maps-super-cluster';
+// import image from './flag-pink.png';
+
+// export default class App extends Component<{}> {
+//     render() {
+
+//         const coordinates = [];
+
+//         coordinates.push({
+//             key: 0,
+//             location: {
+//                 longitude: -70.23,
+//                 latitude: -33.23
+//             }
+//         });
+
+//         for (let i = 1; i < 100; i++) {
+
+//             const location = {
+//                 longitude: coordinates[i - 1].location.longitude + (Math.random() * (i % 2 === 0 ? -1 : 1)),
+//                 latitude: coordinates[i - 1].location.latitude + (Math.random() * (i % 2 === 0 ? -1 : 1)),
+//             };
+
+//             coordinates.push({ key: i, location });
+
+//         }
+
+//         return (
+//             <MapView
+//                 renderMarker={renderMarker}
+//                 initialRegion={{
+//                     longitude: -70.23,
+//                     latitude: -33.23,
+//                     latitudeDelta: 9.22,
+//                     longitudeDelta: 4.21,
+//                 }}
+//                 style={StyleSheet.absoluteFillObject}>
+
+//                 { coordinates.map(({ key, location }) => <MapView.Marker key={key} image={image} coordinate={location} />)}
+
+//             </MapView>
+//         );
+//     }
+// }
+
+// function renderMarker({ location }) {
+//     return (
+//         <MapView.Marker
+//             image={image}
+//             coordinate={location}
+//         >
+//             <MapView.Callout>
+//                 <Text>BiG BiG Callout</Text>
+//             </MapView.Callout>
+//         </MapView.Marker>
+//     );
+// }
 

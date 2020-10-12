@@ -19,7 +19,7 @@
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyDAxSGv8uOfgO2FKKLkwR8z-XB-AEOrUGo"/>
       <!-- You will also only need to add this uses-library tag -->
-      <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+      <!-- <uses-library android:name="org.apache.http.legacy" android:required="false"/> -->
 
       <activity
         android:name=".MainActivity"
