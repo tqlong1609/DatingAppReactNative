@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import BottomHalfModel from '/src/components/Model/bottomHalfModel'
 
 export default function imagePicker(props) {
-    const { onPressAdd } = props;
+    const { onPressAdd, t } = props;
     const [urlImage, setUrlImage] = useState(null);
 
     return (
@@ -22,7 +22,7 @@ export default function imagePicker(props) {
                         <TouchableOpacity style={styles.containerIcon} onPress={() => onPressAdd()}>
                             <Icon name="add-outline" size={50} style={styles.icoAdd} />
                         </TouchableOpacity>
-                        <Text style={styles.txtAddPhoto}>Add your photo</Text>
+                        <Text style={styles.txtAddPhoto}>{t("Add your photo")}</Text>
                     </View>)
             }
         </View>

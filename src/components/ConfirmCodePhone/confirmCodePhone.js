@@ -7,20 +7,21 @@ import Themes from '/src/themes'
 import ConfirmInputPhone from '/src/components/UI/confirmInputPhone'
 
 import PropTypes from 'prop-types'
+import { withTranslation } from 'react-i18next';
 
-confirmCodePhone.propTypes = {
+ConfirmCodePhone.propTypes = {
     getCode: PropTypes.func,
     isSuccess: PropTypes.bool,
 }
 
-confirmCodePhone.defaultProps = {
+ConfirmCodePhone.defaultProps = {
     getCode: null,
     isSuccess: null
 }
 
-export default function confirmCodePhone(props) {
+function ConfirmCodePhone(props) {
 
-    const { getCode, isSuccess } = props
+    const { getCode, isSuccess, t } = props
 
     const onChangeCode = (value) => {
         getCode && getCode(value)
@@ -31,7 +32,7 @@ export default function confirmCodePhone(props) {
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
-            <Text style={styles.txtTitle}> Sign In </Text>
+            <Text style={styles.txtTitle}> {t('Sign In')} </Text>
             <View
                 style={styles.inpPhone}>
                 {
@@ -39,26 +40,26 @@ export default function confirmCodePhone(props) {
                     isSuccess !== null && isSuccess &&
                     <Text
                         style={styles.txtInfo}>
-                        Success</Text>
+                        {t('Success')}</Text>
 
                 }
                 {
                     isSuccess !== null && !isSuccess &&
                     <Text
                         style={styles.txtInfo}>
-                        Error</Text>
+                        {t("Error")}</Text>
                 }
                 <ConfirmInputPhone
                     onChangeCode={onChangeCode}
                 />
             </View>
 
-            <Text style={styles.txtOr}> OR </Text>
+            <Text style={styles.txtOr}> {t("OR")} </Text>
             <TouchableOpacity style={styles.btnSignInFB}>
-                <Text style={styles.txtLoginFB}>Login With Facebook</Text>
+                <Text style={styles.txtLoginFB}>{t("Login With Facebook")}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.btnSignInPhone}>
-                <Text style={styles.txtPhone}>Login with E-mail</Text>
+            <TouchableOpacity style={styles.btnSignInEmail}>
+                <Text style={styles.txtPhone}>{t("Sign in with E-mail")}</Text>
             </TouchableOpacity>
         </ScrollView>
     )
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     txtLoginFB: {
         ...Themes.Styles.TextButton
     },
-    btnSignInPhone: {
+    btnSignInEmail: {
         ...Themes.Styles.ButtonBottom,
         width: 200,
     },
@@ -100,3 +101,5 @@ const styles = StyleSheet.create({
         ...Themes.Styles.TextError
     }
 })
+
+export default withTranslation()(ConfirmCodePhone)

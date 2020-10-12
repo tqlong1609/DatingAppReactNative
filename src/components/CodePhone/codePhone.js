@@ -4,10 +4,11 @@ import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons';
 import TextInputPhone from '/src/components/UI/textInputPhone'
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
-export default function codePhone(props) {
+function CodePhone(props) {
 
-    const { onSendCodePhone } = props
+    const { onSendCodePhone, t } = props
 
     const [phoneNumber, setPhoneNumber] = useState('')
 
@@ -24,29 +25,29 @@ export default function codePhone(props) {
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
-            <Text style={styles.txtTitle}> Sign In </Text>
-            <TextInputPhone style={styles.txtPhoneCode} onChangeText={onChangeText} />
+            <Text style={styles.txtTitle}> {t('Sign In')} </Text>
+            <TextInputPhone style={styles.txtPhoneCode} onChangeText={onChangeText} t={t} />
             <TouchableOpacity style={styles.btnSendCode}
                 onPress={() => onSendCode()}
             >
-                <Text style={styles.txtSendCode}>Send code</Text>
+                <Text style={styles.txtSendCode}>{t('Send code')}</Text>
             </TouchableOpacity>
-            <Text style={styles.txtOr}> OR </Text>
+            <Text style={styles.txtOr}> {t('OR')} </Text>
             <TouchableOpacity style={styles.btnSignInFB}>
-                <Text style={styles.txtLoginFB}>Login With Facebook</Text>
+                <Text style={styles.txtLoginFB}>{t("Login With Facebook")}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnSignInEmail}>
-                <Text style={styles.txtSignInEmail}>Login with E-mail</Text>
+                <Text style={styles.txtSignInEmail}>{t('Login with E-mail')}</Text>
             </TouchableOpacity>
         </ScrollView>
     )
 }
 
-codePhone.propTypes = {
+CodePhone.propTypes = {
     onSendCodePhone: PropTypes.func,
 }
 
-codePhone.defaultProps = {
+CodePhone.defaultProps = {
     onSendCodePhone: null
 }
 
@@ -89,3 +90,5 @@ const styles = StyleSheet.create({
         ...Themes.Styles.TextButtonBottom
     }
 })
+
+export default withTranslation()(CodePhone)

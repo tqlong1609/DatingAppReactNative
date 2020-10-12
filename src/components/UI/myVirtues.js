@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 
 let idPrevious = null;
 export default function myVirtues(props) {
-    const { title, dataList } = props;
+    const { title, dataList, t } = props;
 
     const renderItem = useCallback(({ item }) =>
         <ItemList
@@ -76,10 +76,10 @@ export default function myVirtues(props) {
                 <Ionicons name="arrow-back-outline" color={Themes.Colors.PINK_DARK} size={Themes.Const.SIZE_ICON} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnSkip}>
-                <Text style={styles.txtSkip}>Skip</Text>
+                <Text style={styles.txtSkip}>{t("Skip")}</Text>
             </TouchableOpacity>
             <View style={styles.containerContent}>
-                <Text style={styles.txtTitle}>My Virtues</Text>
+                <Text style={styles.txtTitle}>{t("My Virtues")}</Text>
                 <Text style={styles.txtTitle2}>{title}</Text>
                 <FlatList
                     style={styles.listReligious}
@@ -89,7 +89,7 @@ export default function myVirtues(props) {
                 />
             </View>
             <ButtonNext isGradient={!isChoose ? false : true} />
-            <PreferNotSay onCheckPrefer={onCheckPrefer} isReset={isReset} />
+            <PreferNotSay onCheckPrefer={onCheckPrefer} isReset={isReset} t={t} />
         </View>
     )
 }
@@ -97,6 +97,7 @@ export default function myVirtues(props) {
 myVirtues.propTypes = {
     title: PropTypes.string,
     dataList: PropTypes.array,
+    t: PropTypes.func.isRequired,
 }
 
 myVirtues.defaultProps = {

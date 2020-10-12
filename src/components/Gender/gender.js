@@ -4,32 +4,31 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons'
 import ButtonNext from '/src/components/UI/buttonNext'
-export default function birthDay() {
+import { withTranslation } from 'react-i18next'
+function BirthDay(props) {
+    const { t } = props
     const [check, setCheck] = useState(true);
     const onCheck = (isMale) => {
         setCheck(isMale);
     }
-
-
-
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.btnIcon}>
                 <Ionicons name="arrow-back-outline" color={Themes.Colors.PINK_DARK} size={Themes.Const.SIZE_ICON}></Ionicons>
             </TouchableOpacity>
             <View style={styles.containerContent}>
-                <Text style={styles.txtTitle}>Specify your</Text>
-                <Text style={styles.txtTitle2}>Gender</Text>
+                <Text style={styles.txtTitle}>{t("Specify your")}</Text>
+                <Text style={styles.txtTitle2}>{t("Gender")}</Text>
                 <TouchableOpacity style={styles.btnGender}
                     onPress={() => onCheck(true)}
                 >
-                    <Text style={[styles.txtGender, check ? { color: 'black' } : { color: 'gray' }]} >Male</Text>
+                    <Text style={[styles.txtGender, check ? { color: 'black' } : { color: 'gray' }]} >{t("Male")}</Text>
                     {check && <Icon name="checkmark-outline" style={styles.icoCheck} />}
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnGender}
                     onPress={() => onCheck(false)}
                 >
-                    <Text style={[styles.txtGender, !check ? { color: 'black' } : { color: 'gray' }]} >Female</Text>
+                    <Text style={[styles.txtGender, !check ? { color: 'black' } : { color: 'gray' }]} >{t("Female")}</Text>
                     {!check && <Icon name="checkmark-outline" style={styles.icoCheck} />}
                 </TouchableOpacity>
             </View>
@@ -69,3 +68,5 @@ const styles = StyleSheet.create({
 
 
 })
+
+export default withTranslation()(BirthDay)

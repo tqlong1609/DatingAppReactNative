@@ -21,10 +21,10 @@ export function SignInOrUp(props) {
             <View style={styles.boxText}>
                 <Text
                     style={styles.txtTitle}
-                >Find your soul mate</Text>
+                >{t('Find your soul mate')}</Text>
                 <Text
                     style={styles.txtIntro}
-                >Match and chat with people you like from your area</Text>
+                >{t('Match and chat with people you like from your area')}</Text>
                 <TouchableOpacity
                     style={styles.btnLogin}
                     onPress={() => onLogin()}
@@ -34,7 +34,7 @@ export function SignInOrUp(props) {
                 <TouchableOpacity
                     style={styles.btnSignUp}
                 >
-                    <Text style={styles.txtSignUp}>Sign Up</Text>
+                    <Text style={styles.txtSignUp}>{t('Sign Up')}</Text>
                 </TouchableOpacity>
             </View>
         </ScrollView>

@@ -5,7 +5,9 @@ import Themes from '/src/themes'
 import ButtonNext from '/src/components/UI/buttonNext'
 import ImagePicker from '/src/components/UI/imagePicker'
 import BottomHalfModel from '/src/components/Model/bottomHalfModel'
-export default function birthDay() {
+import { withTranslation } from 'react-i18next'
+function Picture(props) {
+    const { t } = props
     const [urlImage, setUrlImage] = useState(null);
     const [isVisible, setIsVisible] = useState(false)
     const onChangeImage = () => {
@@ -29,15 +31,15 @@ export default function birthDay() {
                     size={Themes.Const.SIZE_ICON} />
             </TouchableOpacity>
             <View style={styles.containerContent}>
-                <Text style={styles.txtTitle}>My best</Text>
-                <Text style={styles.txtTitle2}>Picture</Text>
-                <ImagePicker onPressAdd={onPressAdd} />
+                <Text style={styles.txtTitle}>{t("My best")}</Text>
+                <Text style={styles.txtTitle2}>{t("Picture")}</Text>
+                <ImagePicker onPressAdd={onPressAdd} t={t} />
             </View>
             <TouchableOpacity
                 onPress={() => onChangeImage()}
                 style={styles.btnChange}
             >
-                <Text style={styles.txtChange}>Change</Text>
+                <Text style={styles.txtChange}>{t("Change")}</Text>
             </TouchableOpacity>
             <ButtonNext isGradient={true} />
             <BottomHalfModel isVisible={isVisible} setVisibleModel={setVisibleModel} />
@@ -74,3 +76,5 @@ const styles = StyleSheet.create({
 
 
 })
+
+export default withTranslation()(Picture)

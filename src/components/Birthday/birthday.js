@@ -4,20 +4,22 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import ButtonNext from '/src/components/UI/buttonNext'
 import Themes from '/src/themes'
 import DateTimePicker from '/src/components/UI/dateTimePicker'
-export default function birthDay() {
+import { withTranslation } from 'react-i18next'
+function BirthDay(props) {
+    const { t } = props
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.btnIcon}>
                 <Ionicons name="arrow-back-outline" color={Themes.Colors.PINK_DARK} size={Themes.Const.SIZE_ICON}></Ionicons>
             </TouchableOpacity>
             <View style={styles.containerContent}>
-                <Text style={styles.txtTitle}>Enter your</Text>
-                <Text style={styles.txtTitle2}>Birthday</Text>
+                <Text style={styles.txtTitle}>{t("Enter your")}</Text>
+                <Text style={styles.txtTitle2}>{t("Birthday")}</Text>
                 <DateTimePicker
                     style={styles.inpDateTime}
                     styleText={styles.txtDateTime}
                     modeShow={'date'} />
-                <Text style={styles.txtDetail}>Your age will be public</Text>
+                <Text style={styles.txtDetail}>{t("Your age will be public")}</Text>
             </View>
             <ButtonNext isGradient={false} />
 
@@ -48,3 +50,5 @@ const styles = StyleSheet.create({
         ...Themes.Styles.IconBack
     },
 })
+
+export default withTranslation()(BirthDay)

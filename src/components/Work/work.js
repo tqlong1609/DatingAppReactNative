@@ -4,10 +4,10 @@ import PreferNotSay from '/src/components/UI/preferNotSay'
 import ButtonNext from '/src/components/UI/buttonNext'
 import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { withTranslation } from 'react-i18next'
 
-//TODO: split the change login in onCheckPrefer then do the same with other components
-export default function work() {
-
+function Work(props) {
+    const { t } = props
     const [isReset, setIsReset] = useState(false)
     const [isWriting, setIsWriting] = useState(false)
     const [isDisable, setIsDisable] = useState(false)
@@ -40,21 +40,21 @@ export default function work() {
                 <Ionicons name="arrow-back-outline" color={Themes.Colors.PINK_DARK} size={Themes.Const.SIZE_ICON} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnSkip}>
-                <Text style={styles.txtSkip}>Skip</Text>
+                <Text style={styles.txtSkip}>{t("Skip")}</Text>
             </TouchableOpacity>
             <View style={styles.containerContent}>
-                <Text style={styles.txtTitle}>My virtues</Text>
-                <Text style={styles.txtTitle2}>Work</Text>
+                <Text style={styles.txtTitle}>{t("My virtues")}</Text>
+                <Text style={styles.txtTitle2}>{t("Work")}</Text>
                 <TextInput placeholder={'Microsoft'}
                     style={styles.inpWork}
                     keyboardType={'default'}
                     onChangeText={value => onChangeText(value)}
                 />
-                <Text style={styles.txtDetail}>This is how it will appear in datum</Text>
+                <Text style={styles.txtDetail}>{t("This is how it will appear in datum")}</Text>
             </View>
 
             <ButtonNext isGradient={!isWriting ? false : true} />
-            <PreferNotSay onCheckPrefer={onCheckPrefer} isReset={isReset} isDisable={isDisable} />
+            <PreferNotSay onCheckPrefer={onCheckPrefer} isReset={isReset} isDisable={isDisable} t={t} />
         </View>
     )
 }
@@ -86,3 +86,5 @@ const styles = StyleSheet.create({
         ...Themes.Styles.IconSkip
     }
 })
+
+export default withTranslation()(Work)

@@ -4,25 +4,28 @@ import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons';
 import AvatarCircle from 'src/components/UI/avatarCircle.js'
 import TextInputPhone from '/src/components/UI/textInputPhone'
+import { withTranslation } from 'react-i18next';
 
-export default function signUpPhone() {
+function SignUpPhone(props) {
+    const { t, tReady } = props;
+
     return (
 
         <ScrollView>
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
-            <Text style={styles.txtTitle}> Create new account </Text>
+            <Text style={styles.txtTitle}> {t('Create new account')} </Text>
             <AvatarCircle style={styles.avatar} />
-            <TextInput style={styles.inpEnter} placeholder={'First Name'} autoCompleteType={'username'} />
-            <TextInput style={styles.inpEnter} placeholder={'Last Name'} autoCompleteType={'username'} />
-            <TextInputPhone />
+            <TextInput style={styles.inpEnter} placeholder={t('First Name')} autoCompleteType={'username'} />
+            <TextInput style={styles.inpEnter} placeholder={t('Last Name')} autoCompleteType={'username'} />
+            <TextInputPhone t={t} />
             <TouchableOpacity style={styles.btnSendCode}>
-                <Text style={styles.txtSendCode}>Send code</Text>
+                <Text style={styles.txtSendCode}>{t('Send code')}</Text>
             </TouchableOpacity>
-            <Text style={styles.txtOr}> OR </Text>
+            <Text style={styles.txtOr}> {t('OR')} </Text>
             <TouchableOpacity style={styles.btnSignUpEmail}>
-                <Text style={styles.txtSignUpEmail}>Sign up with E-mail</Text>
+                <Text style={styles.txtSignUpEmail}>{t('Sign up with E-mail')}</Text>
             </TouchableOpacity>
         </ScrollView>
     )
@@ -69,3 +72,5 @@ const styles = StyleSheet.create({
 
 
 })
+
+export default withTranslation()(SignUpPhone)

@@ -3,20 +3,22 @@ import { StyleSheet, TouchableOpacity, ScrollView, Text, View, TextInput } from 
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 import ButtonNext from '/src/components/UI/buttonNext'
-export default function emailAddress() {
+import { withTranslation } from 'react-i18next'
+function EmailAddress(props) {
+    const { t } = props
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.btnIcon}>
                 <Ionicons name="arrow-back-outline" color={Themes.Colors.PINK_DARK} size={Themes.Const.SIZE_ICON}></Ionicons>
             </TouchableOpacity>
             <View style={styles.containerContent}>
-                <Text style={styles.txtTitle}>Enter your</Text>
-                <Text style={styles.txtTitle2}>Email address</Text>
-                <TextInput placeholder={'Enter your email address'}
+                <Text style={styles.txtTitle}>{t("Enter your")}</Text>
+                <Text style={styles.txtTitle2}>{t("Email address")}</Text>
+                <TextInput placeholder={t('Enter your email address')}
                     style={styles.inpEmail}
                     keyboardType={'email-address'}
                 />
-                <Text style={styles.txtDetail}>Please enter your email in order to recover your account later</Text>
+                <Text style={styles.txtDetail}>{t("Please enter your email in order to recover your account later")}</Text>
             </View>
             <ButtonNext isGradient={false} />
         </View>
@@ -44,3 +46,5 @@ const styles = StyleSheet.create({
     },
 
 })
+
+export default withTranslation()(EmailAddress)

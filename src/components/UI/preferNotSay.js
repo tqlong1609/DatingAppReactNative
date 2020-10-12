@@ -4,7 +4,7 @@ import Themes from '/src/themes'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import PropTypes from 'prop-types'
 export default function preferNotSay(props) {
-    const { onCheckPrefer, isReset, isDisable } = props;
+    const { onCheckPrefer, isReset, isDisable, t } = props;
     const [isCheck, setIsCheck] = useState(false)
     const onCheck = () => {
         setIsCheck(!isCheck)
@@ -35,7 +35,7 @@ export default function preferNotSay(props) {
                         { color: Themes.Colors.PINK_DARK } :
                         { color: Themes.Colors.GRAY_BRIGHT_I }
                 ]}>
-                Prefer not to say
+                {t("Prefer not to say")}
             </Text>
         </View>
     )
@@ -45,6 +45,7 @@ preferNotSay.propTypes = {
     onCheckPrefer: PropTypes.func,
     setReset: PropTypes.bool,
     isDisable: PropTypes.bool,
+    t: PropTypes.func.isRequired,
 }
 
 preferNotSay.defaultProps = {

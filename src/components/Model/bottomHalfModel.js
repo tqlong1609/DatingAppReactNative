@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native'
-import ExtraDimensions from 'react-native-extra-dimensions-android';
 import Modal from 'react-native-modal';
 import Themes from '/src/themes'
 import Const from '/src/const'
+import { withTranslation } from 'react-i18next';
 
-export default function bottomHalfModel(props) {
-    const { isVisible, setVisibleModel } = props;
+
+function BottomHalfModel(props) {
+    const { isVisible, setVisibleModel, t } = props;
     const onUploadPhoto = () => {
         console.log('object')
     }
@@ -22,13 +23,13 @@ export default function bottomHalfModel(props) {
                 <View style={styles.container}>
                     <View style={styles.containerContent}>
                         <View style={styles.containerHeader}>
-                            <Text style={styles.txtHeader}>Confirm action</Text>
+                            <Text style={styles.txtHeader}>{t('Confirm action')}</Text>
                         </View>
                         <TouchableOpacity style={styles.btnBetweenContent} onPress={() => onUploadPhoto()}>
-                            <Text style={styles.txtContentButton}>Upload photo from gallery</Text>
+                            <Text style={styles.txtContentButton}>{t("Upload photo from gallery")}</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.btnBottomContent}>
-                            <Text style={styles.txtContentButton}>Take photo with camera</Text>
+                            <Text style={styles.txtContentButton}>{t('Take photo with camera')}</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -36,7 +37,7 @@ export default function bottomHalfModel(props) {
                         style={styles.btnCancel}
                         onPress={() => setVisibleModel(false)}
                     >
-                        <Text style={styles.txtCancel}>Cancel</Text>
+                        <Text style={styles.txtCancel}>{t("Cancel")}</Text>
                     </TouchableOpacity>
                 </View>
             </Modal>
@@ -113,3 +114,5 @@ const styles = StyleSheet.create({
         fontSize: FONT_SIZE_BOTTOM
     }
 })
+
+export default withTranslation()(BottomHalfModel)

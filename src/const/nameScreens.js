@@ -8,4 +8,9 @@ export const Chats = "Chats"
 export const Settings = "Settings"
 export const CodePhone = "CodePhone"
 export const MyProfile = "MyProfile"
+export const SignUpPhone = "SignUpPhone"
+export const Religious = "Religious"
+
+
+
 

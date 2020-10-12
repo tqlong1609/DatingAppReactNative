@@ -9,6 +9,8 @@ import Login from '/src/components/Login/login'
 import CodePhone from '/src/components/CodePhone/codePhone.controller'
 import MyProfile from '/src/components/MyProfile/myProfile'
 import BottomNavigation from './bottomNavigation'
+import SignUpPhone from '/src/components/SignUpPhone/signUpPhone'
+import Religious from '/src/components/Religious/religious'
 
 import Const from '/src/const'
 
@@ -50,6 +52,14 @@ export default function screensNavigation() {
                     headerShown: false
                 }}
             >
+                <Stack.Screen
+                    name={Const.NameScreens.Religious}
+                    component={Religious}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.SignUpPhone}
+                    component={SignUpPhone}
+                />
                 <Stack.Screen
                     name={Const.NameScreens.SingInOrUp}
                     component={SingInOrUp}

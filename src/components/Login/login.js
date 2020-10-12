@@ -4,6 +4,8 @@ import {
     TouchableOpacity, StyleSheet
 } from 'react-native'
 
+import { withTranslation } from 'react-i18next';
+
 // import firebase from 'firebase';
 import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -12,7 +14,9 @@ import Themes from '/src/themes'
 import Const from '/src/const'
 import { LoginManager, AccessToken } from "react-native-fbsdk";
 
-export function login(props) {
+function Login(props) {
+    const { t, tReady } = props;
+
     const navigation = useNavigation()
     const onLogin = () => {
     }
@@ -55,24 +59,24 @@ export function login(props) {
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
-            <Text style={styles.txtTitle}> Sign In </Text>
+            <Text style={styles.txtTitle}> {t('Sign In')} </Text>
             <TextInput style={styles.inpEmail} placeholder={'Email'} keyboardType={'email-address'} />
-            <TextInput style={styles.inpPassword} placeholder={'Password'} secureTextEntry={true} />
+            <TextInput style={styles.inpPassword} placeholder={t('Password')} secureTextEntry={true} />
             <TouchableOpacity style={styles.btnSignInEmail}
                 onPress={() => onLogin()}
             >
-                <Text style={styles.txtLoginEmail}>Log In</Text>
+                <Text style={styles.txtLoginEmail}>{t('Log In')}</Text>
             </TouchableOpacity>
-            <Text style={styles.txtOr}> OR </Text>
+            <Text style={styles.txtOr}> {t('OR')} </Text>
             <TouchableOpacity style={styles.btnSignInFB}
                 onPress={() => onLoginFacebook()}
             >
-                <Text style={styles.txtLoginFB}>Login With Facebook</Text>
+                <Text style={styles.txtLoginFB}>{t('Login With Facebook')}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnSignInPhone}
                 onPress={() => onLoginNumberPhone()}
             >
-                <Text style={styles.txtPhone}>Login with phone number</Text>
+                <Text style={styles.txtPhone}>{t('Login with phone number')}</Text>
             </TouchableOpacity>
         </ScrollView>
     )
@@ -124,4 +128,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default login
+export default withTranslation()(Login)
