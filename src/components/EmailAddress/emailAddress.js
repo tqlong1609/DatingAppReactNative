@@ -13,7 +13,7 @@ function EmailAddress(props) {
             </TouchableOpacity>
             <View style={styles.containerContent}>
                 <Text style={styles.txtTitle}>{t("Enter your")}</Text>
-                <Text style={styles.txtTitle2}>{t("Email address")}</Text>
+                <Text style={styles.txtTitle2}>{t("Email Address")}</Text>
                 <TextInput placeholder={t('Enter your email address')}
                     style={styles.inpEmail}
                     keyboardType={'email-address'}
