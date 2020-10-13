@@ -14,10 +14,11 @@ export default function animLottieView(props) {
     )
 }
 
+const SIZE = 200
 const styles = StyleSheet.create({
     container: {
-        width: 300,
-        height: 300,
+        width: SIZE,
+        height: SIZE,
         alignSelf: 'center'
     }
 

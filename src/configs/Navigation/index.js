@@ -12,6 +12,7 @@ import BottomNavigation from './bottomNavigation'
 import SignUpPhone from '/src/components/SignUpPhone/signUpPhone'
 import Religious from '/src/components/Religious/religious'
 import MultiLanguages from '/src/components/MultiLanguages/multiLanguages.controller'
+import Splash from '/src/components/Splash/splash'
 
 import Const from '/src/const'
 
@@ -54,6 +55,14 @@ export default function screensNavigation() {
                 }}
             >
                 <Stack.Screen
+                    name={Const.NameScreens.Splash}
+                    component={Splash}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.Introduction}
+                    component={Introduction}
+                />
+                <Stack.Screen
                     name={"BottomNavigation"}
                     component={BottomNavigation}
                 />
@@ -68,11 +77,6 @@ export default function screensNavigation() {
                 <Stack.Screen
                     name={Const.NameScreens.SingInOrUp}
                     component={SingInOrUp}
-                />
-
-                <Stack.Screen
-                    name={Const.NameScreens.Introduction}
-                    component={Introduction}
                 />
                 <Stack.Screen
                     name={Const.NameScreens.Login}
