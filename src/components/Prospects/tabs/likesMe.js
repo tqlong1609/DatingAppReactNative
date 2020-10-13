@@ -1,15 +1,25 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import EmptyPerform from '/src/components/UI/emptyPerform'
-export default function likesMe() {
+import PropTypes from 'prop-types'
+export default function LikesMe(props) {
+    const { t } = props
     return (
         <View style={styles.container}>
-            <EmptyPerform title={"Liked Me"}
+            <EmptyPerform title={t("Liked Me")}
                 source={require('/src/assets/images/my_heart.png')}
-                description={"Sorry no user has liked your profile yet. Keep your profile fully updated to improve your changes to get liked"}
+                description={t("Description like me")}
             />
         </View>
     )
+}
+
+LikesMe.propTypes = {
+    t: PropTypes.func.isRequired,
+}
+
+LikesMe.defaultProps = {
+
 }
 
 const styles = StyleSheet.create({

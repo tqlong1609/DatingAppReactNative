@@ -1,15 +1,25 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import EmptyPerform from '/src/components/UI/emptyPerform'
-export default function superLikedMe() {
+import PropTypes from 'prop-types'
+export default function SuperLikedMe(props) {
+    const { t } = props
     return (
         <View style={styles.container}>
-            <EmptyPerform title={"SuperLiked Me"}
+            <EmptyPerform title={t("SuperLiked Me")}
                 source={require('/src/assets/images/my_heart.png')}
-                description={"Sorry no user has super-liked you as yet. Keep your profile fully updated to improve your changes to get matched"}
+                description={t("Description super like me")}
             />
         </View>
     )
+}
+
+SuperLikedMe.propTypes = {
+    t: PropTypes.func.isRequired,
+}
+
+SuperLikedMe.defaultProps = {
+
 }
 
 const styles = StyleSheet.create({

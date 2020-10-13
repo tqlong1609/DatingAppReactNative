@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
 import { Container, Header, Left, Body, Right, TabHeading, Icon, Title, ScrollableTab, Tab, Tabs } from 'native-base';
 import Themes from '/src/themes'
 import EmptyPerform from '/src/components/UI/emptyPerform'
+import { withTranslation } from 'react-i18next';
+import PropTypes from 'prop-types'
 
 const data = [
     {
@@ -44,8 +46,8 @@ const data = [
 ]
 
 
-export default function chats() {
-
+function Chats(props) {
+    const { t } = props
     const renderItemAvatarActive = (item, index) => {
         return <View
             style={styles.containerActiveChats}
@@ -76,10 +78,10 @@ export default function chats() {
                 style={Themes.Styles.HeaderBar}
             >
                 <Body>
-                    <Title style={Themes.Styles.TitleBar}>Chat</Title>
+                    <Title style={Themes.Styles.TitleBar}>{t("Chats")}</Title>
                 </Body>
             </Header>
-            <Text style={styles.txtTitle}>Matches</Text>
+            <Text style={styles.txtTitle}>{t("Matches")}</Text>
             <FlatList
                 style={styles.listAvatar}
                 showsHorizontalScrollIndicator={false}
@@ -88,16 +90,21 @@ export default function chats() {
                 renderItem={({ item, index }) => renderItemAvatarActive(item, index)}
                 keyExtractor={item => item.id}
             />
-            <Text style={styles.txtTitle}>Active Chats</Text>
+            <Text style={styles.txtTitle}>{t("Active Chats")}</Text>
             <View style={styles.containerBottom}>
                 <EmptyPerform
                     styleTitle={{ color: Themes.Colors.GRAY_BRIGHT_III }}
-                    title={"You don't have active chats"}
+                    title={t("You don't have active chats")}
                     source={require('/src/assets/images/oval-empty-outlined-speech-bubble.png')}
                 />
             </View>
         </Container>
     )
+}
+
+
+Chats.propTypes = {
+    t: PropTypes.func.isRequired,
 }
 
 const MARGIN = 20
@@ -144,3 +151,5 @@ const styles = StyleSheet.create({
         height: '60%'
     }
 })
+
+export default withTranslation()(Chats)

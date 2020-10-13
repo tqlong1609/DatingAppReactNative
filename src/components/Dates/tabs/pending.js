@@ -1,18 +1,26 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import EmptyPerform from '/src/components/UI/emptyPerform'
+import PropTypes from 'prop-types'
 
-export default function pending() {
+function Pending(props) {
+    const { t } = props
     return (
         <View style={styles.container}>
             <EmptyPerform
-                title={"You have no pending dates"}
+                title={t("You have no pending dates")}
                 source={require('/src/assets/images/broke.png')}
-                description={"Please schedule a date with one of your matches"}
+                description={t("Description Pending")}
             />
         </View>
     )
 }
+
+Pending.propTypes = {
+    t: PropTypes.func.isRequired,
+}
+
+export default Pending
 
 const styles = StyleSheet.create({
     container: {

@@ -3,9 +3,11 @@ import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
 import ButtonNext from '/src/components/UI/buttonNext'
 import Themes from '/src/themes'
 import ButtonItemEdit from '/src/components/UI/buttonItemEdit'
+import { withTranslation } from 'react-i18next'
 
 //TODO: About you
-export default function myProfile() {
+function MyProfile(props) {
+    const { t } = props
     return (
         <View style={{ flex: 1 }}>
             <ScrollView
@@ -18,34 +20,34 @@ export default function myProfile() {
                 />
                 <View style={styles.containerItem}>
                     <Text style={styles.txtTitle}>Trần Long, 21 </Text>
-                    <ButtonItemEdit title={"Gender"} content={"Male"} />
-                    <ButtonItemEdit title={"Age"} content={"18"} />
-                    <ButtonItemEdit title={"Phone"} content={"+84966712391"} />
+                    <ButtonItemEdit title={t("Gender")} content={"Male"} />
+                    <ButtonItemEdit title={t("Age")} content={"18"} />
+                    <ButtonItemEdit title={t("Phone")} content={"+84966712391"} />
                     <ButtonItemEdit title={"Email"} content={"tqlong1609@gmail.com"} />
-                    <ButtonItemEdit title={"Location"} content={"Ho Chi Minh, VietNam"} isUnderline={true} />
+                    <ButtonItemEdit title={t("Location")} content={"Ho Chi Minh, VietNam"} isUnderline={true} />
                 </View>
                 <View style={styles.containerItem}>
-                    <Text style={styles.txtTitle}>My Virtues </Text>
-                    <ButtonItemEdit title={"Religious beliefs"} content={"Hindu"} />
-                    <ButtonItemEdit title={"Work"} content={"Appscrip"} />
-                    <ButtonItemEdit title={"Job"} content={"Ceo"} />
-                    <ButtonItemEdit title={"Education"} content={"Engineer"} />
-                    <ButtonItemEdit title={"Politics"} content={"Liberal"} />
-                    <ButtonItemEdit title={"Hightest level Attended"} content={"Under Graduation"} isUnderline={true}
+                    <Text style={styles.txtTitle}>{t("My Virtues")} </Text>
+                    <ButtonItemEdit title={t("Religious beliefs")} content={"Hindu"} />
+                    <ButtonItemEdit title={t("Work")} content={"Appscrip"} />
+                    <ButtonItemEdit title={t("Job")} content={"Ceo"} />
+                    <ButtonItemEdit title={t("Education")} content={"Engineer"} />
+                    <ButtonItemEdit title={t("Politics")} content={"Liberal"} />
+                    <ButtonItemEdit title={t("Hightest level Attended")} content={"Under Graduation"} isUnderline={true}
                         styleContent={{ width: 100 }}
                     />
                 </View>
                 <View style={styles.containerItem}>
-                    <Text style={styles.txtTitle}>My Vitals </Text>
-                    <ButtonItemEdit title={"Ethnicity"} content={"American Indian"} />
-                    <ButtonItemEdit title={"Kids"} content={"Don't have kids"} />
-                    <ButtonItemEdit title={"Family Plans"} content={"NA"} />
-                    <ButtonItemEdit title={"Height"} content={"NA"} isUnderline={true} />
+                    <Text style={styles.txtTitle}>{t("My Vitals")} </Text>
+                    <ButtonItemEdit title={t("Ethnicity")} content={"American Indian"} />
+                    <ButtonItemEdit title={t("Kids")} content={"Don't have kids"} />
+                    <ButtonItemEdit title={t("Family Plans")} content={"NA"} />
+                    <ButtonItemEdit title={t("Height")} content={"NA"} isUnderline={true} />
                 </View>
                 <View style={styles.containerItem}>
-                    <Text style={styles.txtTitle}>My Vices </Text>
-                    <ButtonItemEdit title={"Drinking"} content={"NA"} />
-                    <ButtonItemEdit title={"Smoking"} content={"NA"} isUnderline={true} />
+                    <Text style={styles.txtTitle}>{t("My Vices")} </Text>
+                    <ButtonItemEdit title={t("Drinking")} content={"NA"} />
+                    <ButtonItemEdit title={t("Smoking")} content={"NA"} isUnderline={true} />
                 </View>
                 <View style={{ height: 100 }}></View>
             </ScrollView>
@@ -54,6 +56,8 @@ export default function myProfile() {
 
     )
 }
+
+export default withTranslation()(MyProfile)
 
 const styles = StyleSheet.create({
     txtTitle: {

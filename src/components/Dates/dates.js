@@ -6,22 +6,21 @@ import Themes from '/src/themes'
 import Pending from './tabs/pending'
 import PastDated from './tabs/pastDated'
 import UpComing from './tabs/upComing'
+import { withTranslation } from 'react-i18next';
 
-export default function dates() {
+function Dates(props) {
+    const { t } = props
     return (
         <Container>
             <Header hasTabs
                 style={Themes.Styles.HeaderBar}
             >
                 <Body>
-                    <Title style={Themes.Styles.TitleBar}>Dates</Title>
+                    <Title style={Themes.Styles.TitleBar}>{t("Dates")}</Title>
                 </Body>
             </Header>
             <Tabs
                 tabBarUnderlineStyle={styles.underlineStyle}
-            // renderTabBar={() => <ScrollableTab
-            //     underlineStyle={styles.underlineStyle}
-            // />}
             >
                 <Tab
                     textStyle={styles.textStyle}
@@ -29,7 +28,7 @@ export default function dates() {
                     activeTabStyle={styles.activeTabStyle}
                     activeTextStyle={styles.activeTextStyle}
                     heading="Pending">
-                    <Pending />
+                    <Pending t={t} />
                 </Tab>
                 <Tab
                     textStyle={styles.textStyle}
@@ -37,7 +36,7 @@ export default function dates() {
                     activeTabStyle={styles.activeTabStyle}
                     activeTextStyle={styles.activeTextStyle}
                     heading="Past Dated">
-                    <PastDated />
+                    <PastDated t={t} />
                 </Tab>
                 <Tab
                     textStyle={styles.textStyle}
@@ -45,7 +44,7 @@ export default function dates() {
                     activeTabStyle={styles.activeTabStyle}
                     activeTextStyle={styles.activeTextStyle}
                     heading="Upcoming">
-                    <UpComing />
+                    <UpComing t={t} />
                 </Tab>
             </Tabs>
         </Container>
@@ -72,3 +71,5 @@ const styles = StyleSheet.create({
         ...Themes.Styles.TabHeader
     }
 })
+
+export default withTranslation()(Dates)

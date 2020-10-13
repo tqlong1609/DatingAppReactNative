@@ -4,7 +4,9 @@ import ImageSwipe from '/src/components/UI/imageSwipe'
 import Themes from '/src/themes'
 import ButtonStatus from '/src/components/UI/buttonStatus'
 import SwitchGrid from '/src/components/UI/switchGrid'
-export default function discover() {
+import { withTranslation } from 'react-i18next'
+function Discover(props) {
+    const { t } = props
     const onPressBack = () => {
         console.log('object')
     }
@@ -14,7 +16,7 @@ export default function discover() {
                 <SwitchGrid style={{ marginTop: 10 }} />
             </View>
             <View style={styles.containSwipe} >
-                <ImageSwipe />
+                <ImageSwipe t={t} />
             </View>
             <View style={styles.containFooter}>
                 <ButtonStatus
@@ -66,3 +68,5 @@ const styles = StyleSheet.create({
         marginBottom: 10
     }
 })
+
+export default withTranslation()(Discover)

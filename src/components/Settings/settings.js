@@ -5,8 +5,10 @@ import Themes from '/src/themes'
 import Const from '/src/const'
 import { useNavigation } from '@react-navigation/native';
 import ButtonSettingItem from '/src/components/UI/buttonSettingItem'
+import { withTranslation } from 'react-i18next';
 
-export default function settings() {
+function Settings(props) {
+    const { t } = props
     const navigation = useNavigation()
     const onPressMyProfile = () => {
         navigation.navigate(Const.NameScreens.MyProfile)
@@ -21,7 +23,7 @@ export default function settings() {
             >
                 <View style={styles.containerInfor}>
                     <Text style={styles.txtInfo}>Trần Long, 21</Text>
-                    <Text style={styles.txtGender}>Male</Text>
+                    <Text style={styles.txtGender}>{t("Male")}</Text>
                 </View>
                 <Image
                     style={styles.imgAvatar}
@@ -30,24 +32,25 @@ export default function settings() {
             <ButtonSettingItem
                 onPressItem={() => onPressMyProfile()}
                 isUnderline={true}
-                title={"My Profile"} nameIonIcons={"person-outline"} />
+                title={t("My Profile")} nameIonIcons={"person-outline"} />
             <ButtonSettingItem
                 isUnderline={true}
-                title={"My Albums"} nameIonIcons={"images-outline"} />
+                title={t("My Albums")} nameIonIcons={"images-outline"} />
             <ButtonSettingItem
                 isUnderline={true}
-                title={"My Preferences"} nameIonIcons={"people-outline"} />
+                title={t("My Preferences")} nameIonIcons={"people-outline"} />
             <ButtonSettingItem
                 isUnderline={true}
-                title={"Change Languages"} nameIonIcons={"swap-horizontal-outline"} />
+                title={t("Change Languages")} nameIonIcons={"swap-horizontal-outline"} />
             <ButtonSettingItem
                 isUnderline={false}
-                title={"Logout"} nameIonIcons={"log-out-outline"} />
-
+                title={t("Logout")} nameIonIcons={"log-out-outline"} />
         </Container>
-
     )
 }
+
+export default withTranslation()(Settings)
+
 const SIZE = 100
 const MARGIN = 10
 const styles = StyleSheet.create({

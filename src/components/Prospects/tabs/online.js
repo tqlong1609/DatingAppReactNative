@@ -1,16 +1,26 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import EmptyPerform from '/src/components/UI/emptyPerform'
-export default function online() {
+import PropTypes from 'prop-types'
+export default function Online(props) {
+    const { t } = props
     return (
         <View style={styles.container}>
             <EmptyPerform
-                title={"Online"}
+                title={t("Online")}
                 source={require('/src/assets/images/my_heart.png')}
-                description={"Sorry no potential matches are currently online"}
+                description={t("Description online")}
             />
         </View>
     )
+}
+
+Online.propTypes = {
+    t: PropTypes.func.isRequired,
+}
+
+Online.defaultProps = {
+
 }
 
 const styles = StyleSheet.create({

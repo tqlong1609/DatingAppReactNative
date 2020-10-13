@@ -84,9 +84,8 @@ const TabSwipe = (props) => {
 }
 export default class ImageSwipe extends React.Component {
 
-    constructor() {
-        super()
-
+    constructor(props) {
+        super(props)
         this.position = new Animated.ValueXY()
         this.state = {
             currentIndex: 0,
@@ -214,6 +213,7 @@ export default class ImageSwipe extends React.Component {
         })
     }
     renderUsers = () => {
+        const { t } = this.props
         let length
         if (this.state.currentIndex < dataImage.length) {
             length = dataImage[this.state.currentIndex].arrUri.length
@@ -230,18 +230,17 @@ export default class ImageSwipe extends React.Component {
                 return (
                     <Animated.View
                         {...this.PanResponder.panHandlers}
-                        key={item.id} style={[this.rotateAndTranslate, { height: '100%', width: '100%', padding: 10, position: 'absolute' }]}>
-                        <Animated.View style={{ opacity: this.likeOpacity, transform: [{ rotate: '-30deg' }], position: 'absolute', top: 50, left: 40, zIndex: 1000 }}>
-                            <Text style={{ borderWidth: 1, borderColor: 'green', color: 'green', fontSize: 32, fontWeight: '800', padding: 10 }}>LIKE</Text>
-
+                        key={item.id} style={[this.rotateAndTranslate, styles.containerAnim]}>
+                        <Animated.View style={[{ opacity: this.likeOpacity }, styles.animLike]}>
+                            <Text style={styles.txtLike}>{t("LIKE")}</Text>
                         </Animated.View>
 
-                        <Animated.View style={{ opacity: this.dislikeOpacity, transform: [{ rotate: '30deg' }], position: 'absolute', top: 50, right: 40, zIndex: 1000 }}>
-                            <Text style={{ borderWidth: 1, borderColor: 'red', color: 'red', fontSize: 32, fontWeight: '800', padding: 10 }}>NOPE</Text>
+                        <Animated.View style={[{ opacity: this.dislikeOpacity }, styles.animNope]}>
+                            <Text style={styles.txtNope}>{t("NOPE")}</Text>
                         </Animated.View>
                         <TabSwipe length={length} currentIndexPicture={this.state.currentIndexPicture} />
                         <Image
-                            style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
+                            style={styles.imgSwipe}
                             source={{ uri: item.arrUri[this.state.currentIndexPicture] }} />
                     </Animated.View>
                 )
@@ -252,19 +251,17 @@ export default class ImageSwipe extends React.Component {
                         key={item.id} style={[{
                             opacity: this.nextCardOpacity,
                             transform: [{ scale: this.nextCardScale }],
-                            height: '100%', width: '100%', padding: 10, position: 'absolute'
-                        }]}>
-                        <Animated.View style={{ opacity: 0, transform: [{ rotate: '-30deg' }], position: 'absolute', top: 50, left: 40, zIndex: 1000 }}>
-                            <Text style={{ borderWidth: 1, borderColor: 'green', color: 'green', fontSize: 32, fontWeight: '800', padding: 10 }}>LIKE</Text>
-
+                        }, styles.containerAnim]}>
+                        <Animated.View style={[{ opacity: 0 }, styles.animLike]}>
+                            <Text style={styles.txtLike}>{t("LIKE")}</Text>
                         </Animated.View>
 
-                        <Animated.View style={{ opacity: 0, transform: [{ rotate: '30deg' }], position: 'absolute', top: 50, right: 40, zIndex: 1000 }}>
-                            <Text style={{ borderWidth: 1, borderColor: 'red', color: 'red', fontSize: 32, fontWeight: '800', padding: 10 }}>NOPE</Text>
+                        <Animated.View style={[{ opacity: 0 }, styles.animNope]}>
+                            <Text style={styles.txtNope}>{t("NOPE")}</Text>
                         </Animated.View>
                         <TabSwipe length={length} currentIndexPicture={0} />
                         <Image
-                            style={{ height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20 }}
+                            style={styles.imgSwipe}
                             source={{ uri: item.arrUri[0] }} />
                     </Animated.View>
                 )
@@ -286,6 +283,24 @@ export default class ImageSwipe extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    imgSwipe: {
+        height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20
+    },
+    txtNope: {
+        borderWidth: 1, borderColor: 'red', color: 'red', fontSize: 32, fontWeight: '800', padding: 10
+    },
+    animNope: {
+        transform: [{ rotate: '30deg' }], position: 'absolute', top: 50, right: 40, zIndex: 1000
+    },
+    txtLike: {
+        borderWidth: 1, borderColor: 'green', color: 'green', fontSize: 32, fontWeight: '800', padding: 10
+    },
+    animLike: {
+        transform: [{ rotate: '-30deg' }], position: 'absolute', top: 50, left: 40, zIndex: 1000
+    },
+    containerAnim: {
+        height: '100%', width: '100%', padding: 10, position: 'absolute'
+    },
     container: {
         backgroundColor: '#fff',
         alignItems: 'center',

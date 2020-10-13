@@ -9,16 +9,18 @@ import SuperLikedMe from './tabs/superLikedMe'
 import LikesMe from './tabs/likesMe'
 import MySuperLiked from './tabs/mySuperLiked'
 import MyLikes from './tabs/myLikes'
+import { withTranslation } from 'react-i18next';
 
 
-export default function prospects() {
+function Prospects(props) {
+    const { t } = props
     return (
         <Container>
             <Header hasTabs
                 style={Themes.Styles.HeaderBar}
             >
                 <Body>
-                    <Title style={Themes.Styles.TitleBar}>Prospects</Title>
+                    <Title style={Themes.Styles.TitleBar}>{t("Prospects")}</Title>
                 </Body>
             </Header>
             <Tabs
@@ -31,40 +33,40 @@ export default function prospects() {
                     tabStyle={styles.tabStyle}
                     activeTabStyle={styles.activeTabStyle}
                     activeTextStyle={styles.activeTextStyle}
-                    heading="Online">
-                    <Online />
+                    heading={"Online"}>
+                    <Online t={t} />
                 </Tab>
                 <Tab
                     textStyle={styles.textStyle}
                     tabStyle={styles.tabStyle}
                     activeTabStyle={styles.activeTabStyle}
                     activeTextStyle={styles.activeTextStyle}
-                    heading="SuperLikedMe">
-                    <SuperLikedMe />
+                    heading={"SuperLikedMe"}>
+                    <SuperLikedMe t={t} />
                 </Tab>
                 <Tab
                     textStyle={styles.textStyle}
                     tabStyle={styles.tabStyle}
                     activeTabStyle={styles.activeTabStyle}
                     activeTextStyle={styles.activeTextStyle}
-                    heading="LikesMe">
-                    <LikesMe />
+                    heading={"LikesMe"}>
+                    <LikesMe t={t} />
                 </Tab>
                 <Tab
                     textStyle={styles.textStyle}
                     tabStyle={styles.tabStyle}
                     activeTabStyle={styles.activeTabStyle}
                     activeTextStyle={styles.activeTextStyle}
-                    heading="MySuperLiked">
-                    <MySuperLiked />
+                    heading={"MySuperLiked"}>
+                    <MySuperLiked t={t} />
                 </Tab>
                 <Tab
                     textStyle={styles.textStyle}
                     tabStyle={styles.tabStyle}
                     activeTabStyle={styles.activeTabStyle}
                     activeTextStyle={styles.activeTextStyle}
-                    heading="MyLikes">
-                    <MyLikes />
+                    heading={"MyLikes"}>
+                    <MyLikes t={t} />
                 </Tab>
             </Tabs>
         </Container>
@@ -92,3 +94,5 @@ const styles = StyleSheet.create({
         ...Themes.Styles.TabHeader
     }
 })
+
+export default withTranslation()(Prospects)

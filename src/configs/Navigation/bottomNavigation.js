@@ -13,6 +13,7 @@ import Chats from '/src/components/Chats/chats'
 import Settings from '/src/components/Settings/settings'
 
 import Const from '/src/const'
+import { withTranslation } from 'react-i18next';
 
 const Tab = createMaterialBottomTabNavigator();
 const theme = {
@@ -24,7 +25,8 @@ const theme = {
         // accent: 'green',
     },
 }
-export default function MyTabs() {
+function MyTabs(props) {
+    const { t } = props
     return (
         <PaperProvider theme={theme}>
             <Tab.Navigator
@@ -36,7 +38,7 @@ export default function MyTabs() {
                     name={Const.NameScreens.Discover}
                     component={Discover}
                     options={{
-                        tabBarLabel: Const.NameScreens.Discover,
+                        tabBarLabel: t(Const.NameScreens.Discover),
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="magnify" color={color} size={26} />
                         ),
@@ -46,7 +48,7 @@ export default function MyTabs() {
                     name={Const.NameScreens.Prospects}
                     component={Prospects}
                     options={{
-                        tabBarLabel: Const.NameScreens.Prospects,
+                        tabBarLabel: t(Const.NameScreens.Prospects),
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="heart-outline" color={color} size={26} />
                         ),
@@ -56,7 +58,7 @@ export default function MyTabs() {
                     name={Const.NameScreens.Dates}
                     component={Dates}
                     options={{
-                        tabBarLabel: Const.NameScreens.Dates,
+                        tabBarLabel: t(Const.NameScreens.Dates),
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="human-female-female" color={color} size={26} />
                         ),
@@ -66,7 +68,7 @@ export default function MyTabs() {
                     name={Const.NameScreens.Chats}
                     component={Chats}
                     options={{
-                        tabBarLabel: Const.NameScreens.Chats,
+                        tabBarLabel: t(Const.NameScreens.Chats),
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="chat-processing-outline" color={color} size={26} />
                         ),
@@ -76,7 +78,7 @@ export default function MyTabs() {
                     name={Const.NameScreens.Settings}
                     component={Settings}
                     options={{
-                        tabBarLabel: Const.NameScreens.Settings,
+                        tabBarLabel: t(Const.NameScreens.Settings),
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="cog-outline" color={color} size={26} />
                         ),
@@ -88,3 +90,4 @@ export default function MyTabs() {
     );
 }
 
+export default withTranslation()(MyTabs)

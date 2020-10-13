@@ -27,7 +27,7 @@ export default function avatarCircle(props) {
     )
 }
 
-avatarCircle.prototype = {
+avatarCircle.propTypes = {
     url: PropTypes.string,
 }
 
