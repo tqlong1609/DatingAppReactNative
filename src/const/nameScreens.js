@@ -10,6 +10,8 @@ export const CodePhone = "CodePhone"
 export const MyProfile = "MyProfile"
 export const SignUpPhone = "SignUpPhone"
 export const Religious = "Religious"
+export const MultiLanguages = "MultiLanguages"
+
 
 
 

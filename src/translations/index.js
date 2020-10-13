@@ -1,4 +1,5 @@
 import * as RNLocalize from 'react-native-localize';
+import i18nLocale from './i18n'
 import i18n from 'i18n-js';
 import memoize from 'lodash.memoize';
 
@@ -8,6 +9,10 @@ const translationGetters = {
   en: () => require('./en.json'),
   vi: () => require('./vi.json'),
 };
+
+export const changeLanguage = (code) => {
+  i18nLocale.changeLanguage(code);
+}
 
 export const translate = memoize(
   (key, config) => i18n.t(key, config),

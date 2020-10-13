@@ -11,6 +11,7 @@ import MyProfile from '/src/components/MyProfile/myProfile'
 import BottomNavigation from './bottomNavigation'
 import SignUpPhone from '/src/components/SignUpPhone/signUpPhone'
 import Religious from '/src/components/Religious/religious'
+import MultiLanguages from '/src/components/MultiLanguages/multiLanguages.controller'
 
 import Const from '/src/const'
 
@@ -85,7 +86,10 @@ export default function screensNavigation() {
                     name={Const.NameScreens.MyProfile}
                     component={MyProfile}
                 />
-
+                <Stack.Screen
+                    name={Const.NameScreens.MultiLanguages}
+                    component={MultiLanguages}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     )

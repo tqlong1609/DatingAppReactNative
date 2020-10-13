@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 export default function ItemsReligious(props) {
     const { item, onPressItem } = props;
     const { id, name, isClick } = item;
-    // console.log("ItemsReligious -> isClick", isClick)
+
     return (
         <TouchableOpacity
             style={styles.containerReligious}
@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     txtReligious: {
-        fontSize: 20,
-
+        fontSize: Themes.Const.SIZE_TEXT_ITEM,
     },
     icoCheck: {
         color: Themes.Colors.PINK_DARK,

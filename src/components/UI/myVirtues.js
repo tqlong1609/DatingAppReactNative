@@ -37,12 +37,10 @@ export default function myVirtues(props) {
         const dataTemp = [...data];
         const objIndex = dataTemp.findIndex(({ id }) => id === item.id)
         dataTemp[objIndex].isClick = true;
-        console.log("onPressItem -> dataTemp[objIndex]", dataTemp[objIndex])
         if (idPrevious !== null && idPrevious !== item.id) {
             dataTemp[idPrevious].isClick = false;
         }
         idPrevious = objIndex;
-        console.log("onPressItem -> dataTemp", dataTemp)
         setData(dataTemp);
         setIsReset(true) // reset click onCheckPrefer
         setIsChoose(true) // true: buttonNext active

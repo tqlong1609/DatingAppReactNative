@@ -13,6 +13,11 @@ function Settings(props) {
     const onPressMyProfile = () => {
         navigation.navigate(Const.NameScreens.MyProfile)
     }
+
+    const onPressMultiLanguages = () => {
+        navigation.navigate(Const.NameScreens.MultiLanguages)
+    }
+
     return (
         <Container style={styles.container}>
             <Header hasTabs
@@ -40,6 +45,7 @@ function Settings(props) {
                 isUnderline={true}
                 title={t("My Preferences")} nameIonIcons={"people-outline"} />
             <ButtonSettingItem
+                onPressItem={() => onPressMultiLanguages()}
                 isUnderline={true}
                 title={t("Change Languages")} nameIonIcons={"swap-horizontal-outline"} />
             <ButtonSettingItem
