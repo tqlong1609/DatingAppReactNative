@@ -2,12 +2,23 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import Themes from '/src/themes'
 export default function ItemListCountry(props) {
-    const { item, onPressItem } = props
-    const { country, id, source, isClick } = item
+    const { item, onPressItem, code, index, indexClick } = props
+    const { country, id, source } = item
+    let isClick = false
+    if (indexClick === null && code === item.code) {
+        isClick = true
+    }
+    else {
+        if (index === indexClick) {
+            isClick = true
+        } else {
+            isClick = false
+        }
+    }
     return (
         <TouchableOpacity
             disabled={isClick ? true : false}
-            onPress={() => onPressItem(item)}
+            onPress={() => onPressItem && onPressItem(item, index)}
             style={styles.container}>
 
             <View style={styles.header}>

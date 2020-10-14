@@ -5,6 +5,8 @@ import AnimLottieView from '/src/components/UI/animLottieView'
 import Const from '/src/const'
 import Themes from '/src/themes'
 import { readStorage, saveStorage, clearStorage } from '/src/configs/AsyncStorage'
+import { changeLanguage } from '/src/translations'
+
 export default function Splash(props) {
     const navigation = useNavigation()
 
@@ -13,6 +15,7 @@ export default function Splash(props) {
             const data = await readStorage(Const.StorageKey.CODE_LANGUAGES)
             console.log("run -> data", data)
             if (data !== null && data !== undefined) {
+                changeLanguage(data)
                 navigation.navigate(Const.NameScreens.Introduction)
             } else {
                 saveStorage(Const.StorageKey.CODE_LANGUAGES, 'en')
