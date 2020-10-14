@@ -4,13 +4,26 @@ import { StyleSheet, Text, View } from 'react-native'
 import AnimLottieView from '/src/components/UI/animLottieView'
 import Const from '/src/const'
 import Themes from '/src/themes'
+import AsyncStorage from '@react-native-community/async-storage'
 export default function Splash(props) {
     const navigation = useNavigation()
     // const [isLoading, setIsLoading] = useState(true)
+    const saveData = async () => {
+        try {
+            await AsyncStorage.setItem(Const.StorageKey.STORAGE_KEY, "Test")
+            alert('Data successfully saved')
+        } catch (e) {
+            alert(e)
+        }
+    }
 
     const getData = () => {
         return new Promise((resolve) =>
-            setTimeout(() => resolve("hellow"), 2000))
+            setTimeout(() => {
+                saveData()
+                resolve("hellow")
+            }
+                , 2000))
     }
 
     useEffect(() => {

@@ -7,6 +7,7 @@ import * as Ethnicity from './dataEthnicity'
 import * as Kids from './dataKids'
 import * as FamilyPlans from './dataFamilyPlans'
 import * as NameScreens from './nameScreens'
+import * as StorageKey from './storageKey'
 
 
 const Const = {
@@ -18,7 +19,8 @@ const Const = {
     Ethnicity,
     Kids,
     FamilyPlans,
-    NameScreens
+    NameScreens,
+    StorageKey
 }
 
 export default Const;
