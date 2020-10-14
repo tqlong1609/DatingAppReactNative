@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Image, View } from 'react-native'
 import Themes from '/src/themes'
 import Onboarding from 'react-native-onboarding-swiper';
-
+import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native';
 
 import Const from '/src/const'
