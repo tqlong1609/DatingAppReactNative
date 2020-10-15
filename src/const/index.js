@@ -8,7 +8,7 @@ import * as Kids from './dataKids'
 import * as FamilyPlans from './dataFamilyPlans'
 import * as NameScreens from './nameScreens'
 import * as StorageKey from './storageKey'
-
+import * as GifPhyKey from './gifphyKey'
 
 const Const = {
     Common,
@@ -20,7 +20,8 @@ const Const = {
     Kids,
     FamilyPlans,
     NameScreens,
-    StorageKey
+    StorageKey,
+    GifPhyKey
 }
 
 export default Const;
