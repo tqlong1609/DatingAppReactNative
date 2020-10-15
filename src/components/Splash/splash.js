@@ -16,9 +16,10 @@ export default function Splash(props) {
             console.log("run -> data", data)
             if (data !== null && data !== undefined) {
                 changeLanguage(data)
-                navigation.navigate(Const.NameScreens.Introduction)
+                navigation.navigate(Const.NameScreens.BottomNavigation)
             } else {
                 saveStorage(Const.StorageKey.CODE_LANGUAGES, 'en')
+                navigation.navigate(Const.NameScreens.BottomNavigation)
             }
         }
         setTimeout(

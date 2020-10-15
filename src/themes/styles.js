@@ -1,6 +1,17 @@
 import * as Const from './const'
 import * as Colors from './colors'
 
+export const TextHeader = {
+    marginLeft: 15, position: 'absolute', bottom: 5,
+    fontSize: 16,
+    fontWeight: 'bold'
+}
+
+export const TextContent = {
+    justifyContent: 'center',
+    marginLeft: 15,
+    height: 50
+}
 export const TextInput = {
     borderWidth: 1,
     marginHorizontal: Const.MARGIN_HORIZONTAL,

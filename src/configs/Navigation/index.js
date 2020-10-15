@@ -63,7 +63,7 @@ export default function screensNavigation() {
                     component={Introduction}
                 />
                 <Stack.Screen
-                    name={"BottomNavigation"}
+                    name={Const.NameScreens.BottomNavigation}
                     component={BottomNavigation}
                 />
                 <Stack.Screen

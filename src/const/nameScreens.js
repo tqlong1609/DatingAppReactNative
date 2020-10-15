@@ -12,6 +12,8 @@ export const SignUpPhone = "SignUpPhone"
 export const Religious = "Religious"
 export const MultiLanguages = "MultiLanguages"
 export const Splash = "Splash"
+export const BottomNavigation = "BottomNavigation"
+
 
 
 
