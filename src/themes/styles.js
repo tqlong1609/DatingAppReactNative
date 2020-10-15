@@ -1,6 +1,18 @@
 import * as Const from './const'
 import * as Colors from './colors'
 
+export const TitleCard = {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.PINK
+}
+
+export const Card = {
+    backgroundColor: 'white', marginHorizontal: 15, height: 100,
+    paddingHorizontal: 10,
+    ...shadowButton
+}
+
 export const TextHeader = {
     marginLeft: 15, position: 'absolute', bottom: 5,
     fontSize: 16,

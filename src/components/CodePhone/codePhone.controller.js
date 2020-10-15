@@ -28,8 +28,7 @@ export default function CodePhoneController() {
         console.log('confirmCode')
         confirm.confirm(code)
             .then(
-                // user => console.log("user", user)
-                console.log('success')
+                user => console.log("user", user)
             )
             .catch(
                 error => console.log("error", error)

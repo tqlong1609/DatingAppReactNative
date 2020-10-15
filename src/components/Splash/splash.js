@@ -9,17 +9,16 @@ import { changeLanguage } from '/src/translations'
 
 export default function Splash(props) {
     const navigation = useNavigation()
-
     useEffect(() => {
         const run = async () => {
             const data = await readStorage(Const.StorageKey.CODE_LANGUAGES)
             console.log("run -> data", data)
             if (data !== null && data !== undefined) {
                 changeLanguage(data)
-                navigation.navigate(Const.NameScreens.BottomNavigation)
+                navigation.navigate(Const.NameScreens.Introduction)
             } else {
                 saveStorage(Const.StorageKey.CODE_LANGUAGES, 'en')
-                navigation.navigate(Const.NameScreens.BottomNavigation)
+                navigation.navigate(Const.NameScreens.Introduction)
             }
         }
         setTimeout(

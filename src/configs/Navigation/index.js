@@ -13,6 +13,7 @@ import SignUpPhone from '/src/components/SignUpPhone/signUpPhone'
 import Religious from '/src/components/Religious/religious'
 import MultiLanguages from '/src/components/MultiLanguages/multiLanguages.controller'
 import Splash from '/src/components/Splash/splash'
+import MyPreferences from '/src/components/MyPreferences/myPreferences'
 
 import Const from '/src/const'
 
@@ -54,6 +55,10 @@ export default function screensNavigation() {
                     headerShown: false
                 }}
             >
+                <Stack.Screen
+                    name={Const.NameScreens.MyPreferences}
+                    component={MyPreferences}
+                />
                 <Stack.Screen
                     name={Const.NameScreens.Splash}
                     component={Splash}
