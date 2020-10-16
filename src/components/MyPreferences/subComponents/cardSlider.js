@@ -8,14 +8,26 @@ import CustomMarker from '/src/components/UI/CustomMarker'
 import Const from '/src/const'
 
 export default function cardSlider(props) {
-    const { content, textSwitchLeft, textSwitchRight, textLeft, isSwitch } = props
+    const { content, textSwitchLeft, textSwitchRight,
+        isSwitch, onSlide, valueStart, valueEnd,
+        minValue, maxValue
+    } = props
+
     const [
         nonCollidingMultiSliderValue,
         setNonCollidingMultiSliderValue,
-    ] = useState([0, 100]);
+    ] = useState(() => {
+        if (valueStart && valueEnd) {
+            return [valueStart, valueEnd]
+        } else {
+            return [0, 100]
+        }
+    });
 
-    nonCollidingMultiSliderValuesChange = values =>
-        setNonCollidingMultiSliderValue(values);
+    const nonCollidingMultiSliderValuesChange = values => {
+        onSlide && onSlide(values)
+        setNonCollidingMultiSliderValue(values)
+    }
     return (
         <Card
             content={content}
@@ -23,8 +35,8 @@ export default function cardSlider(props) {
             customHeader={<CustomHeader
                 textSwitchLeft={textSwitchLeft}
                 textSwitchRight={textSwitchRight}
-                textLeft={textLeft}
-                textRight={"5'0''"}
+                textLeft={nonCollidingMultiSliderValue[0]}
+                textRight={nonCollidingMultiSliderValue[1]}
                 isSwitch={isSwitch}
             />}
         >
@@ -34,9 +46,9 @@ export default function cardSlider(props) {
                     nonCollidingMultiSliderValue[1],
                 ]}
                 sliderLength={Const.Common.deviceWidth - 70}
-                // onValuesChange={nonCollidingMultiSliderValuesChange}
-                min={0}
-                max={100}
+                onValuesChange={nonCollidingMultiSliderValuesChange}
+                min={minValue ? minValue : 0}
+                max={maxValue ? maxValue : 100}
                 step={1}
                 allowOverlap={false}
                 snapped

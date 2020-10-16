@@ -22,15 +22,9 @@ const GENDER_ARRAY = [
 
 export default function MyPreferences() {
 
-    const [
-        nonCollidingMultiSliderValue,
-        setNonCollidingMultiSliderValue,
-    ] = useState([0, 100]);
-
-    nonCollidingMultiSliderValuesChange = values =>
-        setNonCollidingMultiSliderValue(values);
-
-
+    const onSlideAge = (arrange) => {
+        console.log("onSlide -> arrange", arrange)
+    }
 
     return (
         <ScrollView style={styles.container}>
@@ -44,26 +38,33 @@ export default function MyPreferences() {
                 content={"Height"}
                 textSwitchLeft={"ft"}
                 textSwitchRight={"cm"}
-                textLeft={"3'0''"}
-                textRight={"5'0''"}
+                valueStart={3}
+                valueEnd={5}
+                minValue={1}
+                maxValue={10}
                 isSwitch={true}
             />
             <CardSlider
                 content={"Age"}
-                textLeft={"18"}
-                textRight={"44"}
                 isSwitch={false}
+                onSlide={onSlideAge}
+                valueStart={18}
+                valueEnd={21}
+                minValue={18}
+                maxValue={44}
             />
             <CardSlider
                 content={"Distance"}
                 textSwitchLeft={"km"}
                 textSwitchRight={"mi"}
-                textLeft={"0"}
-                textRight={"100"}
+                valueStart={10}
+                valueEnd={20}
+                minValue={0}
+                maxValue={100}
                 isSwitch={true}
             />
-            <CardClick content={"Sex Orientation"}
-                title={"Hetero"}
+            <CardClick content={"Hetero"}
+                title={"Sex Orientation"}
             />
         </ScrollView>
     )
@@ -73,21 +74,6 @@ export default function MyPreferences() {
 
 const FONT_SIZE = 18
 const styles = StyleSheet.create({
-
-
-
-    containSave: {
-        justifyContent: 'center',
-        paddingRight: 17
-    },
-
-    containSlider: {
-        alignSelf: 'center'
-    },
-    txtContent: {
-        fontSize: FONT_SIZE,
-        color: Themes.Colors.GRAY_BRIGHT_I
-    },
     txtHeader: {
         fontSize: FONT_SIZE + 2,
         fontWeight: 'bold',
@@ -97,8 +83,5 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: Themes.Colors.GRAY_BRIGHT_IV
-    },
-    btnIcon: {
-        ...Themes.Styles.IconBack
     },
 })
