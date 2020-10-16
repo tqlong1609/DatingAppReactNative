@@ -10,6 +10,7 @@ export const TitleCard = {
 export const Card = {
     backgroundColor: 'white', marginHorizontal: 15, height: 100,
     paddingHorizontal: 10,
+    marginBottom: 10,
     ...shadowButton
 }
 
