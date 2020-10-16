@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native'
 import Themes from '/src/themes'
 
 export default function Card(props) {
-    const { children, content, styleContent, customHeader } = props
+    const { children, content, styleContent, customHeader, style } = props
     return (
-        <View style={styles.container}>
+        <View style={{ ...styles.container, ...style }}>
             <View style={[styles.containerHeader, customHeader ? styles.containerHeaderRight : null]}>
                 <Text style={styles.txtTitle}>{content}</Text>
                 {customHeader}
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     txtTitle: {
         ...Themes.Styles.TitleCard,
