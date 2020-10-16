@@ -19,7 +19,7 @@ function Login(props) {
 
     const navigation = useNavigation()
     const onLogin = () => {
-        navigation.navigate(Const.NameScreens.MultiLanguages)
+        navigation.navigate(Const.NameScreens.BottomNavigation)
     }
 
     const onLoginFacebook = () => {

@@ -18,6 +18,10 @@ function Settings(props) {
         navigation.navigate(Const.NameScreens.MultiLanguages)
     }
 
+    const onPressMyPreferences = () => {
+        navigation.navigate(Const.NameScreens.MyPreferences)
+    }
+
     return (
         <Container style={styles.container}>
             <Header hasTabs
@@ -42,6 +46,7 @@ function Settings(props) {
                 isUnderline={true}
                 title={t("My Albums")} nameIonIcons={"images-outline"} />
             <ButtonSettingItem
+                onPressItem={() => onPressMyPreferences()}
                 isUnderline={true}
                 title={t("My Preferences")} nameIonIcons={"people-outline"} />
             <ButtonSettingItem

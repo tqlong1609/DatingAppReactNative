@@ -56,13 +56,14 @@ export default function screensNavigation() {
                 }}
             >
                 <Stack.Screen
-                    name={Const.NameScreens.MyPreferences}
-                    component={MyPreferences}
-                />
-                <Stack.Screen
                     name={Const.NameScreens.Splash}
                     component={Splash}
                 />
+                <Stack.Screen
+                    name={Const.NameScreens.MyPreferences}
+                    component={MyPreferences}
+                />
+
                 <Stack.Screen
                     name={Const.NameScreens.Introduction}
                     component={Introduction}

@@ -9,7 +9,8 @@ import { name as appName } from './app.json';
 import Navigation from '/src/configs/Navigation'
 import { Provider } from 'react-redux'
 import store from './src/store'
-
+import MyPreferences from '/src/components/MyPreferences/myPreferences'
+// import SliderTest from '/test/sliderTest'
 function Main() {
     return (
         <Provider store={store}>
@@ -18,4 +19,4 @@ function Main() {
     )
 }
 
-AppRegistry.registerComponent(appName, () => Main);
+AppRegistry.registerComponent(appName, () => MyPreferences);

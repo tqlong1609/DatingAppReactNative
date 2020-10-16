@@ -18,6 +18,8 @@ target 'DatingAppRN' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
+  pod 'react-native-slider', :path => '../node_modules/@react-native-community/slider'
+
   target 'DatingAppRNTests' do
     inherit! :complete
     # Pods for testing

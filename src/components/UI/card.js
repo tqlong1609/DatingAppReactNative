@@ -3,11 +3,11 @@ import { StyleSheet, Text, View } from 'react-native'
 import Themes from '/src/themes'
 
 export default function Card(props) {
-    const { children } = props
+    const { children, content } = props
     return (
         <View style={styles.container}>
             <View style={styles.containerHeader}>
-                <Text style={styles.txtTitle}>My current location</Text>
+                <Text style={styles.txtTitle}>{content}</Text>
             </View>
             <View style={styles.containerContent}>
                 {children}
