@@ -14,6 +14,16 @@ export const Card = {
     ...shadowButton
 }
 
+export const TabMenu = {
+    backgroundColor: 'gray',
+    width: '100%',
+    opacity: 0.4,
+    flexDirection: 'row', height: 40,
+    position: 'absolute', zIndex: 1,
+    paddingHorizontal: 15,
+    alignItems: 'center'
+}
+
 export const TextHeader = {
     marginLeft: 15, position: 'absolute', bottom: 5,
     fontSize: 16,
