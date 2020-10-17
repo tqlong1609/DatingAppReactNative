@@ -21,13 +21,12 @@ const images = [{
     }
 }]
 export default function myAlbums() {
-    const [visible, setIsVisible] = useState(true);
-
-
+    const [visible, setIsVisible] = useState(false);
     return (
         <View>
             <Text>OK</Text>
             <ImageShowModel
+                index={1}
                 images={images}
                 visible={visible}
                 setIsVisible={setIsVisible} />

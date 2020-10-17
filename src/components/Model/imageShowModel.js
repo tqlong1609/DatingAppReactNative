@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 
 export default function imageShowModel(props) {
-    const { visible, setIsVisible, images } = props
+    const { visible, setIsVisible, images, index } = props
     const [isShowMenu, setIsShowMenu] = useState(false)
 
     const onClickImage = () => {
@@ -40,6 +40,7 @@ export default function imageShowModel(props) {
                 </TouchableOpacity>
             </View>}
             <ImageViewer imageUrls={images}
+                index={index}
                 onClick={() => onClickImage()}
                 onLongPress={() => onLongPressImage()}
                 onSave={(index) => console.log(index)}
