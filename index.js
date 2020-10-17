@@ -9,7 +9,7 @@ import { name as appName } from './app.json';
 // import Navigation from '/src/configs/Navigation'
 // import { Provider } from 'react-redux'
 // import store from './src/store'
-import MyAlbums from '/src/components/MyAlbums/myAlbums'
+import SocketTest from '/test/socketTest'
 // function Main() {
 //     return (
 //         <Provider store={store}>
@@ -18,4 +18,4 @@ import MyAlbums from '/src/components/MyAlbums/myAlbums'
 //     )
 // }
 
-AppRegistry.registerComponent(appName, () => MyAlbums);
+AppRegistry.registerComponent(appName, () => SocketTest);
