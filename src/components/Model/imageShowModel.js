@@ -6,7 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 
 export default function imageShowModel(props) {
-    const { visible, setIsVisible, images, index } = props
+    const { visible, setIsVisible, images, index, getIndexImage } = props
+    let indexImage = index
     const [isShowMenu, setIsShowMenu] = useState(false)
 
     const onClickImage = () => {
@@ -19,7 +20,13 @@ export default function imageShowModel(props) {
 
     const onPressBack = () => {
         setIsVisible(false)
+        getIndexImage && getIndexImage(indexImage)
     }
+
+    const onChangeImage = (index) => {
+        indexImage = index
+    }
+
     return (
         <Modal visible={visible} transparent={true}
         >
@@ -44,6 +51,7 @@ export default function imageShowModel(props) {
                 onClick={() => onClickImage()}
                 onLongPress={() => onLongPressImage()}
                 onSave={(index) => console.log(index)}
+                onChange={(index) => onChangeImage(index)}
             />
             {isShowMenu && <View style={styles.containerTabFooter}>
                 <TouchableOpacity>

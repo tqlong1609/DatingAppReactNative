@@ -14,6 +14,7 @@ import Religious from '/src/components/Religious/religious'
 import MultiLanguages from '/src/components/MultiLanguages/multiLanguages.controller'
 import Splash from '/src/components/Splash/splash'
 import MyPreferences from '/src/components/MyPreferences/myPreferences'
+import MyAlbums from '/src/components/MyAlbums/myAlbums'
 
 import Const from '/src/const'
 
@@ -63,7 +64,6 @@ export default function screensNavigation() {
                     name={Const.NameScreens.MyPreferences}
                     component={MyPreferences}
                 />
-
                 <Stack.Screen
                     name={Const.NameScreens.Introduction}
                     component={Introduction}
@@ -99,6 +99,10 @@ export default function screensNavigation() {
                 <Stack.Screen
                     name={Const.NameScreens.MultiLanguages}
                     component={MultiLanguages}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.MyAlbums}
+                    component={MyAlbums}
                 />
             </Stack.Navigator>
         </NavigationContainer>
