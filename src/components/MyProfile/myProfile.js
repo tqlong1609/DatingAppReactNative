@@ -85,25 +85,30 @@ export default function MyProfile(props) {
 
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={{ paddingTop: 30 }}>
-                <View style={styles.containerHeader}>
-                    <View>
-                        <Image
-                            resizeMode={'cover'}
-                            style={styles.imgAvatar}
-                            source={{ uri: 'https://www.washingtonpost.com/resizer/uwlkeOwC_3JqSUXeH8ZP81cHx3I=/arc-anglerfish-washpost-prod-washpost/public/HB4AT3D3IMI6TMPTWIZ74WAR54.jpg' }}
-                        />
-                        <TouchableOpacity
-                            onPress={() => onPressIcon()}
-                            style={styles.containIcon}>
-                            <IconAwesome5
-                                style={styles.icon}
-                                color={"white"} name="pencil-alt" size={SIZE_ICON / 2} />
-                        </TouchableOpacity>
+            <ScrollView showsHorizontalScrollIndicator={false}>
+                <View style={styles.parent}>
+                    <View style={styles.child}>
+                        <View style={styles.containerHeader}>
+                            <View>
+                                <Image
+                                    resizeMode={'cover'}
+                                    style={styles.imgAvatar}
+                                    source={{ uri: 'https://photo-1-baomoi.zadn.vn/w1000_r1/2020_05_02_180_34912744/288e03366d75842bdd64.jpg' }}
+                                />
+                                <TouchableOpacity
+                                    onPress={() => onPressIcon()}
+                                    style={styles.containIcon}>
+                                    <IconAwesome5
+                                        style={styles.icon}
+                                        color={"white"} name="pencil-alt" size={SIZE_ICON / 2} />
+                                </TouchableOpacity>
+                            </View>
+                            <Text style={styles.txtInfo}>Long, 21</Text>
+                            <Text style={styles.txtDetail}>Tqlong1609@gmail.com</Text>
+                        </View>
                     </View>
-                    <Text style={styles.txtInfo}>Long, 21</Text>
-                    <Text style={styles.txtDetail}>Tqlong1609@gmail.com</Text>
                 </View>
+
                 <View style={styles.multipleToggle}>
                     <Text style={styles.multipleToggle__title}>Multiple Select?</Text>
                     <Switch
@@ -130,7 +135,22 @@ const SIZE = 160
 const SIZE_ICON = 35
 const MARGIN_TOP = 20
 const styles = StyleSheet.create({
-
+    parent: {
+        height: 300,
+        width: '100%',
+        transform: [{ scaleX: 2 }],
+        borderBottomStartRadius: 200,
+        borderBottomEndRadius: 200,
+        overflow: 'hidden',
+        ...Themes.Styles.shadowButton
+        // position: 'absolute'
+    },
+    child: {
+        flex: 1,
+        transform: [{ scaleX: 0.5 }],
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
     icon: {
         backgroundColor: '#F0076C', padding: 5, borderRadius: SIZE_ICON / 2
     },
@@ -168,7 +188,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        paddingTop: 10,
     },
     title: {
         textAlign: 'center',
