@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native'
-import { Container, Header, Left, Body, Right, TabHeading, Icon, Title, ScrollableTab, Tab, Tabs } from 'native-base';
+import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { Container, Header, Body, Title } from 'native-base';
 import Themes from '/src/themes'
 import EmptyPerform from '/src/components/UI/emptyPerform'
 import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types'
+import AvatarActive from '/src/components/UI/avatarActive'
 
 const data = [
     {
@@ -49,27 +50,7 @@ const data = [
 function Chats(props) {
     const { t } = props
     const renderItemAvatarActive = (item, index) => {
-        return <View
-            style={styles.containerActiveChats}
-        >
-            <View
-                style={styles.containerAvatar}
-            >
-                <Image source={{
-                    uri: item.uriImage
-                }}
-                    style={styles.imgAvatar}
-                />
-                {
-                    item.isActive ?
-                        <View style={[styles.viewActive, { backgroundColor: Themes.Colors.GREEN_BRIGHT }]} />
-                        :
-                        <View style={[styles.viewActive, { backgroundColor: 'gray' }]} />
-                }
-            </View>
-            <Text style={styles.txtName}>
-                {item.name}</Text>
-        </View>
+        return <AvatarActive item={item} sizeAvatar={70} sizeActive={4} />
     }
 
     return (
@@ -108,27 +89,14 @@ Chats.propTypes = {
 }
 
 const MARGIN = 20
-const MARGIN_AVATAR = 10
-const SIZE = 70
-const SIZE_CIRCLE_ACTIVE = 15
+
 const styles = StyleSheet.create({
     //Flatlist avatar active
-    containerActiveChats: {
-        margin: MARGIN_AVATAR,
-    },
-    containerAvatar: {
-        width: SIZE
-    },
-    imgAvatar: {
-        width: SIZE, height: SIZE, borderRadius: SIZE / 2
-    },
-    viewActive: {
-        width: SIZE_CIRCLE_ACTIVE, height: SIZE_CIRCLE_ACTIVE, borderRadius: SIZE_CIRCLE_ACTIVE / 2,
-        position: 'absolute', right: 2, bottom: 2
-    },
-    txtName: {
-        width: SIZE, fontSize: 13, textAlign: 'center'
-    },
+
+
+
+
+
     //---------
 
     listAvatar: {

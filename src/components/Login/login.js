@@ -8,12 +8,11 @@ import { withTranslation } from 'react-i18next';
 
 // import firebase from 'firebase';
 import auth from '@react-native-firebase/auth';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native'
 import Themes from '/src/themes'
 import Const from '/src/const'
 import { LoginManager, AccessToken } from "react-native-fbsdk";
-
+import ButtonBack from '/src/components/UI/buttonBack'
 function Login(props) {
     const { t, tReady } = props;
 
@@ -57,9 +56,7 @@ function Login(props) {
 
     return (
         <ScrollView>
-            <TouchableOpacity style={styles.btnIcon}>
-                <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
-            </TouchableOpacity>
+            <ButtonBack />
             <Text style={styles.txtTitle}> {t('Sign In')} </Text>
             <TextInput style={styles.inpEmail} placeholder={'Email'} keyboardType={'email-address'} />
             <TextInput style={styles.inpPassword} placeholder={t('Password')} secureTextEntry={true} />
@@ -85,9 +82,7 @@ function Login(props) {
 
 
 const styles = StyleSheet.create({
-    btnIcon: {
-        ...Themes.Styles.IconBack
-    },
+
     txtTitle: {
         ...Themes.Styles.Title
     },
