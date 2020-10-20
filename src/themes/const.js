@@ -33,6 +33,7 @@ export const PADDING_TEXT_INPUT = 17;
 export const PADDING_TEXT_INPUT_SMALL = 10;
 export const PADDING_IMAGE_SMALL = 7;
 
+export const SIZE_ICON_MESSAGES = 37;
 
 export const BUTTON_NEXT = 80;
 

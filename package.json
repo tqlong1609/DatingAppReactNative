@@ -43,6 +43,7 @@
     "react-native-dropdown-picker": "^3.7.0",
     "react-native-extra-dimensions-android": "^1.2.5",
     "react-native-fbsdk": "^2.0.0",
+    "react-native-floating-action": "^1.21.0",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-gif-search": "^1.0.12",
     "react-native-image-crop-picker": "^0.34.1",

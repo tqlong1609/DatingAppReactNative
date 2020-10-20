@@ -20,10 +20,12 @@ export default function buttonSend(props) {
 
 const styles = StyleSheet.create({
     linearContain: {
-        width: 37, height: 37, borderRadius: 37 / 2
+        width: Themes.Const.SIZE_ICON_MESSAGES, height: Themes.Const.SIZE_ICON_MESSAGES,
+        borderRadius: Themes.Const.SIZE_ICON_MESSAGES / 2
     },
     btnSend: {
-        width: 37, height: 37, borderRadius: 37 / 2,
+        width: Themes.Const.SIZE_ICON_MESSAGES, height: Themes.Const.SIZE_ICON_MESSAGES,
+        borderRadius: Themes.Const.SIZE_ICON_MESSAGES / 2,
         alignItems: 'center', paddingTop: 6
     }
 })
