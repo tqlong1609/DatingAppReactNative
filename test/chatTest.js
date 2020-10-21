@@ -1,54 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { HubConnectionBuilder } from '@microsoft/signalr';
 
-const ChatInput = (props) => {
-    const [user, setUser] = useState('');
-    const [message, setMessage] = useState('');
+import ChatWindow from './ChatWindow';
+import ChatInput from './chatInputTest';
+import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+const Chat = () => {
+    const [connection, setConnection] = useState(null);
+    const [chat, setChat] = useState([]);
+    const latestChat = useRef(null);
 
-        const isUserProvided = user && user !== '';
-        const isMessageProvided = message && message !== '';
+    latestChat.current = chat;
 
-        if (isUserProvided && isMessageProvided) {
-            props.sendMessage(user, message);
+    useEffect(() => {
+        const newConnection = new HubConnectionBuilder()
+            .withUrl('https://localhost:5001/hubs/ChatHub')
+            .withAutomaticReconnect()
+            .build();
+
+        setConnection(newConnection);
+    }, []);
+
+    useEffect(() => {
+        if (connection) {
+            connection.start()
+                .then(result => {
+                    console.log('Connected!');
+
+                    connection.on('ReceiveMessage', message => {
+                        const updatedChat = [...latestChat.current];
+                        updatedChat.push(message);
+
+                        setChat(updatedChat);
+                    });
+                })
+                .catch(e => console.log('Connection failed: ', e));
+        }
+    }, [connection]);
+
+    const sendMessage = async (user, message) => {
+        const chatMessage = {
+            user: user,
+            message: message
+        };
+
+        if (connection.connectionStarted) {
+            try {
+                await connection.send('SendMessage', chatMessage);
+            }
+            catch (e) {
+                console.log(e);
+            }
         }
         else {
-            alert('Please insert an user and a message.');
+            alert('No connection to server yet.');
         }
-    }
-
-    const onUserUpdate = (e) => {
-        setUser(e.target.value);
-    }
-
-    const onMessageUpdate = (e) => {
-        setMessage(e.target.value);
     }
 
     return (
-        <form
-            onSubmit={onSubmit}>
-            <label htmlFor="user">User:</label>
-            <br />
-            <input
-                id="user"
-                name="user"
-                value={user}
-                onChange={onUserUpdate} />
-            <br />
-            <label htmlFor="message">Message:</label>
-            <br />
-            <input
-                type="text"
-                id="message"
-                name="message"
-                value={message}
-                onChange={onMessageUpdate} />
-            <br /><br />
-            <button>Submit</button>
-        </form>
-    )
+        <View>
+            <ChatInput sendMessage={sendMessage} />
+            <ChatWindow chat={chat} />
+        </View>
+    );
 };
 
-export default ChatInput;
+export default Chat;

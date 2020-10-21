@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@aspnet/signalr": "^1.1.4",
     "@microsoft/signalr": "^3.1.9",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-community/async-storage": "^1.12.1",
@@ -43,7 +44,7 @@
     "react-native-dropdown-picker": "^3.7.0",
     "react-native-extra-dimensions-android": "^1.2.5",
     "react-native-fbsdk": "^2.0.0",
-    "react-native-floating-action": "^1.21.0",
+    "react-native-floating-action": "git+https://github.com/tqlong1609/react-native-floating-action.git",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-gif-search": "^1.0.12",
     "react-native-image-crop-picker": "^0.34.1",
@@ -59,6 +60,7 @@
     "react-native-reanimated": "^1.13.0",
     "react-native-safe-area-context": "^3.1.4",
     "react-native-screens": "^2.10.1",
+    "react-native-signalr": "^1.0.6",
     "react-native-svg": "^12.1.0",
     "react-native-tab-view": "^2.15.1",
     "react-native-vector-icons": "^7.0.0",

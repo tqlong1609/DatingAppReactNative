@@ -6,6 +6,7 @@ export const HEIGHT = 50;
 
 //margin
 // export const MARGIN_TOP = 25;
+export const MARGIN = 10;
 export const MARGIN_TOP = 30;
 export const MARGIN_TOP_V1 = 40;
 export const MARGIN_TOP_V2 = 140;

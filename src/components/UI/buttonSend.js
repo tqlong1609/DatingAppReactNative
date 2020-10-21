@@ -4,15 +4,20 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 import LinearGradient from 'react-native-linear-gradient';
 export default function buttonSend(props) {
-    const { style } = props
+    const { style, disabled } = props
+    const onPressSend = () => {
+        console.log('send')
+    }
     return (
         <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 3, y: 0 }}
             colors={['pink', 'orange']}
             style={{ ...styles.linearContain, ...style }}>
-            <TouchableOpacity style={styles.btnSend}>
-                <Ionicons name="paper-plane" size={25} color={"white"}></Ionicons>
+            <TouchableOpacity style={[styles.btnSend, disabled && { backgroundColor: Themes.Colors.GRAY_BRIGHT_II }]} disabled={disabled}
+                onPress={() => onPressSend()}
+            >
+                <Ionicons name="paper-plane" size={25} color={disabled ? "gray" : "white"}></Ionicons>
             </TouchableOpacity>
         </LinearGradient>
     )

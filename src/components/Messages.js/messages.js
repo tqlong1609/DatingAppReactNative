@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { StyleSheet, FlatList, View, Text, TextInput } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, FlatList, View, Text, TextInput, Keyboard } from 'react-native'
 import HeaderApp from '/src/components/UI/headerApp'
 import ButtonSend from '/src/components/UI/buttonSend'
 import { FloatingAction } from "react-native-floating-action";
@@ -9,39 +9,60 @@ const data = [
 
 const actions = [
     {
-        text: "Accessibility",
-        icon: require("/src/assets/images/my_avatar.jpg"),
-        name: "bt_accessibility",
-        position: 2
-    },
-    {
-        text: "Language",
-        icon: require("/src/assets/images/my_avatar.jpg"),
-        name: "bt_language",
+        color: Themes.Colors.PINK,
+        text: "Send Photo",
+        icon: require("/src/assets/images/picture_127px.png"),
+        name: "bt_photo",
         position: 1
     },
     {
-        text: "Location",
-        icon: require("/src/assets/images/my_avatar.jpg"),
-        name: "bt_room",
-        position: 3
+        color: Themes.Colors.PINK,
+        text: "Send Location",
+        icon: require("/src/assets/images/location_127px.png"),
+        name: "bt_location",
+        position: 2
     },
     {
-        text: "Video",
-        icon: require("/src/assets/images/my_avatar.jpg"),
-        name: "bt_videocam",
-        position: 4
-    }
+        color: Themes.Colors.PINK,
+        text: "Send Gif",
+        icon: require("/src/assets/images/gif_127px.png"),
+        name: "bt_gif",
+        position: 3
+    },
 ];
 
 export default function messages() {
     const [newValue, setNewValue] = useState('')
     const [height, setHeight] = useState(50)
+    const [isVisibleButton, setIsVisibleButton] = useState(true)
+    const [isVisibleTextInput, setIsVisibleTextInput] = useState(true)
+    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const renderItemChat = (item, index) => {
         console.log('object')
         return <View style={{ backgroundColor: 'red', width: 100, height: 100 }}>
             <Text>{item.value}</Text></View>
     }
+
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+            'keyboardDidShow',
+            () => {
+                setKeyboardVisible(true); // or some other action
+                setIsVisibleButton(false)
+            }
+        );
+        const keyboardDidHideListener = Keyboard.addListener(
+            'keyboardDidHide',
+            () => {
+                setKeyboardVisible(false); // or some other action
+                setIsVisibleButton(true)
+            }
+        );
+        return () => {
+            keyboardDidHideListener.remove();
+            keyboardDidShowListener.remove();
+        };
+    })
 
     const updateSize = (height) => {
         setHeight(height)
@@ -54,44 +75,53 @@ export default function messages() {
                 data={data}
                 keyExtractor={item => item.id}
                 renderItem={({ item, index }) => renderItemChat(item, index)} />
-            <FloatingAction
-                margin={0}
-                listenKeyboard={true}
-                buttonSize={Themes.Const.SIZE_ICON_MESSAGES}
-                position={"left"}
-                actions={actions}
-                onPressItem={name => {
-                    console.log(`selected button: ${name}`);
-                }}
-            />
-            <View style={[styles.containerFooter, { height: height }]}>
 
+            <View style={[styles.containerFooter, { height: height }, !isVisibleButton && styles.containerVisible]}>
                 <TextInput
                     placeholder="New message"
                     onChangeText={(value) => setNewValue(value)}
+                    editable={isVisibleTextInput}
                     style={[styles.inpMessage, {
                         height: height,
                     }]}
-                    editable={true}
                     multiline={true}
                     value={newValue}
                     onContentSizeChange={(e) => updateSize(e.nativeEvent.contentSize.height)}
                 />
-                <ButtonSend />
+                <ButtonSend disabled={!isVisibleTextInput} />
 
             </View>
+            <FloatingAction
+                margin={0}
+                buttonSize={Themes.Const.SIZE_ICON_MESSAGES}
+                position={"left"}
+                actions={actions}
+                visible={isVisibleButton}
+                onOpen={() => setIsVisibleTextInput(false)}
+                onClose={() => setIsVisibleTextInput(true)}
+                dismissKeyboardOnPress={true}
+                styleButton={{ left: 10, bottom: 10 }}
+                color={Themes.Colors.PINK}
+                onPressItem={name => {
+                    console.log(`selected button: ${name}`);
+                }}
+            />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    containerVisible: {
+        width: '100%', marginLeft: 0, paddingRight: 10
+    },
     containerFooter: {
-        flexDirection: 'row', alignItems: 'center', marginBottom: 10,
+        flexDirection: 'row', alignItems: 'center', marginBottom: 10, marginLeft: 45, marginRight: 10
     },
     inpMessage: {
         borderWidth: 1, borderRadius: 20, borderColor: 'gray',
         paddingHorizontal: 15,
         marginHorizontal: 10,
-        width: '80%'
+        // width: '84%'
+        flex: 1
     }
 })
