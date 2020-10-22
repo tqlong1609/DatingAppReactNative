@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import ButtonBack from '/src/components/UI/buttonBack'
 import Themes from '/src/themes'
 import AvatarActive from '/src/components/UI/avatarActive'
@@ -13,7 +13,8 @@ const item = {
     isActive: true,
     name: "Long"
 }
-export default function headerApp() {
+export default function headerApp(props) {
+    const { onPressDates, onPressMenu } = props
     return (
         <View style={[styles.container]}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -21,10 +22,15 @@ export default function headerApp() {
                 <AvatarActive item={item} sizeAvatar={50} sizeActive={0} isRow={true} />
             </View>
             <View style={styles.containerButtonHeader}>
-                <MaterialCommunityIcons name="calendar-heart" size={Themes.Const.SIZE_ICON - 10}
-                    color={Themes.Colors.PINK} />
-                <Ionicons name="menu-outline" size={Themes.Const.SIZE_ICON - 6}
-                    color={Themes.Colors.PINK}></Ionicons>
+                <TouchableOpacity onPress={() => onPressDates && onPressDates()}>
+                    <MaterialCommunityIcons name="calendar-heart" size={Themes.Const.SIZE_ICON - 10}
+                        color={Themes.Colors.PINK} />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => onPressMenu && onPressMenu()}>
+                    <Ionicons name="menu-outline" size={Themes.Const.SIZE_ICON - 6}
+                        color={Themes.Colors.PINK}></Ionicons>
+                </TouchableOpacity>
+
             </View>
         </View>
     )

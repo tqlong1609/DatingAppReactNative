@@ -40,3 +40,15 @@ export const BUTTON_NEXT = 80;
 
 export const ABSOLUTE_BOTTOM = 20;
 
+// export const HEIGHT_MODAL = 200;
+export const HEIGHT_MODAL = 200;
+export const COLOR_MODAL = 'white';
+export const COLOR_CANCEL = '#F96A61';
+export const COLOR_BORDER_BUTTON = 'black';
+export const COLOR_HEADER_MODAL = '#9C9A99';
+export const COLOR_CONTENT_MODAL = '#3493FB';
+export const BORDER_WIDTH_BUTTON = 0.5;
+export const BORDER_BUTTON = 10;
+export const NUMBER_BUTTON = 3;
+export const FONT_SIZE_BOTTOM = 20;
+

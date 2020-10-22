@@ -7,10 +7,8 @@ import { withTranslation } from 'react-i18next';
 
 
 function BottomHalfModel(props) {
-    const { isVisible, setVisibleModel, t } = props;
-    const onUploadPhoto = () => {
-        console.log('object')
-    }
+    const { isVisible, setVisibleModel, t, children } = props;
+
     return (
         <View >
             <Modal
@@ -25,16 +23,11 @@ function BottomHalfModel(props) {
                         <View style={styles.containerHeader}>
                             <Text style={styles.txtHeader}>{t('Confirm action')}</Text>
                         </View>
-                        <TouchableOpacity style={styles.btnBetweenContent} onPress={() => onUploadPhoto()}>
-                            <Text style={styles.txtContentButton}>{t("Upload photo from gallery")}</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.btnBottomContent}>
-                            <Text style={styles.txtContentButton}>{t('Take photo with camera')}</Text>
-                        </TouchableOpacity>
+                        {children}
 
                     </View>
                     <TouchableOpacity
-                        style={styles.btnCancel}
+                        style={[styles.btnCancel, { height: Themes.Const.HEIGHT_MODAL / 3 }]}
                         onPress={() => setVisibleModel(false)}
                     >
                         <Text style={styles.txtCancel}>{t("Cancel")}</Text>
@@ -44,16 +37,6 @@ function BottomHalfModel(props) {
         </View>
     )
 }
-const HEIGHT_MODAL = 200;
-const COLOR_MODAL = 'white';
-const COLOR_CANCEL = '#F96A61';
-const COLOR_BORDER_BUTTON = 'black';
-const COLOR_HEADER_MODAL = '#9C9A99';
-const COLOR_CONTENT_MODAL = '#3493FB';
-const BORDER_WIDTH_BUTTON = 0.5;
-const BORDER_BUTTON = 10;
-const NUMBER_BUTTON = 3;
-const FONT_SIZE_BOTTOM = 20;
 
 const styles = StyleSheet.create({
     container: {
@@ -62,57 +45,38 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     containerContent: {
-        height: HEIGHT_MODAL,
+        height: Themes.Const.HEIGHT_MODAL + (Themes.Const.HEIGHT_MODAL / 3) - 3,
+        // height: 270,
         backgroundColor: 'white',
-        borderRadius: BORDER_BUTTON,
+        borderRadius: Themes.Const.BORDER_BUTTON,
     },
     containerHeader: {
-        height: HEIGHT_MODAL / NUMBER_BUTTON,
-        backgroundColor: COLOR_MODAL,
-        borderTopLeftRadius: BORDER_BUTTON,
-        borderTopRightRadius: BORDER_BUTTON,
+        height: Themes.Const.HEIGHT_MODAL / Themes.Const.NUMBER_BUTTON,
+        backgroundColor: Themes.Const.COLOR_MODAL,
+        borderTopLeftRadius: Themes.Const.BORDER_BUTTON,
+        borderTopRightRadius: Themes.Const.BORDER_BUTTON,
         justifyContent: 'center'
     },
     txtHeader: {
         alignSelf: 'center',
-        color: COLOR_HEADER_MODAL,
+        color: Themes.Const.COLOR_HEADER_MODAL,
         fontSize: Themes.Const.FONT_SIZE
     },
-    txtContentButton: {
-        alignSelf: 'center',
-        color: COLOR_CONTENT_MODAL,
-        fontWeight: 'bold',
-        fontSize: FONT_SIZE_BOTTOM
-    },
-    btnBetweenContent: {
-        height: HEIGHT_MODAL / NUMBER_BUTTON,
-        backgroundColor: COLOR_MODAL,
-        borderTopWidth: BORDER_WIDTH_BUTTON,
-        borderTopColor: COLOR_BORDER_BUTTON,
-        borderBottomWidth: BORDER_WIDTH_BUTTON,
-        borderBottomColor: COLOR_BORDER_BUTTON,
-        justifyContent: 'center'
-    },
-    btnBottomContent: {
-        height: HEIGHT_MODAL / NUMBER_BUTTON,
-        backgroundColor: COLOR_MODAL,
-        borderBottomLeftRadius: BORDER_BUTTON,
-        borderBottomRightRadius: BORDER_BUTTON,
-        justifyContent: 'center'
-    },
+
     btnCancel: {
-        backgroundColor: COLOR_MODAL,
-        height: HEIGHT_MODAL / NUMBER_BUTTON,
+        backgroundColor: Themes.Const.COLOR_MODAL,
+
         marginTop: 5,
-        borderRadius: BORDER_BUTTON,
+        borderRadius: Themes.Const.BORDER_BUTTON,
         justifyContent: 'center'
     },
     txtCancel: {
         alignSelf: 'center',
-        color: COLOR_CANCEL,
+        color: Themes.Const.COLOR_CANCEL,
         fontWeight: 'bold',
-        fontSize: FONT_SIZE_BOTTOM
+        fontSize: Themes.Const.FONT_SIZE_BOTTOM
     }
 })
 
 export default withTranslation()(BottomHalfModel)
+// export default BottomHalfModel

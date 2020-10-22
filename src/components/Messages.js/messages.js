@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, FlatList, View, Text, TextInput, Keyboard } from 'react-native'
+import { StyleSheet, FlatList, View, Text, TextInput, Keyboard, TouchableOpacity } from 'react-native'
 import HeaderApp from '/src/components/UI/headerApp'
 import ButtonSend from '/src/components/UI/buttonSend'
 import { FloatingAction } from "react-native-floating-action";
+import DatingModal from '/src/components/Model/datingModal'
+import BottomHalfModel from '/src/components/Model/bottomHalfModel'
 import Themes from '/src/themes'
+import { withTranslation } from 'react-i18next';
+
+
 const data = [
 ]
 
@@ -31,7 +36,10 @@ const actions = [
     },
 ];
 
-export default function messages() {
+function Messages(props) {
+    const { t } = props
+    const [isVisible, setIsVisible] = useState(false)
+    const [isVisibleModalBottom, setIsVisibleModalBottom] = useState(false)
     const [newValue, setNewValue] = useState('')
     const [height, setHeight] = useState(50)
     const [isVisibleButton, setIsVisibleButton] = useState(true)
@@ -68,9 +76,17 @@ export default function messages() {
         setHeight(height)
     }
 
+    const onPressDates = () => {
+        setIsVisible(!isVisible)
+    }
+
+    const onPressMenu = () => {
+        setIsVisibleModalBottom(!isVisibleModalBottom)
+    }
+
     return (
         <View style={{ flex: 1 }}>
-            <HeaderApp />
+            <HeaderApp onPressDates={onPressDates} onPressMenu={onPressMenu} />
             <FlatList style={{ flex: 1 }}
                 data={data}
                 keyExtractor={item => item.id}
@@ -106,11 +122,33 @@ export default function messages() {
                     console.log(`selected button: ${name}`);
                 }}
             />
+            <DatingModal isVisible={isVisible} setIsVisible={setIsVisible} />
+            <BottomHalfModel isVisible={isVisibleModalBottom} setVisibleModel={setIsVisibleModalBottom}
+            >
+                <TouchableOpacity style={styles.btnBetweenContent}>
+                    <Text style={styles.txtContentButton}>{`View Long's Profile`}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnBetweenContent}>
+                    <Text style={styles.txtContentButton}>{`Report Long`}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnBottomContent}>
+                    <Text style={styles.txtContentButton}>{`Block Long`}</Text>
+                </TouchableOpacity>
+            </BottomHalfModel>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    btnBetweenContent: {
+        ...Themes.Styles.BtnBetweenContent
+    },
+    txtContentButton: {
+        ...Themes.Styles.TxtContentButton
+    },
+    btnBottomContent: {
+        ...Themes.Styles.BtnBottomContent
+    },
     containerVisible: {
         width: '100%', marginLeft: 0, paddingRight: 10
     },
@@ -125,3 +163,7 @@ const styles = StyleSheet.create({
         flex: 1
     }
 })
+
+export default withTranslation()(Messages)
+// export default Messages
+

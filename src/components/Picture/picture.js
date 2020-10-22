@@ -6,6 +6,7 @@ import ButtonNext from '/src/components/UI/buttonNext'
 import ImagePicker from '/src/components/UI/imagePicker'
 import BottomHalfModel from '/src/components/Model/bottomHalfModel'
 import { withTranslation } from 'react-i18next'
+import { Const } from '/src/themes'
 function Picture(props) {
     const { t } = props
     const [urlImage, setUrlImage] = useState(null);
@@ -22,6 +23,10 @@ function Picture(props) {
         setVisibleModel();
     }
 
+    const onUploadPhoto = () => {
+        console.log('object')
+    }
+
     return (
         <View style={{ flex: 1 }}>
             <TouchableOpacity style={styles.btnIcon}>
@@ -35,6 +40,7 @@ function Picture(props) {
                 <Text style={styles.txtTitle2}>{t("Picture")}</Text>
                 <ImagePicker onPressAdd={onPressAdd} t={t} />
             </View>
+            {/* <View style={{ flex: 1 }}> */}
             <TouchableOpacity
                 onPress={() => onChangeImage()}
                 style={styles.btnChange}
@@ -42,15 +48,36 @@ function Picture(props) {
                 <Text style={styles.txtChange}>{t("Change")}</Text>
             </TouchableOpacity>
             <ButtonNext isGradient={true} />
-            <BottomHalfModel isVisible={isVisible} setVisibleModel={setVisibleModel} />
+            {/* </View> */}
+
+            <BottomHalfModel isVisible={isVisible} setVisibleModel={setVisibleModel}
+            >
+                <TouchableOpacity style={styles.btnBetweenContent} onPress={() => onUploadPhoto()}>
+                    <Text style={styles.txtContentButton}>{t("Upload photo from gallery")}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btnBottomContent}>
+                    <Text style={styles.txtContentButton}>{t('Take photo with camera')}</Text>
+                </TouchableOpacity>
+            </BottomHalfModel>
         </View>
     )
 }
+
 const styles = StyleSheet.create({
+    btnBetweenContent: {
+        ...Themes.Styles.BtnBetweenContent
+    },
+    txtContentButton: {
+        ...Themes.Styles.TxtContentButton
+    },
+    btnBottomContent: {
+        ...Themes.Styles.BtnBottomContent
+    },
     btnChange: {
-        marginTop: 35,
-        marginLeft: Themes.Const.MARGIN_HORIZONTAL_INPUT,
-        width: 90
+        // marginLeft: Themes.Const.MARGIN_HORIZONTAL_INPUT,
+        position: 'absolute',
+        left: Themes.Const.ABSOLUTE_BOTTOM,
+        bottom: Themes.Const.ABSOLUTE_BOTTOM + 20,
     },
     txtChange: {
         fontSize: 25,

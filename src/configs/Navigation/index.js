@@ -15,6 +15,7 @@ import MultiLanguages from '/src/components/MultiLanguages/multiLanguages.contro
 import Splash from '/src/components/Splash/splash'
 import MyPreferences from '/src/components/MyPreferences/myPreferences'
 import MyAlbums from '/src/components/MyAlbums/myAlbums'
+import Picture from '/src/components/Picture/picture'
 
 import Const from '/src/const'
 
@@ -56,9 +57,14 @@ export default function screensNavigation() {
                     headerShown: false
                 }}
             >
+
                 <Stack.Screen
                     name={Const.NameScreens.Splash}
                     component={Splash}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.Picture}
+                    component={Picture}
                 />
                 <Stack.Screen
                     name={Const.NameScreens.MyPreferences}
@@ -92,6 +98,7 @@ export default function screensNavigation() {
                     name={Const.NameScreens.CodePhone}
                     component={CodePhone}
                 />
+
                 <Stack.Screen
                     name={Const.NameScreens.MyProfile}
                     component={MyProfile}

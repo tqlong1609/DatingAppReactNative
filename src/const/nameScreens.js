@@ -15,6 +15,9 @@ export const Splash = "Splash"
 export const BottomNavigation = "BottomNavigation"
 export const MyPreferences = "MyPreferences"
 export const MyAlbums = "MyAlbums"
+export const Picture = "Picture"
+
+
 
 
 

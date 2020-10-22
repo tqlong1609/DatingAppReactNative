@@ -1,6 +1,31 @@
 import * as Const from './const'
 import * as Colors from './colors'
 
+export const BtnBetweenContent = {
+    height: Const.HEIGHT_MODAL / Const.NUMBER_BUTTON,
+    backgroundColor: Const.COLOR_MODAL,
+    borderTopWidth: Const.BORDER_WIDTH_BUTTON,
+    borderTopColor: Const.COLOR_BORDER_BUTTON,
+    borderBottomWidth: Const.BORDER_WIDTH_BUTTON,
+    borderBottomColor: Const.COLOR_BORDER_BUTTON,
+    justifyContent: 'center'
+}
+
+export const TxtContentButton = {
+    alignSelf: 'center',
+    color: Const.COLOR_CONTENT_MODAL,
+    fontWeight: 'bold',
+    fontSize: Const.FONT_SIZE_BOTTOM
+}
+
+export const BtnBottomContent = {
+    height: Const.HEIGHT_MODAL / Const.NUMBER_BUTTON,
+    backgroundColor: Const.COLOR_MODAL,
+    borderBottomLeftRadius: Const.BORDER_BUTTON,
+    borderBottomRightRadius: Const.BORDER_BUTTON,
+    justifyContent: 'center'
+}
+
 export const TitleCard = {
     fontSize: 18,
     fontWeight: 'bold',

@@ -18,7 +18,7 @@ function Login(props) {
 
     const navigation = useNavigation()
     const onLogin = () => {
-        navigation.navigate(Const.NameScreens.BottomNavigation)
+        navigation.navigate(Const.NameScreens.Picture)
     }
 
     const onLoginFacebook = () => {
