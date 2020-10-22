@@ -50,7 +50,9 @@ function Picture(props) {
             <ButtonNext isGradient={true} />
             {/* </View> */}
 
-            <BottomHalfModel isVisible={isVisible} setVisibleModel={setVisibleModel}
+            <BottomHalfModel
+                numberRow={3}
+                isVisible={isVisible} setVisibleModel={setVisibleModel}
             >
                 <TouchableOpacity style={styles.btnBetweenContent} onPress={() => onUploadPhoto()}>
                     <Text style={styles.txtContentButton}>{t("Upload photo from gallery")}</Text>

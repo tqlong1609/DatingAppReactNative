@@ -9,9 +9,12 @@ export default function circleAvatarActive(props) {
         <View
             style={[styles.containerAvatar, { width: sizeAvatar }]}
         >
-            <Image source={{
-                uri: uriImage
-            }}
+            <Image
+                // source={{
+                //     uri: uriImage
+                // }
+                // }
+                source={require('/src/assets/images/my_avatar.jpg')}
                 style={[styles.imgAvatar, { width: sizeAvatar, height: sizeAvatar, borderRadius: sizeAvatar / 2 }]}
             />
             {

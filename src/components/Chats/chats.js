@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
 import { Container, Header, Body, Title } from 'native-base';
 import Themes from '/src/themes'
 import EmptyPerform from '/src/components/UI/emptyPerform'
@@ -54,7 +54,8 @@ const dataMessages = [
         name: "Trần Quang Long",
         uriImage: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*",
         messages: "You have got a gif",
-        time: "09:50 PM"
+        time: "09:50 PM",
+        isRead: false
     },
     {
         id: "2",
@@ -62,7 +63,8 @@ const dataMessages = [
         name: "Trần Quang Long",
         uriImage: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=1200:*",
         messages: "Có làm thì mới có ăn",
-        time: "09:50 PM"
+        time: "09:50 PM",
+        isRead: true
     },
 
 ]
@@ -73,28 +75,41 @@ function Chats(props) {
     const [isEmpty, setIsEmpty] = useState(false)
 
     const renderItemAvatarActive = (item, index) => {
-        return <AvatarActive item={item} sizeAvatar={70} sizeActive={4} />
+        return <AvatarActive item={item} sizeAvatar={60} sizeActive={4} />
     }
 
     const renderItemMessages = (item, index) => {
-        return <View style={{ backgroundColor: 'red', flexDirection: 'row', marginVertical: 10 }}>
-            <View style={{ backgroundColor: 'blue' }}>
-                <CircleAvatarActive item={item} sizeAvatar={70} sizeActive={4} />
-            </View>
-            <View style={{ alignItems: 'center' }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', backgroundColor: 'yellow', flex: 1, width: '100%' }}>
-                    <Text>{item.name}</Text>
-                    <Text>{item.time}</Text>
-                </View>
+        const { name, time, messages, isRead } = item
+        console.log("renderItemMessages -> isRead", isRead)
+        return (
+            <TouchableOpacity style={{
+                paddingHorizontal: 10,
+                flexDirection: 'row', marginVertical: 10, width: '100%'
+            }}>
                 <View style={{ flex: 1 }}>
-                    <Text>{item.messages}</Text>
+                    <CircleAvatarActive item={item} sizeAvatar={60} sizeActive={3} />
                 </View>
-            </View>
-        </View>
+                <View style={{ flex: 4, marginVertical: 10 }}>
+                    <View style={{
+                        flexDirection: 'row', justifyContent: 'space-between', width: '100%',
+                        flex: 1,
+                        alignItems: 'center'
+                    }}>
+                        <Text style={[{ fontSize: 16 },
+                        isRead ? { color: Themes.Colors.GRAY_DARK } : { fontWeight: 'bold' }]}>{name}</Text>
+                        <Text style={[{ fontSize: 16 },
+                        isRead ? { color: Themes.Colors.GRAY_DARK } : { fontWeight: 'bold' }]}>{time}</Text>
+                    </View>
+                    <View style={{ flex: 1, justifyContent: 'center' }}>
+                        <Text style={[{ fontSize: 13 },
+                        isRead ? { color: Themes.Colors.GRAY_DARK } : { fontWeight: 'bold' }]}>{messages}</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>)
     }
 
     return (
-        <Container>
+        <View>
             <Header hasTabs
                 style={Themes.Styles.HeaderBar}
             >
@@ -111,8 +126,7 @@ function Chats(props) {
                 renderItem={({ item, index }) => renderItemAvatarActive(item, index)}
                 keyExtractor={item => item.id}
             />
-            <Text style={styles.txtTitle}>{t("Active Chats")}</Text>
-
+            <Text style={[styles.txtTitle, { marginTop: 0 }]}>{t("Active Chats")}</Text>
             <View style={isEmpty ? styles.containerBottom : styles.containerBottomMessages}>
                 {
                     isEmpty ?
@@ -129,7 +143,7 @@ function Chats(props) {
                         />
                 }
             </View>
-        </Container>
+        </View>
     )
 }
 
@@ -142,6 +156,8 @@ const MARGIN = 20
 
 const styles = StyleSheet.create({
     listAvatar: {
+        // height: '30%'
+        height: 70
     },
 
     emptyPerform: {
@@ -153,7 +169,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#474347',
         marginTop: MARGIN,
-        marginLeft: MARGIN
+        marginLeft: MARGIN,
     },
     containerBottom: {
         justifyContent: 'center',

@@ -123,7 +123,9 @@ function Messages(props) {
                 }}
             />
             <DatingModal isVisible={isVisible} setIsVisible={setIsVisible} />
-            <BottomHalfModel isVisible={isVisibleModalBottom} setVisibleModel={setIsVisibleModalBottom}
+            <BottomHalfModel
+                numberRow={4}
+                isVisible={isVisibleModalBottom} setVisibleModel={setIsVisibleModalBottom}
             >
                 <TouchableOpacity style={styles.btnBetweenContent}>
                     <Text style={styles.txtContentButton}>{`View Long's Profile`}</Text>

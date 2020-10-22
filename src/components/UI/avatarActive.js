@@ -33,11 +33,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between', paddingLeft: 10
     },
     txtName: {
-        fontSize: 13, textAlign: 'center'
+        fontSize: 11, textAlign: 'center'
     },
 
     containerActiveChats: {
         margin: MARGIN_AVATAR,
+        height: '100%',
+        marginTop: 0,
+        justifyContent: 'center'
     },
 
 })

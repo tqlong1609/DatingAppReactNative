@@ -7,7 +7,7 @@ import { withTranslation } from 'react-i18next';
 
 
 function BottomHalfModel(props) {
-    const { isVisible, setVisibleModel, t, children } = props;
+    const { isVisible, setVisibleModel, t, children, numberRow } = props;
 
     return (
         <View >
@@ -19,7 +19,7 @@ function BottomHalfModel(props) {
                 swipeDirection="down"
             >
                 <View style={styles.container}>
-                    <View style={styles.containerContent}>
+                    <View style={[styles.containerContent, { height: numberRow * 60 + 10 }]}>
                         <View style={styles.containerHeader}>
                             <Text style={styles.txtHeader}>{t('Confirm action')}</Text>
                         </View>
@@ -27,7 +27,7 @@ function BottomHalfModel(props) {
 
                     </View>
                     <TouchableOpacity
-                        style={[styles.btnCancel, { height: Themes.Const.HEIGHT_MODAL / 3 }]}
+                        style={[styles.btnCancel, { height: 60 }]}
                         onPress={() => setVisibleModel(false)}
                     >
                         <Text style={styles.txtCancel}>{t("Cancel")}</Text>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     containerContent: {
-        height: Themes.Const.HEIGHT_MODAL + (Themes.Const.HEIGHT_MODAL / 3) - 3,
+
         // height: 270,
         backgroundColor: 'white',
         borderRadius: Themes.Const.BORDER_BUTTON,

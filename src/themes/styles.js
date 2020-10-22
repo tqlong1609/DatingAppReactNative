@@ -2,7 +2,7 @@ import * as Const from './const'
 import * as Colors from './colors'
 
 export const BtnBetweenContent = {
-    height: Const.HEIGHT_MODAL / Const.NUMBER_BUTTON,
+    height: 60,
     backgroundColor: Const.COLOR_MODAL,
     borderTopWidth: Const.BORDER_WIDTH_BUTTON,
     borderTopColor: Const.COLOR_BORDER_BUTTON,
@@ -19,7 +19,7 @@ export const TxtContentButton = {
 }
 
 export const BtnBottomContent = {
-    height: Const.HEIGHT_MODAL / Const.NUMBER_BUTTON,
+    height: 60,
     backgroundColor: Const.COLOR_MODAL,
     borderBottomLeftRadius: Const.BORDER_BUTTON,
     borderBottomRightRadius: Const.BORDER_BUTTON,
