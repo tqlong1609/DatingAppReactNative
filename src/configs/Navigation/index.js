@@ -16,6 +16,7 @@ import Splash from '/src/components/Splash/splash'
 import MyPreferences from '/src/components/MyPreferences/myPreferences'
 import MyAlbums from '/src/components/MyAlbums/myAlbums'
 import Picture from '/src/components/Picture/picture'
+import Messages from '../../components/MainMessages/messages'
 
 import Const from '/src/const'
 
@@ -74,6 +75,7 @@ export default function screensNavigation() {
                     name={Const.NameScreens.Introduction}
                     component={Introduction}
                 />
+
                 <Stack.Screen
                     name={Const.NameScreens.BottomNavigation}
                     component={BottomNavigation}
@@ -110,6 +112,10 @@ export default function screensNavigation() {
                 <Stack.Screen
                     name={Const.NameScreens.MyAlbums}
                     component={MyAlbums}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.Messages}
+                    component={Messages}
                 />
             </Stack.Navigator>
         </NavigationContainer>

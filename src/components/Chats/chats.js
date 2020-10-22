@@ -6,7 +6,9 @@ import EmptyPerform from '/src/components/UI/emptyPerform'
 import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types'
 import AvatarActive from '/src/components/UI/avatarActive'
-import CircleAvatarActive from '/src/components/UI/circleAvatarActive'
+import ItemMessages from '/src/components/UI/itemMessages'
+import { useNavigation } from '@react-navigation/native';
+import Const from '/src/const'
 
 const data = [
     {
@@ -71,41 +73,23 @@ const dataMessages = [
 
 function Chats(props) {
     const { t } = props
+    const navigation = useNavigation();
 
     const [isEmpty, setIsEmpty] = useState(false)
+
+
+    const onPressMessages = () => {
+        navigation.navigate(Const.NameScreens.Messages)
+    }
 
     const renderItemAvatarActive = (item, index) => {
         return <AvatarActive item={item} sizeAvatar={60} sizeActive={4} />
     }
 
     const renderItemMessages = (item, index) => {
-        const { name, time, messages, isRead } = item
-        console.log("renderItemMessages -> isRead", isRead)
-        return (
-            <TouchableOpacity style={{
-                paddingHorizontal: 10,
-                flexDirection: 'row', marginVertical: 10, width: '100%'
-            }}>
-                <View style={{ flex: 1 }}>
-                    <CircleAvatarActive item={item} sizeAvatar={60} sizeActive={3} />
-                </View>
-                <View style={{ flex: 4, marginVertical: 10 }}>
-                    <View style={{
-                        flexDirection: 'row', justifyContent: 'space-between', width: '100%',
-                        flex: 1,
-                        alignItems: 'center'
-                    }}>
-                        <Text style={[{ fontSize: 16 },
-                        isRead ? { color: Themes.Colors.GRAY_DARK } : { fontWeight: 'bold' }]}>{name}</Text>
-                        <Text style={[{ fontSize: 16 },
-                        isRead ? { color: Themes.Colors.GRAY_DARK } : { fontWeight: 'bold' }]}>{time}</Text>
-                    </View>
-                    <View style={{ flex: 1, justifyContent: 'center' }}>
-                        <Text style={[{ fontSize: 13 },
-                        isRead ? { color: Themes.Colors.GRAY_DARK } : { fontWeight: 'bold' }]}>{messages}</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>)
+        return <ItemMessages item={item}
+            onPressMessages={() => onPressMessages()}
+        />
     }
 
     return (

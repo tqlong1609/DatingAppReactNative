@@ -12,9 +12,9 @@ function Discover(props) {
     }
     return (
         <View style={styles.container}>
-            <View style={styles.containHeader}>
+            {/* <View style={styles.containHeader}>
                 <SwitchGrid style={{ marginTop: 10 }} />
-            </View>
+            </View> */}
             <View style={styles.containSwipe} >
                 <ImageSwipe t={t} />
             </View>
