@@ -16,6 +16,7 @@ import store from './src/store'
 // import MainMessages from '/src/components/Messages.js/messages'
 // import Chats from '/src/components/Chats/chats'
 // import Picture from '/src/components/Picture/picture'
+// import VoiceCallDate from '/src/components/VoiceCallDate/voiceCallDate'
 function Main() {
     return (
         <Provider store={store}>

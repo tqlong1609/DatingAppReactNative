@@ -21,7 +21,7 @@ export default function buttonNext(props) {
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 colors={[Themes.Colors.PINK_DARK, Themes.Colors.RED_DARK]}
-                style={styles.btnArrowRight}>
+                style={[styles.btnArrowRight]}>
                 <TouchableOpacity style={styles.btnNext} onPress={() => onClickNext()}>
                     {
                         !isCheck ?
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     btnArrowRight: {
-        ...Themes.Styles.ButtonBottomNext
+        ...Themes.Styles.ButtonBottomNext,
     },
     iconNext: {
         alignSelf: 'center',

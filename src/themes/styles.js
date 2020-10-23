@@ -122,7 +122,7 @@ export const ButtonBottomNext = {
     justifyContent: 'center',
     position: 'absolute',
     right: Const.ABSOLUTE_BOTTOM,
-    bottom: Const.ABSOLUTE_BOTTOM
+    bottom: Const.ABSOLUTE_BOTTOM,
 }
 
 export const IconBack = {
