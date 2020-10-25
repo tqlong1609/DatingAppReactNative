@@ -1,1 +1,1 @@
-export const URLAPI = 'http://localhost:5000/chatHub';
+export const URLAPI = 'http://192.168.1.120:5000/chatHub';

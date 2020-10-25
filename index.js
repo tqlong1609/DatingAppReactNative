@@ -13,7 +13,7 @@ import store from './src/store'
 // import SocketTest from '/test/socketTest'
 // import MyAlbums from '/src/components/MyAlbums/myAlbums';
 // import MyProfile from '/src/components/MyProfile/myProfile'
-// import MainMessages from '/src/components/Messages.js/messages'
+import Messages from '/src/components/MainMessages/messages'
 // import Chats from '/src/components/Chats/chats'
 // import Picture from '/src/components/Picture/picture'
 // import VoiceCallDate from '/src/components/VoiceCallDate/voiceCallDate'
@@ -27,4 +27,4 @@ function Main() {
 
 // import ChatTest from '/test/chatTest1'
 
-AppRegistry.registerComponent(appName, () => Main);
+AppRegistry.registerComponent(appName, () => Messages);

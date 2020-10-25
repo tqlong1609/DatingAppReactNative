@@ -23,6 +23,7 @@ import {
 } from 'native-base';
 
 import { HubConnectionBuilder, LogLevel, HttpTransportType } from '@aspnet/signalr';
+// import * as signalR from '@aspnet/signalr'
 import { URLAPI } from './conf';
 console.log("URLAPI", URLAPI)
 
@@ -44,6 +45,10 @@ class App extends React.Component {
             transport: HttpTransportType.WebSockets
         })
         .build();
+    // _hubConnection = new signalR.HubConnectionBuilder()
+    //     .withUrl(URLAPI)
+    //     .configureLogging(signalR.LogLevel.Information)
+    //     .build();
     componentDidMount() {
         this._hubConnection.start().then(a => {
             console.log('Connected rafa');

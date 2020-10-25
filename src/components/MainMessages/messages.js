@@ -7,9 +7,32 @@ import DatingModal from '/src/components/Model/datingModal'
 import BottomHalfModel from '/src/components/Model/bottomHalfModel'
 import Themes from '/src/themes'
 import { withTranslation } from 'react-i18next';
+import ItemConversition from '/src/components/UI/itemConversition'
 
+const ROLE_SENDER = "1"
+const ROLE_RECEIVER = "0"
 
 const data = [
+    {
+        id: "1",
+        role: ROLE_SENDER,
+        message: "có làm thì mới có ăn"
+    },
+    {
+        id: "2",
+        role: ROLE_SENDER,
+        message: "người anh em cho xin cái địa chỉ"
+    },
+    {
+        id: "3",
+        role: ROLE_RECEIVER,
+        message: "thằng zo zăn hoá"
+    },
+    {
+        id: "4",
+        role: ROLE_RECEIVER,
+        message: "người anh em cho xin cái địa chỉ, người anh em cho xin cái địa chỉ, người anh em cho xin cái địa chỉ,người anh em cho xin cái địa chỉ"
+    },
 ]
 
 const actions = [
@@ -46,9 +69,7 @@ function Messages(props) {
     const [isVisibleTextInput, setIsVisibleTextInput] = useState(true)
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
     const renderItemChat = (item, index) => {
-        console.log('object')
-        return <View style={{ backgroundColor: 'red', width: 100, height: 100 }}>
-            <Text>{item.value}</Text></View>
+        return <ItemConversition item={item} />
     }
 
     useEffect(() => {
