@@ -1,22 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import ImageSwipe from '/src/components/UI/imageSwipe'
 import Themes from '/src/themes'
 import ButtonStatus from '/src/components/UI/buttonStatus'
-import SwitchGrid from '/src/components/UI/switchGrid'
+// import SwitchGrid from '/src/components/UI/switchGrid'
+import ImageDetail from '/src/components/UI/imageDetail'
 import { withTranslation } from 'react-i18next'
 function Discover(props) {
     const { t } = props
+    const [isModeDetail, setIsModeDetail] = useState(false)
     const onPressBack = () => {
         console.log('object')
     }
+
+    const onPressInfo = () => {
+        setIsModeDetail(!isModeDetail)
+    }
+
     return (
         <View style={styles.container}>
             {/* <View style={styles.containHeader}>
                 <SwitchGrid style={{ marginTop: 10 }} />
             </View> */}
             <View style={styles.containSwipe} >
-                <ImageSwipe t={t} />
+                {!isModeDetail ? <ImageSwipe t={t} onPressInfo={onPressInfo} /> : <ImageDetail onPressInfo={onPressInfo} />}
             </View>
             <View style={styles.containFooter}>
                 <ButtonStatus

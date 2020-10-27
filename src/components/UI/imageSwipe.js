@@ -65,12 +65,15 @@ const STATUS = {
 const SIZE_IMAGE_PER = 95
 
 const Footer = (props) => {
+    const { onPressInfo } = props
     return (
         <View style={styles.containFooter}>
             <View style={styles.containInfo}>
                 <Text style={styles.txtName}>Long</Text>
                 <Text style={styles.txtOlds}>21</Text>
-                <TouchableOpacity style={styles.containIcoInfo}>
+                <TouchableOpacity style={styles.containIcoInfo}
+                    onPress={() => onPressInfo && onPressInfo()}
+                >
                     <Ionicons name="information-circle" style={styles.icoInfo}></Ionicons>
                 </TouchableOpacity>
             </View>
@@ -260,7 +263,7 @@ export default class ImageSwipe extends React.Component {
                         <Image
                             style={styles.imgSwipe}
                             source={{ uri: item.arrUri[this.state.currentIndexPicture] }} />
-                        <Footer />
+                        <Footer onPressInfo={this.props.onPressInfo} />
                     </Animated.View>
                 )
             }
