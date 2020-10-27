@@ -58,10 +58,13 @@ export default function screensNavigation() {
                     headerShown: false
                 }}
             >
-
                 <Stack.Screen
                     name={Const.NameScreens.BottomNavigation}
                     component={BottomNavigation}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.Login}
+                    component={Login}
                 />
                 <Stack.Screen
                     name={Const.NameScreens.Splash}
@@ -93,10 +96,7 @@ export default function screensNavigation() {
                     name={Const.NameScreens.SingInOrUp}
                     component={SingInOrUp}
                 />
-                <Stack.Screen
-                    name={Const.NameScreens.Login}
-                    component={Login}
-                />
+
                 <Stack.Screen
                     name={Const.NameScreens.CodePhone}
                     component={CodePhone}

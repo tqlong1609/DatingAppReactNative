@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder, TouchableOpacity }
     from 'react-native';
 import Themes from '/src/themes'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
 
@@ -62,6 +63,23 @@ const STATUS = {
 }
 
 const SIZE_IMAGE_PER = 95
+
+const Footer = (props) => {
+    return (
+        <View style={styles.containFooter}>
+            <View style={styles.containInfo}>
+                <Text style={styles.txtName}>Long</Text>
+                <Text style={styles.txtOlds}>21</Text>
+                <TouchableOpacity style={styles.containIcoInfo}>
+                    <Ionicons name="information-circle" style={styles.icoInfo}></Ionicons>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.containSubInfo}>
+                <Text style={styles.txtSubInfo}>Có Làm thì mới có ăn</Text>
+            </View>
+        </View>
+    )
+}
 const TabSwipe = (props) => {
     const { length, currentIndexPicture } = props
     return (<View style={{
@@ -242,6 +260,7 @@ export default class ImageSwipe extends React.Component {
                         <Image
                             style={styles.imgSwipe}
                             source={{ uri: item.arrUri[this.state.currentIndexPicture] }} />
+                        <Footer />
                     </Animated.View>
                 )
             }
@@ -263,6 +282,7 @@ export default class ImageSwipe extends React.Component {
                         <Image
                             style={styles.imgSwipe}
                             source={{ uri: item.arrUri[0] }} />
+                        <Footer />
                     </Animated.View>
                 )
             }
@@ -283,6 +303,30 @@ export default class ImageSwipe extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    containIcoInfo: {
+        marginTop: 7, marginLeft: 5
+    },
+    containSubInfo: {
+        marginTop: 5
+    },
+    txtSubInfo: {
+        fontSize: 20, color: 'white'
+    },
+    icoInfo: {
+        fontSize: 22, color: 'white'
+    },
+    txtOlds: {
+        fontSize: 22, color: 'white', marginLeft: 7, marginTop: 5
+    },
+    containInfo: {
+        flexDirection: "row", alignItems: 'center'
+    },
+    containFooter: {
+        position: 'absolute', bottom: 50, left: 30
+    },
+    txtName: {
+        fontSize: 30, fontWeight: 'bold', color: 'white'
+    },
     imgSwipe: {
         height: '100%', width: '100%', resizeMode: 'cover', borderRadius: 20
     },
