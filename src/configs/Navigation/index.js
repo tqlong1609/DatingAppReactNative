@@ -17,6 +17,7 @@ import MyPreferences from '/src/components/MyPreferences/myPreferences'
 import MyAlbums from '/src/components/MyAlbums/myAlbums'
 import Picture from '/src/components/Picture/picture'
 import Messages from '../../components/MainMessages/messages'
+import SignUpEmail from '/src/components/SignUpEmail/signUpEmail.Controller'
 
 import Const from '/src/const'
 
@@ -58,6 +59,10 @@ export default function screensNavigation() {
                     headerShown: false
                 }}
             >
+                <Stack.Screen
+                    name={Const.NameScreens.SignUpEmail}
+                    component={SignUpEmail}
+                />
                 <Stack.Screen
                     name={Const.NameScreens.Login}
                     component={Login}

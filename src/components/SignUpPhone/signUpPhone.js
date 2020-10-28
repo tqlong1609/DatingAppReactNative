@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import AvatarCircle from 'src/components/UI/avatarCircle.js'
 import TextInputPhone from '/src/components/UI/textInputPhone'
 import { withTranslation } from 'react-i18next';
-
 function SignUpPhone(props) {
     const { t, tReady } = props;
 

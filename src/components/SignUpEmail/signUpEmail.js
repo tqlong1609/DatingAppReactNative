@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
 import AvatarCircle from 'src/components/UI/avatarCircle.js'
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -8,13 +8,23 @@ import Themes from '/src/themes'
 
 //TODO: pick image of avatar
 function SignUpEmail(props) {
-    const { t, tReady, onSignUpEmail } = props;
+    const { t, tReady, onSignUpEmail, onSignUpPhone } = props;
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
+    const [confirmEmail, setConfirmEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const refEmail = useRef()
+    const refConfirmEmail = useRef()
+    const refPassword = useRef()
+
     const onPressSignUp = () => {
-        onSignUpEmail({ name, email, password })
+        onSignUpEmail && onSignUpEmail({ name, email, password })
+    }
+
+    const onPressSignUpPhone = () => {
+        onSignUpPhone && onSignUpPhone()
     }
 
     return (
@@ -25,12 +35,22 @@ function SignUpEmail(props) {
             <Text style={styles.txtTitle}> {t('Create new account')} </Text>
             <TextInput style={styles.inpEnter} placeholder={t('Name')}
                 onChangeText={(value) => setName(value)}
+                onSubmitEditing={() => refEmail.current.focus()}
             />
             <TextInput style={styles.inpEnter} placeholder={t('Email Address')} keyboardType={'email-address'}
                 onChangeText={(value) => setEmail(value)}
+                ref={refEmail}
+                onSubmitEditing={() => refConfirmEmail.current.focus()}
+            />
+            <TextInput style={styles.inpEnter} placeholder={t('Confirm Email')} keyboardType={'email-address'}
+                onChangeText={(value) => setConfirmEmail(value)}
+                ref={refConfirmEmail}
+                onSubmitEditing={() => refPassword.current.focus()}
             />
             <TextInput style={styles.inpEnter} placeholder={t('Password')} secureTextEntry={true}
                 onChangeText={(value) => setPassword(value)}
+                ref={refPassword}
+                onSubmitEditing={() => onPressSignUp()}
             />
             <TouchableOpacity style={styles.btnSignUpEmail}
                 onPress={() => onPressSignUp()}
@@ -38,7 +58,9 @@ function SignUpEmail(props) {
                 <Text style={styles.txtSignUpEmail}>{t('Sign Up')}</Text>
             </TouchableOpacity>
             <Text style={styles.txtOr}> {t('OR')} </Text>
-            <TouchableOpacity style={styles.btnSignUpPhone}>
+            <TouchableOpacity style={styles.btnSignUpPhone}
+                onPress={() => onPressSignUpPhone()}
+            >
                 <Text style={styles.txtPhone}>{t('Sign up with phone number')}</Text>
             </TouchableOpacity>
         </ScrollView>

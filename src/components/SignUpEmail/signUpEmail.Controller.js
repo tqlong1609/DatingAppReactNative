@@ -1,10 +1,18 @@
 import React from 'react'
 import SignUpEmail from './signUpEmail'
+import { useNavigation } from '@react-navigation/native'
+import Const from '/src/const'
+
 export default function SignUpEmailController() {
+    const navigation = useNavigation()
 
     const onSignUpEmail = (params) => {
         const { name, email, password } = params
         requestPostSignUpApi(name, email, email, password)
+    }
+
+    const onSignUpPhone = () => {
+        navigation.navigate(Const.NameScreens.SignUpPhone)
     }
 
     const requestPostSignUpApi = async (name, email, confirmEmail, password) => {
@@ -31,6 +39,9 @@ export default function SignUpEmailController() {
     }
 
     return (
-        <SignUpEmail onSignUpEmail={onSignUpEmail} />
+        <SignUpEmail
+            onSignUpEmail={onSignUpEmail}
+            onSignUpPhone={onSignUpPhone}
+        />
     )
 }

@@ -17,6 +17,8 @@ export const MyPreferences = "MyPreferences"
 export const MyAlbums = "MyAlbums"
 export const Picture = "Picture"
 export const Messages = "Messages"
+export const SignUpEmail = "SignUpEmail"
+
 
 
 

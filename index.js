@@ -17,7 +17,7 @@ import store from './src/store'
 // import Chats from '/src/components/Chats/chats'
 // import Picture from '/src/components/Picture/picture'
 // import VoiceCallDate from '/src/components/VoiceCallDate/voiceCallDate'
-import signUpEmail from '/src/components/SignUpEmail/signUpEmail.Controller';
+// import signUpEmail from '/src/components/SignUpEmail/signUpEmail.Controller';
 function Main() {
     return (
         <Provider store={store}>
@@ -28,4 +28,4 @@ function Main() {
 
 // import ChatTest from '/test/chatTest1'
 
-AppRegistry.registerComponent(appName, () => signUpEmail);
+AppRegistry.registerComponent(appName, () => Main);
