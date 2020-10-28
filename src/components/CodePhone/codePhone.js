@@ -10,12 +10,6 @@ function CodePhone(props) {
 
     const { onSendCodePhone, t } = props
 
-    const [phoneNumber, setPhoneNumber] = useState('')
-
-    const onChangeText = (value) => {
-        setPhoneNumber(value)
-    }
-
     const onSendCode = () => {
         onSendCodePhone && onSendCodePhone(phoneNumber)
     }
@@ -26,7 +20,7 @@ function CodePhone(props) {
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
             <Text style={styles.txtTitle}> {t('Sign In')} </Text>
-            <TextInputPhone style={styles.txtPhoneCode} onChangeText={onChangeText} t={t} />
+            <TextInputPhone style={styles.txtPhoneCode} t={t} />
             <TouchableOpacity style={styles.btnSendCode}
                 onPress={() => onSendCode()}
             >

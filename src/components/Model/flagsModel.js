@@ -4,25 +4,33 @@ import Modal from 'react-native-modal';
 import Const from '/src/const';
 
 function ItemFlags(props) {
-    const { item } = props;
+    const { item, onPressFlagItem } = props;
     const { dialCode, label } = item;
 
+    const onPressFlag = () => {
+        onPressFlagItem && onPressFlagItem(item)
+    }
+
     return (
-        <View style={{ flexDirection: 'row', borderBottomWidth: 0.5, height: 50 }}>
+        <TouchableOpacity style={{ flexDirection: 'row', borderBottomWidth: 0.5, height: 50 }}
+            onPress={() => onPressFlag()}
+        >
             <View style={{ flex: 5, justifyContent: 'center' }}>
                 <Text style={{ marginLeft: 10, color: 'black', fontSize: 17 }}>{label}</Text>
             </View>
             <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Text style={{ alignSelf: 'center', color: 'black', fontSize: 17 }}>{dialCode}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 
 }
 
 export default function FlagsModel(props) {
-    const { isVisible, setVisibleModel } = props;
-    const renderItem = useCallback(({ item }) => <ItemFlags item={item} />, [])
+    const { isVisible, setVisibleModel, onPressFlagItem } = props;
+    const renderItem = useCallback(({ item }) => <ItemFlags item={item}
+        onPressFlagItem={onPressFlagItem}
+    />, [])
 
     const keyExtractor = useCallback((item) => item.key, [])
 

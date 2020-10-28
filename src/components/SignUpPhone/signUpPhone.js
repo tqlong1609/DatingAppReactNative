@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, TextInput, Image } from 'react-native'
 import Themes from '/src/themes'
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -8,6 +8,8 @@ import { withTranslation } from 'react-i18next';
 function SignUpPhone(props) {
     const { t, tReady } = props;
 
+    const refInpPhone = useRef()
+
     return (
 
         <ScrollView>
@@ -15,10 +17,10 @@ function SignUpPhone(props) {
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
             <Text style={styles.txtTitle}> {t('Create new account')} </Text>
-            <AvatarCircle style={styles.avatar} />
-            <TextInput style={styles.inpEnter} placeholder={t('First Name')} autoCompleteType={'username'} />
-            <TextInput style={styles.inpEnter} placeholder={t('Last Name')} autoCompleteType={'username'} />
-            <TextInputPhone t={t} />
+            <TextInput style={styles.inpEnter} placeholder={t('Name')} autoCompleteType={'username'}
+                onSubmitEditing={() => refInpPhone.current.focus()}
+            />
+            <TextInputPhone t={t} forwardRef={refInpPhone} />
             <TouchableOpacity style={styles.btnSendCode}>
                 <Text style={styles.txtSendCode}>{t('Send code')}</Text>
             </TouchableOpacity>
@@ -44,6 +46,7 @@ const styles = StyleSheet.create({
     },
     inpEnter: {
         ...Themes.Styles.TextInput,
+        fontSize: Themes.Const.FONT_SIZE,
         marginTop: Themes.Const.MARGIN_TOP,
     },
     btnSendCode: {

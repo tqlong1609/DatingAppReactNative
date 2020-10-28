@@ -6,26 +6,41 @@ import FlagsModel from '/src/components/Model/flagsModel'
 
 //TODO: modal phone areas
 export default function textInputPhone(props) {
-    const { style, onChangeText, t } = props;
+    const { style, t, forwardRef } = props;
     const [isVisible, setIsVisible] = useState(false);
-
+    const [codeArea, setCodeArea] = useState('+84')
+    const [textPhone, setTextPhone] = useState('')
     function setVisibleModel(isVisible) {
         setIsVisible(isVisible);
     }
 
+    const onPressFlagItem = (item) => {
+        const { dialCode } = item
+        setCodeArea(dialCode)
+        setVisibleModel(false)
+    }
+
+    const onChangeText = (value) => {
+        setTextPhone(value)
+    }
+
     return (
         <View style={{ ...styles.inpEnterPhone, ...style }}  >
-            <TouchableOpacity onPress={() => setVisibleModel(true)}>
-                <View style={styles.imgFlags}>
-                    <Text style={styles.txtPhoneArea}>+84</Text>
-                </View>
+            <TouchableOpacity style={styles.imgFlags}
+                onPress={() => setVisibleModel(true)}
+            >
+                <Text style={styles.txtPhoneArea}>{codeArea}</Text>
             </TouchableOpacity>
-            <TextInput placeholder={t('Phone Number')}
+            <TextInput
+                ref={forwardRef}
+                placeholder={t('Phone Number')}
                 keyboardType={'phone-pad'}
                 style={styles.inpPhone}
                 onChangeText={(value) => onChangeText(value)}
             />
-            <FlagsModel isVisible={isVisible} setVisibleModel={setVisibleModel} />
+            <FlagsModel isVisible={isVisible} setVisibleModel={setVisibleModel}
+                onPressFlagItem={onPressFlagItem}
+            />
         </View>
     )
 }
@@ -40,6 +55,7 @@ textInputPhone.defaultProps = {
     style: null,
     onChangeText: null
 }
+
 
 const styles = StyleSheet.create({
     txtPhoneArea: {
