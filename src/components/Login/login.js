@@ -44,6 +44,7 @@ function Login(props) {
                 const credential = auth.FacebookAuthProvider.credential(
                     data.accessToken,
                 );
+                console.log("signUpWithFacebookApi -> credential", credential)
                 return auth().signInWithCredential(credential);
             })
             .then((response) =>

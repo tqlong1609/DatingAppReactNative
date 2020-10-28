@@ -59,13 +59,14 @@ export default function screensNavigation() {
                 }}
             >
                 <Stack.Screen
-                    name={Const.NameScreens.BottomNavigation}
-                    component={BottomNavigation}
-                />
-                <Stack.Screen
                     name={Const.NameScreens.Login}
                     component={Login}
                 />
+                <Stack.Screen
+                    name={Const.NameScreens.BottomNavigation}
+                    component={BottomNavigation}
+                />
+
                 <Stack.Screen
                     name={Const.NameScreens.Splash}
                     component={Splash}
@@ -82,8 +83,6 @@ export default function screensNavigation() {
                     name={Const.NameScreens.Introduction}
                     component={Introduction}
                 />
-
-
                 <Stack.Screen
                     name={Const.NameScreens.Religious}
                     component={Religious}
