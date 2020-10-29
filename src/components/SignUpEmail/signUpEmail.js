@@ -1,15 +1,16 @@
 import React, { useState, useRef } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
-import AvatarCircle from 'src/components/UI/avatarCircle.js'
+// import AvatarCircle from 'src/components/UI/avatarCircle.js'
+import Spinner from 'react-native-loading-spinner-overlay';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { withTranslation } from 'react-i18next';
+import AlertModal from '/src/components/Model/alertModal'
 
 import Themes from '/src/themes'
 
 //TODO: pick image of avatar
 function SignUpEmail(props) {
-    const { t, tReady, onSignUpEmail, onSignUpPhone } = props;
-
+    const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModal, onPressButtonModal } = props;
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [confirmEmail, setConfirmEmail] = useState('')
@@ -20,7 +21,7 @@ function SignUpEmail(props) {
     const refPassword = useRef()
 
     const onPressSignUp = () => {
-        onSignUpEmail && onSignUpEmail({ name, email, password })
+        onSignUpEmail && onSignUpEmail({ name, email, confirmEmail, password })
     }
 
     const onPressSignUpPhone = () => {
@@ -29,6 +30,11 @@ function SignUpEmail(props) {
 
     return (
         <ScrollView>
+            <Spinner
+                visible={isLoading}
+                textContent={'Loading...'}
+                textStyle={styles.spinnerTextStyle}
+            />
             <TouchableOpacity style={styles.btnIcon}>
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
@@ -63,11 +69,21 @@ function SignUpEmail(props) {
             >
                 <Text style={styles.txtPhone}>{t('Sign up with phone number')}</Text>
             </TouchableOpacity>
+            <AlertModal visible={isShowModal}
+                title={"Successful"}
+                detail={"You register success"}
+                textButton={"OK"}
+                colorButton={"#3AB54A"}
+                onPressButton={onPressButtonModal}
+            />
         </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
+    spinnerTextStyle: {
+        color: '#FFF'
+    },
     btnIcon: {
         ...Themes.Styles.IconBack
     },
