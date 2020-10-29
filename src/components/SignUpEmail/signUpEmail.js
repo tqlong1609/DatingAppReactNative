@@ -10,7 +10,8 @@ import Themes from '/src/themes'
 
 //TODO: pick image of avatar
 function SignUpEmail(props) {
-    const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModal, onPressButtonModal } = props;
+    const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModalSuccess, isShowModalFail, onPressButtonModal,
+        message } = props;
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [confirmEmail, setConfirmEmail] = useState('')
@@ -69,11 +70,21 @@ function SignUpEmail(props) {
             >
                 <Text style={styles.txtPhone}>{t('Sign up with phone number')}</Text>
             </TouchableOpacity>
-            <AlertModal visible={isShowModal}
+            <AlertModal visible={isShowModalSuccess}
+                urlImage={require('/src/assets/images/success.png')}
                 title={"Successful"}
-                detail={"You register success"}
+                detail={message}
                 textButton={"OK"}
                 colorButton={"#3AB54A"}
+                onPressButton={onPressButtonModal}
+            />
+            <AlertModal
+                visible={isShowModalFail}
+                urlImage={require('/src/assets/images/warning.png')}
+                title={"Error"}
+                detail={message}
+                textButton={"Try Again"}
+                colorButton={"#FF0000"}
                 onPressButton={onPressButtonModal}
             />
         </ScrollView>

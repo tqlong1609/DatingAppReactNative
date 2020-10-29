@@ -6,7 +6,9 @@ import Api from '/src/api'
 
 export default function SignUpEmailController() {
     const [isLoading, setIsLoading] = useState(false)
-    const [isShowModal, setIsShowModal] = useState(false)
+    const [isShowModalSuccess, setIsShowModalSuccess] = useState(false)
+    const [isShowModalFail, setIsShowModalFail] = useState(false)
+    const [message, setMessage] = useState('')
     const navigation = useNavigation()
     const onSignUpEmail = (params) => {
         const { name, email, confirmEmail, password } = params
@@ -20,7 +22,23 @@ export default function SignUpEmailController() {
     const requestApiSuccess = (json) => {
         console.log(json)
         setIsLoading(false)
-        setIsShowModal(true)
+        if (json.errors === undefined) {
+            setIsShowModalSuccess(true)
+            setMessage(json.message)
+        } else {
+            setIsShowModalFail(true)
+            setMessage(json.title)
+        }
+
+    }
+
+    // network fail
+    const requestApiFail = (error) => {
+        console.log('error')
+        console.log(error)
+        setIsLoading(false)
+        setIsShowModalFail(true)
+        setMessage("Network connect fail")
     }
 
     const requestPostSignUpApi = async (name, email, confirmEmail, password) => {
@@ -37,11 +55,12 @@ export default function SignUpEmailController() {
         })
             .then((response) => response.json())
             .then((json) => requestApiSuccess(json))
-            .catch((error) => console.error(error));
+            .catch((error) => requestApiFail(error));
     }
 
     const onPressButtonModal = () => {
-        setIsShowModal(false)
+        isShowModalSuccess && setIsShowModalSuccess(false)
+        isShowModalFail && setIsShowModalFail(false)
     }
 
     return (
@@ -49,8 +68,10 @@ export default function SignUpEmailController() {
             onSignUpEmail={onSignUpEmail}
             onSignUpPhone={onSignUpPhone}
             isLoading={isLoading}
-            isShowModal={isShowModal}
+            isShowModalSuccess={isShowModalSuccess}
+            isShowModalFail={isShowModalFail}
             onPressButtonModal={onPressButtonModal}
+            message={message}
         />
     )
 }

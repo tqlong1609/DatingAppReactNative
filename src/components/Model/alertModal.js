@@ -10,7 +10,7 @@ import {
 import Themes from '/src/themes'
 import Const from '/src/const'
 const App = (props) => {
-    const { visible, title, detail, textButton, colorButton, onPressButton } = props
+    const { visible, title, detail, textButton, colorButton, onPressButton, urlImage } = props
 
 
 
@@ -24,7 +24,7 @@ const App = (props) => {
                 <View style={styles.modalView}>
                     <Image
                         style={styles.imgIco}
-                        source={require('/src/assets/images/success.png')} />
+                        source={urlImage} />
                     <Text style={styles.txtTitle}>{title}</Text>
                     <Text style={styles.txtDetail}>{detail}</Text>
                     <TouchableHighlight
