@@ -3,15 +3,17 @@ import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from 'rea
 import { withTranslation } from 'react-i18next';
 import Themes from '/src/themes'
 
-import { useNavigation } from '@react-navigation/native'
-import Const from '/src/const'
 export function SignInOrUp(props) {
-    const navigation = useNavigation()
-    const { t, tReady } = props;
+    const { t, onPressLogin, onPressSignUp } = props;
 
     const onLogin = () => {
-        navigation.navigate(Const.NameScreens.Login)
+        onPressLogin && onPressLogin()
     }
+
+    const onSignUp = () => {
+        onPressSignUp && onPressSignUp()
+    }
+
     return (
         <ScrollView>
             <Image
@@ -33,6 +35,7 @@ export function SignInOrUp(props) {
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.btnSignUp}
+                    onPress={() => onSignUp()}
                 >
                     <Text style={styles.txtSignUp}>{t('Sign Up')}</Text>
                 </TouchableOpacity>
@@ -46,7 +49,7 @@ const PADDING_VERTICAL = 10;
 const styles = StyleSheet.create({
     imgLogo: {
         width: 100,
-        height: 100,
+        height: 110,
         resizeMode: 'stretch',
         alignSelf: 'center',
         marginTop: 150
@@ -55,7 +58,7 @@ const styles = StyleSheet.create({
         width: 265,
         alignSelf: 'center',
         alignItems: 'center',
-        marginTop: 30,
+        marginTop: Themes.Const.MARGIN_TOP_V3,
         marginBottom: 30
     },
     txtTitle: {
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: Themes.Colors.PINK,
         width: '100%',
-        marginTop: 30,
+        marginTop: Themes.Const.MARGIN_TOP_V3,
         borderRadius: Themes.Const.BORDER_RADIUS
     },
     txtLogin: {

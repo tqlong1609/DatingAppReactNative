@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
-// import AvatarCircle from 'src/components/UI/avatarCircle.js'
 import Spinner from 'react-native-loading-spinner-overlay';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { withTranslation } from 'react-i18next';
@@ -8,9 +7,20 @@ import AlertModal from '/src/components/Model/alertModal'
 
 import Themes from '/src/themes'
 
-//TODO: pick image of avatar
+/**
+ * UNIT TEST
+ * not input data
+ * not enter name
+ * not enter email address
+ * not enter confirm email
+ * not enter password
+ * incorrect email format
+ * check password strong
+ */
 function SignUpEmail(props) {
-    const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModalSuccess, isShowModalFail, onPressButtonModal,
+    const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModalSuccess, isShowModalFail,
+        onPressButtonModal,
+        onPressBack,
         message } = props;
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -29,6 +39,10 @@ function SignUpEmail(props) {
         onSignUpPhone && onSignUpPhone()
     }
 
+    const onBack = () => {
+        onPressBack && onPressBack()
+    }
+
     return (
         <ScrollView>
             <Spinner
@@ -36,11 +50,13 @@ function SignUpEmail(props) {
                 textContent={'Loading...'}
                 textStyle={styles.spinnerTextStyle}
             />
-            <TouchableOpacity style={styles.btnIcon}>
+            <TouchableOpacity style={styles.btnIcon}
+                onPress={() => onBack()}
+            >
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
             <Text style={styles.txtTitle}> {t('Create new account')} </Text>
-            <TextInput style={styles.inpEnter} placeholder={t('Name')}
+            <TextInput style={[styles.inpEnter, { marginTop: Themes.Const.MARGIN_TOP_V3 }]} placeholder={t('Name')}
                 onChangeText={(value) => setName(value)}
                 onSubmitEditing={() => refEmail.current.focus()}
             />

@@ -63,10 +63,15 @@ export default function SignUpEmailController() {
         isShowModalFail && setIsShowModalFail(false)
     }
 
+    const onPressBack = () => {
+        navigation.navigate(Const.NameScreens.SingInOrUp)
+    }
+
     return (
         <SignUpEmail
             onSignUpEmail={onSignUpEmail}
             onSignUpPhone={onSignUpPhone}
+            onPressBack={onPressBack}
             isLoading={isLoading}
             isShowModalSuccess={isShowModalSuccess}
             isShowModalFail={isShowModalFail}

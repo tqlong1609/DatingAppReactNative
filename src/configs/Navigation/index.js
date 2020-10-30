@@ -4,7 +4,7 @@ import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Introduction from '/src/components/Introduction/introduction';
-import SingInOrUp from '/src/components/SingInOrUp/signInOrUp'
+import SingInOrUp from '/src/components/SingInOrUp/signInOrUp.Controller'
 import Login from '/src/components/Login/login'
 import CodePhone from '/src/components/CodePhone/codePhone.controller'
 import MyProfile from '/src/components/MyProfile/myProfile'
@@ -60,6 +60,14 @@ export default function screensNavigation() {
                 }}
             >
                 <Stack.Screen
+                    name={Const.NameScreens.Splash}
+                    component={Splash}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.SingInOrUp}
+                    component={SingInOrUp}
+                />
+                <Stack.Screen
                     name={Const.NameScreens.SignUpEmail}
                     component={SignUpEmail}
                 />
@@ -70,11 +78,6 @@ export default function screensNavigation() {
                 <Stack.Screen
                     name={Const.NameScreens.BottomNavigation}
                     component={BottomNavigation}
-                />
-
-                <Stack.Screen
-                    name={Const.NameScreens.Splash}
-                    component={Splash}
                 />
                 <Stack.Screen
                     name={Const.NameScreens.Picture}
@@ -96,10 +99,7 @@ export default function screensNavigation() {
                     name={Const.NameScreens.SignUpPhone}
                     component={SignUpPhone}
                 />
-                <Stack.Screen
-                    name={Const.NameScreens.SingInOrUp}
-                    component={SingInOrUp}
-                />
+
 
                 <Stack.Screen
                     name={Const.NameScreens.CodePhone}

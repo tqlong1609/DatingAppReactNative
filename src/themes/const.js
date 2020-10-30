@@ -10,6 +10,7 @@ export const MARGIN = 10;
 export const MARGIN_TOP = 30;
 export const MARGIN_TOP_V1 = 40;
 export const MARGIN_TOP_V2 = 140;
+export const MARGIN_TOP_V3 = 80;
 export const MARGIN_V1 = 40;
 export const MARGIN_HORIZONTAL = 50;
 export const MARGIN_HORIZONTAL_INPUT = 20;

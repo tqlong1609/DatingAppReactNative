@@ -89,12 +89,12 @@ const styles = StyleSheet.create({
     },
     inpEmail: {
         ...Themes.Styles.TextInput,
-        marginTop: 80
+        marginTop: Themes.Const.MARGIN_TOP_V3
     },
     inpPassword: {
         ...Themes.Styles.TextInput,
         marginTop: Themes.Const.MARGIN_TOP,
-        marginBottom: 80
+        marginBottom: Themes.Const.MARGIN_TOP_V3
     },
     btnSignInEmail: {
         ...Themes.Styles.Button,

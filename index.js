@@ -6,9 +6,9 @@ import { AppRegistry, YellowBox } from 'react-native';
 import { name as appName } from './app.json';
 // YellowBox.ignoreWarnings(['Require cycle:']);
 
-import Navigation from '/src/configs/Navigation'
-import { Provider } from 'react-redux'
-import store from './src/store'
+// import Navigation from '/src/configs/Navigation'
+// import { Provider } from 'react-redux'
+// import store from './src/store'
 
 // import SocketTest from '/test/socketTest'
 // import MyAlbums from '/src/components/MyAlbums/myAlbums';
@@ -18,14 +18,15 @@ import store from './src/store'
 // import Picture from '/src/components/Picture/picture'
 // import VoiceCallDate from '/src/components/VoiceCallDate/voiceCallDate'
 // import signUpEmail from '/src/components/SignUpEmail/signUpEmail.Controller';
-function Main() {
-    return (
-        <Provider store={store}>
-            <Navigation />
-        </Provider>
-    )
-}
+// function Main() {
+//     return (
+//         <Provider store={store}>
+//             <Navigation />
+//         </Provider>
+//     )
+// }
 
 // import ChatTest from '/test/chatTest1'
+import PasswordStrongTest from '/test/passwordStrongTest'
 
-AppRegistry.registerComponent(appName, () => Main);
+AppRegistry.registerComponent(appName, () => PasswordStrongTest);
