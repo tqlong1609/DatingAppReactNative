@@ -12,7 +12,7 @@ const MAX_LEN = 40,
 
 import Themes from '/src/themes'
 import Utils from '/src/utils'
-import { MiddlewareArray } from '@reduxjs/toolkit';
+
 /**
  * UNIT TEST
  * not input data : Finish
@@ -24,7 +24,6 @@ import { MiddlewareArray } from '@reduxjs/toolkit';
  * check password strong : Finish
  * 
  */
-
 function SignUpEmail(props) {
     const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModalSuccess, isShowModalFail,
         onPressButtonModal,
@@ -77,17 +76,13 @@ function SignUpEmail(props) {
         }
     }
 
-    // check password > normal
-    // const onStrongPass = () => {
-    // }
-
+    // check password strong
     if (password !== "") {
         const checkPass = Utils.ValidateInput.validatePassword(password, MIN_LEN)
         if (checkPass > 1) {
             strongPassCheck = true
         }
     }
-
 
     // check no data input
     if (emailCheck && nameCheck && confirmEmailCheck && strongPassCheck) {
