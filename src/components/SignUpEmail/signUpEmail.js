@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { withTranslation } from 'react-i18next';
 import AlertModal from '/src/components/Model/alertModal'
 import PassMeter from "react-native-passmeter";
+
 const MAX_LEN = 40,
     MIN_LEN = 6,
     PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
@@ -13,13 +14,13 @@ import Themes from '/src/themes'
 
 /**
  * UNIT TEST
- * not input data
- * not enter name
- * not enter email address
- * not enter confirm email
- * not enter password
+ * not input data : Finish
+ * not enter name : Finish
+ * not enter email address : Finish
+ * not enter confirm email : Finish
+ * not enter password : Finish
  * incorrect email format
- * check password strong
+ * check password strong : Finish
  * 
  */
 function SignUpEmail(props) {
@@ -27,14 +28,17 @@ function SignUpEmail(props) {
         onPressButtonModal,
         onPressBack,
         message } = props;
+
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [confirmEmail, setConfirmEmail] = useState('')
     const [password, setPassword] = useState('')
-
     const refEmail = useRef()
     const refConfirmEmail = useRef()
     const refPassword = useRef()
+
+    let isVisible = true
+
 
     const onPressSignUp = () => {
         onSignUpEmail && onSignUpEmail({ name, email, confirmEmail, password })
@@ -46,6 +50,10 @@ function SignUpEmail(props) {
 
     const onBack = () => {
         onPressBack && onPressBack()
+    }
+
+    if (name !== "" && email !== "" && confirmEmail !== "" && password !== "" && isVisible) {
+        isVisible = !isVisible
     }
 
     return (
@@ -95,7 +103,9 @@ function SignUpEmail(props) {
                 labels={PASS_LABELS}
             />
 
-            <TouchableOpacity style={styles.btnSignUpEmail}
+            <TouchableOpacity
+                disabled={isVisible}
+                style={[styles.btnSignUpEmail, !isVisible ? { backgroundColor: Themes.Colors.PINK } : { backgroundColor: 'gray' }]}
                 onPress={() => onPressSignUp()}
             >
                 <Text style={styles.txtSignUpEmail}>{t('Sign Up')}</Text>
@@ -147,7 +157,7 @@ const styles = StyleSheet.create({
     },
     btnSignUpEmail: {
         ...Themes.Styles.Button,
-        backgroundColor: Themes.Colors.PINK,
+        // backgroundColor: Themes.Colors.PINK,
         marginTop: Themes.Const.MARGIN_TOP,
     },
     txtSignUpEmail: {
