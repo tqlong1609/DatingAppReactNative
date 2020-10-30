@@ -5,13 +5,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { withTranslation } from 'react-i18next';
 import AlertModal from '/src/components/Model/alertModal'
 import PassMeter from "react-native-passmeter";
-
+import Ionicons from 'react-native-vector-icons/Ionicons'
 const MAX_LEN = 40,
     MIN_LEN = 6,
     PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
 import Themes from '/src/themes'
-
+import Utils from '/src/utils'
+import { MiddlewareArray } from '@reduxjs/toolkit';
 /**
  * UNIT TEST
  * not input data : Finish
@@ -19,10 +20,11 @@ import Themes from '/src/themes'
  * not enter email address : Finish
  * not enter confirm email : Finish
  * not enter password : Finish
- * incorrect email format
+ * incorrect email format : Finish
  * check password strong : Finish
  * 
  */
+
 function SignUpEmail(props) {
     const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModalSuccess, isShowModalFail,
         onPressButtonModal,
@@ -38,7 +40,10 @@ function SignUpEmail(props) {
     const refPassword = useRef()
 
     let isVisible = true
-
+    let emailCheck = false
+    let nameCheck = false
+    let confirmEmailCheck = false
+    let strongPassCheck = false
 
     const onPressSignUp = () => {
         onSignUpEmail && onSignUpEmail({ name, email, confirmEmail, password })
@@ -52,7 +57,40 @@ function SignUpEmail(props) {
         onPressBack && onPressBack()
     }
 
-    if (name !== "" && email !== "" && confirmEmail !== "" && password !== "" && isVisible) {
+    // check name input
+    if (name !== "") {
+        nameCheck = true
+    }
+
+    // check email input
+    if (email !== "") {
+        const emailValid = Utils.ValidateInput.validateEmail(email)
+        if (emailValid) {
+            emailCheck = true
+        }
+    }
+
+    // check confirm email
+    if (confirmEmail !== "") {
+        if (confirmEmail === email) {
+            confirmEmailCheck = true
+        }
+    }
+
+    // check password > normal
+    // const onStrongPass = () => {
+    // }
+
+    if (password !== "") {
+        const checkPass = Utils.ValidateInput.validatePassword(password, MIN_LEN)
+        if (checkPass > 1) {
+            strongPassCheck = true
+        }
+    }
+
+
+    // check no data input
+    if (emailCheck && nameCheck && confirmEmailCheck && strongPassCheck) {
         isVisible = !isVisible
     }
 
@@ -69,31 +107,63 @@ function SignUpEmail(props) {
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
             <Text style={styles.txtTitle}> {t('Create new account')} </Text>
-            <TextInput style={[styles.inpEnter, { marginTop: Themes.Const.MARGIN_TOP_V3 }]} placeholder={t('Name')}
-                onChangeText={(value) => setName(value)}
-                onSubmitEditing={() => refEmail.current.focus()}
-            />
-            <TextInput style={styles.inpEnter} placeholder={t('Email Address')} keyboardType={'email-address'}
-                onChangeText={(value) => setEmail(value)}
-                ref={refEmail}
-                onSubmitEditing={() => refConfirmEmail.current.focus()}
-            />
-            <TextInput style={styles.inpEnter} placeholder={t('Confirm Email')} keyboardType={'email-address'}
-                onChangeText={(value) => setConfirmEmail(value)}
-                ref={refConfirmEmail}
-                onSubmitEditing={() => refPassword.current.focus()}
-            />
+            <View
+                style={[styles.inpEnter, { marginTop: Themes.Const.MARGIN_TOP_V3 }]}
+            >
+                <TextInput
+                    style={{ flex: 1 }}
+                    placeholder={t('Name')}
+                    onChangeText={(value) => setName(value)}
+                    onSubmitEditing={() => refEmail.current.focus()}
+                />
+                {nameCheck && <Ionicons name="checkmark-outline"
+                    style={styles.icoCheck}></Ionicons>}
+            </View>
 
-            <TextInput
-                style={styles.inpEnter}
-                ref={refPassword}
-                maxLength={MAX_LEN}
-                placeholder={t('Password')}
-                secureTextEntry
-                onSubmitEditing={() => onPressSignUp()}
-                onChangeText={password => setPassword(password)}
-            />
+            <View
+                style={[styles.inpEnter]}>
+                <TextInput
+                    style={{ flex: 1 }}
+                    placeholder={t('Email Address')} keyboardType={'email-address'}
+                    onChangeText={(value) => setEmail(value)}
+                    ref={refEmail}
+                    onSubmitEditing={() => refConfirmEmail.current.focus()}
+                />
+                {emailCheck && <Ionicons name="checkmark-outline"
+                    style={styles.icoCheck}></Ionicons>}
+            </View>
+
+            <View
+                style={[styles.inpEnter]}>
+                <TextInput
+                    style={{ flex: 1 }}
+                    placeholder={t('Confirm Email')} keyboardType={'email-address'}
+                    onChangeText={(value) => setConfirmEmail(value)}
+                    ref={refConfirmEmail}
+                    onSubmitEditing={() => refPassword.current.focus()}
+                />
+                {confirmEmailCheck && <Ionicons name="checkmark-outline"
+                    style={styles.icoCheck}></Ionicons>}
+            </View>
+
+
+            <View
+                style={[styles.inpEnter]}>
+                <TextInput
+                    ref={refPassword}
+                    style={{ flex: 1 }}
+                    maxLength={MAX_LEN}
+                    placeholder={t('Password')}
+                    secureTextEntry
+                    onSubmitEditing={() => onPressSignUp()}
+                    onChangeText={password => setPassword(password)}
+                />
+                {strongPassCheck && <Ionicons name="checkmark-outline"
+                    style={styles.icoCheck}></Ionicons>}
+            </View>
+
             <PassMeter
+                maxStrong={1}
                 height={2}
                 width={270}
                 showLabels
@@ -138,6 +208,9 @@ function SignUpEmail(props) {
 }
 
 const styles = StyleSheet.create({
+    icoCheck: {
+        fontSize: 25, color: 'green', alignSelf: 'center'
+    },
     spinnerTextStyle: {
         color: '#FFF'
     },
@@ -154,6 +227,7 @@ const styles = StyleSheet.create({
     inpEnter: {
         ...Themes.Styles.TextInput,
         marginTop: Themes.Const.MARGIN_TOP,
+        flexDirection: 'row', justifyContent: 'space-between'
     },
     btnSignUpEmail: {
         ...Themes.Styles.Button,
