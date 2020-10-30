@@ -4,6 +4,10 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { withTranslation } from 'react-i18next';
 import AlertModal from '/src/components/Model/alertModal'
+import PassMeter from "react-native-passmeter";
+const MAX_LEN = 40,
+    MIN_LEN = 6,
+    PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
 
 import Themes from '/src/themes'
 
@@ -16,6 +20,7 @@ import Themes from '/src/themes'
  * not enter password
  * incorrect email format
  * check password strong
+ * 
  */
 function SignUpEmail(props) {
     const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModalSuccess, isShowModalFail,
@@ -70,11 +75,26 @@ function SignUpEmail(props) {
                 ref={refConfirmEmail}
                 onSubmitEditing={() => refPassword.current.focus()}
             />
-            <TextInput style={styles.inpEnter} placeholder={t('Password')} secureTextEntry={true}
-                onChangeText={(value) => setPassword(value)}
+
+            <TextInput
+                style={styles.inpEnter}
                 ref={refPassword}
+                maxLength={MAX_LEN}
+                placeholder={t('Password')}
+                secureTextEntry
                 onSubmitEditing={() => onPressSignUp()}
+                onChangeText={password => setPassword(password)}
             />
+            <PassMeter
+                height={2}
+                width={270}
+                showLabels
+                password={password}
+                maxLength={MAX_LEN}
+                minLength={MIN_LEN}
+                labels={PASS_LABELS}
+            />
+
             <TouchableOpacity style={styles.btnSignUpEmail}
                 onPress={() => onPressSignUp()}
             >
