@@ -7,12 +7,11 @@ import {
     TouchableHighlight,
     View
 } from "react-native";
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 import Const from '/src/const'
 const App = (props) => {
     const { visible, title, detail, textButton, colorButton, onPressButton, urlImage } = props
-
-
 
     return (
         <Modal
@@ -22,9 +21,14 @@ const App = (props) => {
         >
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    <Image
+                    {urlImage ? <Image
                         style={styles.imgIco}
                         source={urlImage} />
+                        :
+                        <Ionicons name="checkmark-circle"
+                            color={Themes.Colors.GREEN_BRIGHT_I}
+                            style={styles.circleCheck}></Ionicons>
+                    }
                     <Text style={styles.txtTitle}>{title}</Text>
                     <Text style={styles.txtDetail}>{detail}</Text>
                     <TouchableHighlight
@@ -39,7 +43,12 @@ const App = (props) => {
     );
 };
 
+const SIZE_IMAGE = 60
 const styles = StyleSheet.create({
+    circleCheck: {
+        fontSize: SIZE_IMAGE + 15,
+        marginBottom: 20
+    },
     txtDetail: {
         fontSize: 15,
         color: Themes.Colors.GRAY_BRIGHT,
@@ -52,7 +61,7 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
     imgIco: {
-        width: 60, height: 60, marginBottom: 20
+        width: SIZE_IMAGE, height: SIZE_IMAGE, marginBottom: 20
     },
     centeredView: {
         flex: 1,

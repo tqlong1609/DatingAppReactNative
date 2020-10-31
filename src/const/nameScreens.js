@@ -18,6 +18,8 @@ export const MyAlbums = "MyAlbums"
 export const Picture = "Picture"
 export const Messages = "Messages"
 export const SignUpEmail = "SignUpEmail"
+export const EmailAddress = "EmailAddress"
+
 
 
 

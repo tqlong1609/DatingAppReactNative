@@ -7,11 +7,9 @@ import Themes from '/src/themes'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
-{/* <ion-icon name=""></ion-icon> */ }
 import PropTypes from 'prop-types'
 export default function buttonNext(props) {
     const { isGradient, isCheck } = props;
-    console.log(isCheck)
     const onClickNext = () => {
         console.log('hello')
     }

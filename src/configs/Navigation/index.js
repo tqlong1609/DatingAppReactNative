@@ -18,6 +18,7 @@ import MyAlbums from '/src/components/MyAlbums/myAlbums'
 import Picture from '/src/components/Picture/picture'
 import Messages from '../../components/MainMessages/messages'
 import SignUpEmail from '/src/components/SignUpEmail/signUpEmail.Controller'
+import EmailAddress from '/src/components/EmailAddress/emailAddress.controller'
 
 import Const from '/src/const'
 
@@ -74,6 +75,10 @@ export default function screensNavigation() {
                 <Stack.Screen
                     name={Const.NameScreens.Login}
                     component={Login}
+                />
+                <Stack.Screen
+                    name={Const.NameScreens.EmailAddress}
+                    component={EmailAddress}
                 />
                 <Stack.Screen
                     name={Const.NameScreens.BottomNavigation}

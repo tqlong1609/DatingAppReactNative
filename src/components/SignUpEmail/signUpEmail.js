@@ -171,11 +171,10 @@ function SignUpEmail(props) {
                 <Text style={styles.txtPhone}>{t('Sign up with phone number')}</Text>
             </TouchableOpacity>
             <AlertModal visible={isShowModalSuccess}
-                urlImage={require('/src/assets/images/success.png')}
                 title={"Successful"}
                 detail={message}
                 textButton={"OK"}
-                colorButton={"#3AB54A"}
+                colorButton={Themes.Colors.GREEN_BRIGHT_I}
                 onPressButton={onPressButtonModal}
             />
             <AlertModal

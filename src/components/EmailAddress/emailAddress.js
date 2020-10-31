@@ -4,10 +4,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Themes from '/src/themes'
 import ButtonNext from '/src/components/UI/buttonNext'
 import { withTranslation } from 'react-i18next'
+import IntroductionHelper from '/src/components/UI/introductionHelper'
 function EmailAddress(props) {
-    const { t } = props
+    const { t, isVisible, onPressNext } = props
     return (
         <View style={{ flex: 1 }}>
+            <IntroductionHelper isVisible={isVisible} onPressNext={onPressNext} />
             <TouchableOpacity style={styles.btnIcon}>
                 <Ionicons name="arrow-back-outline" color={Themes.Colors.PINK_DARK} size={Themes.Const.SIZE_ICON}></Ionicons>
             </TouchableOpacity>

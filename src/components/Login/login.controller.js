@@ -49,7 +49,7 @@ export default function LoginController() {
     const requestApiSuccess = (json) => {
         console.log("requestApiSuccess -> json", json)
         if (json.status === "Active") {
-            navigation.navigate(Const.NameScreens.BottomNavigation)
+            navigation.navigate(Const.NameScreens.EmailAddress)
         } else {
             setIsShowModalFail(true)
             json.errors !== undefined ? setMessage(json.errors.email[0]) : setMessage(json.message)

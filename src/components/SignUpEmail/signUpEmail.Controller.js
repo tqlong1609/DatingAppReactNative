@@ -42,7 +42,7 @@ export default function SignUpEmailController() {
         setIsLoading(true)
         Api.RequestApi.postRequestApi(Api.Url.URL_SIGN_UP_EMAIL, {
             email: email.toLowerCase(),
-            confirmEmail: confirmEmail,
+            confirmEmail: confirmEmail.toLowerCase(),
             password: password,
             name: name,
             gender: "male",
