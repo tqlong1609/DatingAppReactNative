@@ -21,7 +21,6 @@ export default function SignUpEmailController() {
 
     const requestApiSuccess = (json) => {
         console.log(json)
-        setIsLoading(false)
         if (json.errors === undefined) {
             setIsShowModalSuccess(true)
             setMessage(json.message)
@@ -34,9 +33,7 @@ export default function SignUpEmailController() {
 
     // network fail
     const requestApiFail = (error) => {
-        console.log('error')
-        console.log(error)
-        setIsLoading(false)
+        console.log("requestApiFail", error)
         setIsShowModalFail(true)
         setMessage("Network connect fail")
     }
@@ -44,7 +41,7 @@ export default function SignUpEmailController() {
     const requestPostSignUpApi = async (name, email, confirmEmail, password) => {
         setIsLoading(true)
         Api.RequestApi.postRequestApi(Api.Url.URL_SIGN_UP_EMAIL, {
-            email: email,
+            email: email.toLowerCase(),
             confirmEmail: confirmEmail,
             password: password,
             name: name,
@@ -55,7 +52,8 @@ export default function SignUpEmailController() {
         })
             .then((response) => response.json())
             .then((json) => requestApiSuccess(json))
-            .catch((error) => requestApiFail(error));
+            .catch((error) => requestApiFail(error))
+            .finally(() => setIsLoading(false));
     }
 
     const onPressButtonModal = () => {

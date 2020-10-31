@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Introduction from '/src/components/Introduction/introduction';
 import SingInOrUp from '/src/components/SingInOrUp/signInOrUp.Controller'
-import Login from '/src/components/Login/login'
+import Login from '/src/components/Login/login.controller'
 import CodePhone from '/src/components/CodePhone/codePhone.controller'
 import MyProfile from '/src/components/MyProfile/myProfile'
 import BottomNavigation from './bottomNavigation'

@@ -1,67 +1,67 @@
-import React, { Component } from 'react'
+import React, { useRef, useState } from 'react'
 import {
     Text, View, ScrollView, TextInput,
     TouchableOpacity, StyleSheet
 } from 'react-native'
 
 import { withTranslation } from 'react-i18next';
-
-// import firebase from 'firebase';
-import auth from '@react-native-firebase/auth';
-import { useNavigation } from '@react-navigation/native'
 import Themes from '/src/themes'
-import Const from '/src/const'
-import { LoginManager, AccessToken } from "react-native-fbsdk";
 import ButtonBack from '/src/components/UI/buttonBack'
-function Login(props) {
-    const { t, tReady } = props;
+import Const from '/src/const'
+import SpinnerLoading from '/src/components/UI/spinnerLoading'
+import AlertModal from '/src/components/Model/alertModal'
 
-    const navigation = useNavigation()
+function Login(props) {
+    const { t, onPressLogin, onPressLoginNumberPhone, onPressLoginFacebookAPI,
+        isLoading, isShowModalFail, message, onPressButtonModal } = props;
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const refPassword = useRef()
+
+    let isVisible = true
+
     const onLogin = () => {
-        navigation.navigate(Const.NameScreens.BottomNavigation)
+        onPressLogin && onPressLogin(email, password)
     }
 
     const onLoginFacebook = () => {
-        signUpWithFacebookApi()
+        onPressLoginFacebookAPI && onPressLoginFacebookAPI()
     }
 
     const onLoginNumberPhone = () => {
-        navigation.navigate(Const.NameScreens.CodePhone)
+        onPressLoginNumberPhone && onPressLoginNumberPhone()
     }
 
-    const signUpWithFacebookApi = () => {
-        return LoginManager.logInWithPermissions(['public_profile'])
-            .then((result) => {
-                if (result.isCancelled) {
-                    return Promise.reject(new Error('The user cancelled the request'));
-                }
-                console.log(
-                    `Login success with permission: ${result.grantedPermissions.toString()}`,
-                );
-                return AccessToken.getCurrentAccessToken();
-            })
-            .then((data) => {
-                const credential = auth.FacebookAuthProvider.credential(
-                    data.accessToken,
-                );
-                console.log("signUpWithFacebookApi -> credential", credential)
-                return auth().signInWithCredential(credential);
-            })
-            .then((response) =>
-                console.log("signUpWithFacebookApi -> response", response)
-            )
-            .catch(error => {
-                console.log("error", error)
-            });
-    };
+    const onSubmitEmail = () => {
+        refPassword.current.focus()
+    }
+
+    if (email !== "" && password !== "") {
+        isVisible = false
+    }
 
     return (
         <ScrollView>
+            <SpinnerLoading isLoading={isLoading} />
             <ButtonBack />
             <Text style={styles.txtTitle}> {t('Sign In')} </Text>
-            <TextInput style={styles.inpEmail} placeholder={'Email'} keyboardType={'email-address'} />
-            <TextInput style={styles.inpPassword} placeholder={t('Password')} secureTextEntry={true} />
-            <TouchableOpacity style={styles.btnSignInEmail}
+            <TextInput style={styles.inpEmail}
+                onSubmitEditing={() => onSubmitEmail()}
+                placeholder={'Email'}
+                onChangeText={(email) => setEmail(email)}
+                keyboardType={'email-address'} />
+            <TextInput
+                style={styles.inpPassword}
+                onChangeText={(password) => setPassword(password)}
+                placeholder={t('Password')}
+                onSubmitEditing={() => onLogin()}
+                maxLength={Const.Common.MAX_LEN_PASSWORD}
+                secureTextEntry={true}
+                ref={refPassword}
+            />
+            <TouchableOpacity
+                disabled={isVisible}
+                style={[styles.btnSignInEmail, !isVisible ? { backgroundColor: Themes.Colors.PINK } : { backgroundColor: 'gray' }]}
                 onPress={() => onLogin()}
             >
                 <Text style={styles.txtLoginEmail}>{t('Log In')}</Text>
@@ -77,6 +77,15 @@ function Login(props) {
             >
                 <Text style={styles.txtPhone}>{t('Login with phone number')}</Text>
             </TouchableOpacity>
+            <AlertModal
+                visible={isShowModalFail}
+                urlImage={require('/src/assets/images/warning.png')}
+                title={"Error"}
+                detail={message}
+                textButton={"Try Again"}
+                colorButton={"#FF0000"}
+                onPressButton={onPressButtonModal}
+            />
         </ScrollView>
     )
 }
@@ -98,7 +107,7 @@ const styles = StyleSheet.create({
     },
     btnSignInEmail: {
         ...Themes.Styles.Button,
-        backgroundColor: Themes.Colors.PINK,
+
     },
     txtLoginEmail: {
         ...Themes.Styles.TextButton

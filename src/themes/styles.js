@@ -11,6 +11,10 @@ export const BtnBetweenContent = {
     justifyContent: 'center'
 }
 
+export const SpinnerTextStyle = {
+    color: '#FFF'
+}
+
 export const TxtContentButton = {
     alignSelf: 'center',
     color: Const.COLOR_CONTENT_MODAL,

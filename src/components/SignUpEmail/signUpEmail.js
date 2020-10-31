@@ -1,17 +1,14 @@
 import React, { useState, useRef } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native'
-import Spinner from 'react-native-loading-spinner-overlay';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { withTranslation } from 'react-i18next';
 import AlertModal from '/src/components/Model/alertModal'
 import PassMeter from "react-native-passmeter";
 import Ionicons from 'react-native-vector-icons/Ionicons'
-const MAX_LEN = 40,
-    MIN_LEN = 6,
-    PASS_LABELS = ["Too Short", "Weak", "Normal", "Strong", "Secure"];
-
+import Const from '/src/const'
 import Themes from '/src/themes'
 import Utils from '/src/utils'
+import SpinnerLoading from '/src/components/UI/spinnerLoading'
 
 /**
  * UNIT TEST
@@ -78,7 +75,7 @@ function SignUpEmail(props) {
 
     // check password strong
     if (password !== "") {
-        const checkPass = Utils.ValidateInput.validatePassword(password, MIN_LEN)
+        const checkPass = Utils.ValidateInput.validatePassword(password, Const.Common.MIN_LEN_PASSWORD)
         if (checkPass > 1) {
             strongPassCheck = true
         }
@@ -91,11 +88,7 @@ function SignUpEmail(props) {
 
     return (
         <ScrollView>
-            <Spinner
-                visible={isLoading}
-                textContent={'Loading...'}
-                textStyle={styles.spinnerTextStyle}
-            />
+            <SpinnerLoading isLoading={isLoading} />
             <TouchableOpacity style={styles.btnIcon}
                 onPress={() => onBack()}
             >
@@ -127,7 +120,6 @@ function SignUpEmail(props) {
                 {emailCheck && <Ionicons name="checkmark-outline"
                     style={styles.icoCheck}></Ionicons>}
             </View>
-
             <View
                 style={[styles.inpEnter]}>
                 <TextInput
@@ -140,32 +132,29 @@ function SignUpEmail(props) {
                 {confirmEmailCheck && <Ionicons name="checkmark-outline"
                     style={styles.icoCheck}></Ionicons>}
             </View>
-
-
             <View
                 style={[styles.inpEnter]}>
                 <TextInput
                     ref={refPassword}
                     style={{ flex: 1 }}
-                    maxLength={MAX_LEN}
+                    maxLength={Const.Common.MAX_LEN_PASSWORD}
                     placeholder={t('Password')}
                     secureTextEntry
-                    onSubmitEditing={() => onPressSignUp()}
+                    onSubmitEditing={() => !isVisible && onPressSignUp()}
                     onChangeText={password => setPassword(password)}
                 />
                 {strongPassCheck && <Ionicons name="checkmark-outline"
                     style={styles.icoCheck}></Ionicons>}
             </View>
-
             <PassMeter
                 maxStrong={1}
                 height={2}
                 width={270}
                 showLabels
                 password={password}
-                maxLength={MAX_LEN}
-                minLength={MIN_LEN}
-                labels={PASS_LABELS}
+                maxLength={Const.Common.MAX_LEN_PASSWORD}
+                minLength={Const.Common.MIN_LEN_PASSWORD}
+                labels={Const.Common.PASS_LABELS}
             />
 
             <TouchableOpacity
@@ -205,9 +194,6 @@ function SignUpEmail(props) {
 const styles = StyleSheet.create({
     icoCheck: {
         fontSize: 25, color: 'green', alignSelf: 'center'
-    },
-    spinnerTextStyle: {
-        color: '#FFF'
     },
     btnIcon: {
         ...Themes.Styles.IconBack
