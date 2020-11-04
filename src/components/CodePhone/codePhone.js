@@ -6,12 +6,20 @@ import TextInputPhone from '/src/components/UI/textInputPhone'
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 
+let numberPhoneValue
 function CodePhone(props) {
-
     const { onSendCodePhone, t } = props
 
     const onSendCode = () => {
-        onSendCodePhone && onSendCodePhone(phoneNumber)
+        // console.log(numberPhoneValue)
+        if (numberPhoneValue !== undefined) {
+            onSendCodePhone && onSendCodePhone(numberPhoneValue)
+        }
+    }
+
+    const onChangeValue = (numberPhone) => {
+        console.log("onChangeValue -> numberPhone", numberPhone)
+        numberPhoneValue = numberPhone
     }
 
     return (
@@ -20,7 +28,9 @@ function CodePhone(props) {
                 <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
             </TouchableOpacity>
             <Text style={styles.txtTitle}> {t('Sign In')} </Text>
-            <TextInputPhone style={styles.txtPhoneCode} t={t} />
+            <TextInputPhone style={styles.txtPhoneCode} t={t}
+                onChangeValue={onChangeValue}
+            />
             <TouchableOpacity style={styles.btnSendCode}
                 onPress={() => onSendCode()}
             >

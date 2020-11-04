@@ -5,6 +5,9 @@ import auth from '@react-native-firebase/auth';
 import Utils from '/src/utils'
 import { Alert } from 'react-native';
 
+/**
+ * confirm wrong code: Finish
+ */
 export default function CodePhoneController() {
 
     const [confirm, setConfirm] = useState(null);
@@ -15,7 +18,20 @@ export default function CodePhoneController() {
         if (isPhone) {
             auth()
                 .signInWithPhoneNumber(phoneNumber)
-                .then(confirmResult => setConfirm(confirmResult))
+                .then(confirmResult => {
+                    // console.log("getCode -> code", code)
+                    auth().onAuthStateChanged((user) => {
+                        if (user) {
+                            console.log('Login success')
+                            const id = auth().currentUser.uid
+                            console.log("signInWithPhoneNumber -> id", id)
+                            // setConfirm(confirmResult)
+                        } else {
+                            console.log('Confirm code')
+                            setConfirm(confirmResult)
+                        }
+                    })
+                })
                 .catch(error => console.log(error))
         }
         else {
@@ -36,7 +52,6 @@ export default function CodePhoneController() {
     }
 
     const getCode = (code) => {
-        console.log("getCode -> code", code)
         confirmCode(code)
     }
 

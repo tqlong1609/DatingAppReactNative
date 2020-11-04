@@ -6,7 +6,7 @@ import FlagsModel from '/src/components/Model/flagsModel'
 
 //TODO: modal phone areas
 export default function textInputPhone(props) {
-    const { style, t, forwardRef } = props;
+    const { style, t, onChangeValue } = props;
     const [isVisible, setIsVisible] = useState(false);
     const [codeArea, setCodeArea] = useState('+84')
     const [textPhone, setTextPhone] = useState('')
@@ -22,6 +22,7 @@ export default function textInputPhone(props) {
 
     const onChangeText = (value) => {
         setTextPhone(value)
+        onChangeValue(codeArea + value)
     }
 
     return (
@@ -32,7 +33,6 @@ export default function textInputPhone(props) {
                 <Text style={styles.txtPhoneArea}>{codeArea}</Text>
             </TouchableOpacity>
             <TextInput
-                ref={forwardRef}
                 placeholder={t('Phone Number')}
                 keyboardType={'phone-pad'}
                 style={styles.inpPhone}

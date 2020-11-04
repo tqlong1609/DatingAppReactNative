@@ -21,54 +21,54 @@ export default function LoginController() {
     const [message, setMessage] = useState('')
 
     const signUpWithFacebookApi = () => {
-        return LoginManager.logInWithPermissions([
-            'public_profile',
-        ])
-            .then((result) => {
-                if (result.isCancelled) {
-                    return Promise.reject(new Error('The user cancelled the request'));
-                }
-                console.log(
-                    `Login success with permission: ${result.grantedPermissions.toString()}`,
-                );
-                return AccessToken.getCurrentAccessToken();
-            })
-            .then((data) => {
-                console.log("signUpWithFacebookApi -> data", data)
-                // const credential = auth.FacebookAuthProvider.credential(
-                //     data.accessToken,
-                // );
-                // console.log("signUpWithFacebookApi -> credential", credential)
-                // return auth().signInWithCredential(credential);
-            })
-            // .then((response) =>
-            //     console.log("signUpWithFacebookApi -> response", response)
-            // )
-            .catch(error => {
-                console.log("error", error)
-            });
         // return LoginManager.logInWithPermissions([
         //     'public_profile',
-        //     'email',
-        //     'user_birthday',
-        //     'user_gender',
-        //     'user_location',
-        //     'user_photos',
-        // ]).then(
-        //     (result) => {
+        // ])
+        //     .then((result) => {
         //         if (result.isCancelled) {
-        //             console.log('Login cancelled');
-        //         } else {
-        //             AccessToken.getCurrentAccessToken().then((data) => {
-        //                 console.log(data);
-        //                 // this.getInfoFromFB(data.accessToken);
-        //             });
+        //             return Promise.reject(new Error('The user cancelled the request'));
         //         }
-        //     },
-        //     (error) => {
-        //         console.log('Login fail with error: ' + error);
-        //     },
-        // );
+        //         console.log(
+        //             `Login success with permission: ${result.grantedPermissions.toString()}`,
+        //         );
+        //         return AccessToken.getCurrentAccessToken();
+        //     })
+        //     .then((data) => {
+        //         console.log("signUpWithFacebookApi -> data", data)
+        //         // const credential = auth.FacebookAuthProvider.credential(
+        //         //     data.accessToken,
+        //         // );
+        //         // console.log("signUpWithFacebookApi -> credential", credential)
+        //         // return auth().signInWithCredential(credential);
+        //     })
+        //     // .then((response) =>
+        //     //     console.log("signUpWithFacebookApi -> response", response)
+        //     // )
+        //     .catch(error => {
+        //         console.log("error", error)
+        //     });
+        return LoginManager.logInWithPermissions([
+            'public_profile',
+            'email',
+            'user_birthday',
+            'user_gender',
+            'user_location',
+            'user_photos',
+        ]).then(
+            (result) => {
+                if (result.isCancelled) {
+                    console.log('Login cancelled');
+                } else {
+                    AccessToken.getCurrentAccessToken().then((data) => {
+                        console.log('data', data);
+                        // this.getInfoFromFB(data.accessToken);
+                    });
+                }
+            },
+            (error) => {
+                console.log('Login fail with error: ' + error);
+            },
+        );
     };
 
     const requestApiSuccess = (json) => {
