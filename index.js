@@ -9,6 +9,7 @@ import { name as appName } from './app.json';
 import Navigation from '/src/configs/Navigation'
 import { Provider } from 'react-redux'
 import store from './src/store'
+import PushNotification from 'react-native-push-notification'
 
 function Main() {
     return (
