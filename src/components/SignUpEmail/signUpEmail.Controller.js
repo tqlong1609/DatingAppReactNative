@@ -15,10 +15,6 @@ export default function SignUpEmailController() {
         requestPostSignUpApi(name, email, confirmEmail, password)
     }
 
-    const onSignUpPhone = () => {
-        navigation.navigate(Const.NameScreens.SignUpPhone)
-    }
-
     const requestApiSuccess = (json) => {
         console.log(json)
         if (json.errors === undefined) {
@@ -68,7 +64,6 @@ export default function SignUpEmailController() {
     return (
         <SignUpEmail
             onSignUpEmail={onSignUpEmail}
-            onSignUpPhone={onSignUpPhone}
             onPressBack={onPressBack}
             isLoading={isLoading}
             isShowModalSuccess={isShowModalSuccess}

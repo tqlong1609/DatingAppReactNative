@@ -22,7 +22,7 @@ import SpinnerLoading from '/src/components/UI/spinnerLoading'
  * 
  */
 function SignUpEmail(props) {
-    const { t, isLoading, onSignUpEmail, onSignUpPhone, isShowModalSuccess, isShowModalFail,
+    const { t, isLoading, onSignUpEmail, isShowModalSuccess, isShowModalFail,
         onPressButtonModal,
         onPressBack,
         message } = props;
@@ -43,10 +43,6 @@ function SignUpEmail(props) {
 
     const onPressSignUp = () => {
         onSignUpEmail && onSignUpEmail({ name, email, confirmEmail, password })
-    }
-
-    const onPressSignUpPhone = () => {
-        onSignUpPhone && onSignUpPhone()
     }
 
     const onBack = () => {
@@ -163,12 +159,6 @@ function SignUpEmail(props) {
                 onPress={() => onPressSignUp()}
             >
                 <Text style={styles.txtSignUpEmail}>{t('Sign Up')}</Text>
-            </TouchableOpacity>
-            <Text style={styles.txtOr}> {t('OR')} </Text>
-            <TouchableOpacity style={styles.btnSignUpPhone}
-                onPress={() => onPressSignUpPhone()}
-            >
-                <Text style={styles.txtPhone}>{t('Sign up with phone number')}</Text>
             </TouchableOpacity>
             <AlertModal visible={isShowModalSuccess}
                 title={"Successful"}

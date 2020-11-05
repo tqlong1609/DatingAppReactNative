@@ -3,7 +3,8 @@ import Login from './login'
 import { useNavigation } from '@react-navigation/native'
 import Const from '/src/const'
 import { LoginManager, AccessToken } from "react-native-fbsdk";
-import auth from '@react-native-firebase/auth';
+import { useDispatch } from 'react-redux'
+import { pushDataLoginFB } from '/src/slice/loginSlice'
 import Api from '/src/api'
 
 /**
@@ -11,42 +12,15 @@ import Api from '/src/api'
  * no input : FInish
  * no input email: FInish
  * no input password : finish
- * TODO: show error when invalid email
  */
 export default function LoginController() {
     const navigation = useNavigation()
-
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false)
     const [isShowModalFail, setIsShowModalFail] = useState(false)
     const [message, setMessage] = useState('')
 
     const signUpWithFacebookApi = () => {
-        // return LoginManager.logInWithPermissions([
-        //     'public_profile',
-        // ])
-        //     .then((result) => {
-        //         if (result.isCancelled) {
-        //             return Promise.reject(new Error('The user cancelled the request'));
-        //         }
-        //         console.log(
-        //             `Login success with permission: ${result.grantedPermissions.toString()}`,
-        //         );
-        //         return AccessToken.getCurrentAccessToken();
-        //     })
-        //     .then((data) => {
-        //         console.log("signUpWithFacebookApi -> data", data)
-        //         // const credential = auth.FacebookAuthProvider.credential(
-        //         //     data.accessToken,
-        //         // );
-        //         // console.log("signUpWithFacebookApi -> credential", credential)
-        //         // return auth().signInWithCredential(credential);
-        //     })
-        //     // .then((response) =>
-        //     //     console.log("signUpWithFacebookApi -> response", response)
-        //     // )
-        //     .catch(error => {
-        //         console.log("error", error)
-        //     });
         return LoginManager.logInWithPermissions([
             'public_profile',
             'email',
@@ -60,8 +34,7 @@ export default function LoginController() {
                     console.log('Login cancelled');
                 } else {
                     AccessToken.getCurrentAccessToken().then((data) => {
-                        console.log('data', data);
-                        // this.getInfoFromFB(data.accessToken);
+                        requestApiLoginFacebook(data)
                     });
                 }
             },
@@ -70,6 +43,33 @@ export default function LoginController() {
             },
         );
     };
+
+    const requestApiLoginFacebook = (data) => {
+        const { accessToken, userID } = data
+        setIsLoading(true)
+        Api.RequestApi.postRequestApi(Api.Url.URL_SIGN_IN_FACEBOOK, {
+            facebookUserId: userID,
+            facebookToken: accessToken
+        })
+            .then((response) => response.json())
+            .then((json) => requestApiFacebookSuccess(json))
+            .catch((error) => requestApiFacebookFail(error))
+            .finally(() => setIsLoading(false));
+    }
+
+    const requestApiFacebookFail = (error) => {
+        console.log("requestApiFacebookFail -> error", error)
+    }
+
+    /**
+     * email, birthday, gender, picture, religious, work,
+     *  job, education, politics, hight level .., ethnicity, kids, family plan, 
+     */
+    const requestApiFacebookSuccess = (json) => {
+        const action = pushDataLoginFB(json)
+        dispatch(action)
+
+    }
 
     const requestApiSuccess = (json) => {
         console.log("requestApiSuccess -> json", json)
@@ -111,6 +111,10 @@ export default function LoginController() {
         setIsShowModalFail(false)
     }
 
+    const onBack = () => {
+        navigation.navigate(Const.NameScreens.SingInOrUp)
+    }
+
     return (
         <Login
             isLoading={isLoading}
@@ -119,6 +123,7 @@ export default function LoginController() {
             onPressLoginFacebookAPI={onPressLoginFacebookAPI}
             isShowModalFail={isShowModalFail}
             message={message}
+            onBack={onBack}
             onPressButtonModal={onPressButtonModal}
         />
     )

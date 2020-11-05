@@ -5,9 +5,12 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 import Themes from '/src/themes'
 
-export default function buttonBack() {
+export default function buttonBack(props) {
+    const { onPress } = props
     return (
-        <TouchableOpacity style={styles.btnIcon}>
+        <TouchableOpacity style={styles.btnIcon}
+            onPress={() => onPress && onPress()}
+        >
             <Icon name="chevron-back-outline" color={Themes.Colors.PINK} size={Themes.Const.SIZE_ICON}></Icon>
         </TouchableOpacity>
     )

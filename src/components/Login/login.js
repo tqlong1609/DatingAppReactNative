@@ -13,7 +13,7 @@ import AlertModal from '/src/components/Model/alertModal'
 
 function Login(props) {
     const { t, onPressLogin, onPressLoginNumberPhone, onPressLoginFacebookAPI,
-        isLoading, isShowModalFail, message, onPressButtonModal } = props;
+        isLoading, isShowModalFail, message, onPressButtonModal, onBack } = props;
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const refPassword = useRef()
@@ -43,7 +43,9 @@ function Login(props) {
     return (
         <ScrollView>
             <SpinnerLoading isLoading={isLoading} />
-            <ButtonBack />
+            <ButtonBack
+                onPress={() => onBack && onBack()}
+            />
             <Text style={styles.txtTitle}> {t('Sign In')} </Text>
             <TextInput style={styles.inpEmail}
                 onSubmitEditing={() => onSubmitEmail()}
